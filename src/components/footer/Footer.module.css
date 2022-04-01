@@ -1,0 +1,40 @@
+.footer {
+  font-family: "Alegreya", serif;
+  width: 100%;
+}
+.footer .imageWrapper {
+  padding: 4rem;
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  max-width: 100%;
+  max-height: 70px;
+  margin-top: 5rem; 
+}
+.imageWrapper img {
+  margin: auto;
+}
+.credits {
+  text-align: center;
+  background-color: var(--color-mid);
+  width: 100%;
+}
+.credits > p {
+  padding: 1rem;
+}
+.subcredits {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+.subcredits div {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 25%;
+}
+.footer .credits p {
+  font-size: 1.4rem;
+}

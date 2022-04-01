@@ -1,0 +1,26 @@
+.search {
+  display: inline-block;
+  padding: 1rem;
+}
+.searchForm input {
+  padding: .5rem;
+  border-radius: 5px;
+}
+.searchForm label {
+  display: none;
+}
+.searchDropdown {
+position: fixed;
+
+}
+.searchDropdown ul {
+  text-align: end;
+  padding: 1rem 1rem .5rem 0rem;
+  background-color: var(--color-mid);
+  display: flex;
+  flex-direction: column;
+}
+.searchDropdown a {
+  font-size: 1.5rem;
+  padding: .5rem;
+}

@@ -1,0 +1,265 @@
+backend:
+  name: git-gateway
+  repo: github.com/AlexS2106/thunder-island-food-and-health.git
+  branch: main
+
+media_folder: src/images
+public_folder: /images
+
+collections:
+  - label: Profile
+    name: profile
+    folder: content/about
+    create: true
+    slug: index
+    media_folder: 
+    public_folder: 
+    path: "{{title}}/index"
+    editor:
+      preview: true
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { 
+          label: Type, 
+          name: type, 
+          widget: select,
+          multiple: true,
+          options: [ post, profile, recipe, article, poem, story, family-life, review, photography ], 
+          default: [ profile ],
+        }
+      - { label: Slug, name: slug, widget: string }
+      - { 
+          label: Main Categories, 
+          name: mainCategories, 
+          widget: select,
+          options: [ about, english, health, portfolio, recipes ],
+          default: [ about ],
+        }
+      - {
+          label: Subcategories,
+          name: subcategories,
+          widget: select,
+          options: [ authors ],
+          default: [ authors ],
+        }
+      - { 
+          label: Tags, 
+          name: tags, 
+          widget: select, 
+          multiple: true, 
+          required: false, 
+          options: [ alex ],
+        }
+      - { label: Posted, name: posted, widget: datetime }
+      - { label: Updated, name: updated, widget: datetime }  
+      - { 
+          label: Author, 
+          name: author, 
+          widget: select,
+          options: [ alex ],
+        }
+      - { label: Portrait Image, name: portraitImage, widget: image }
+      - { label: Alt, name: alt, widget: string }
+      - { label: Photographer, name: photographer, widget: string, required: false }
+      - { label: Associated Posts, name: associated, widget: list, required: false }
+      - { label: Body, name: body, widget: markdown } 
+  - label: Health
+    name: health
+    folder: content/health
+    create: true
+    slug: index
+    media_folder:  
+    public_folder: 
+    path: "{{title}}/index"
+    editor:
+      preview: true
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { 
+          label: Type, 
+          name: type, 
+          widget: select,
+          multiple: true, 
+          options: [ post, profile, recipe, article, poem, story, review, photography ], 
+          default: [ article ],
+        }
+      - { label: Slug, name: slug, widget: string }
+      - { 
+          label: Main Categories, 
+          name: mainCategories, 
+          widget: select,
+          options: [ about, english, health, portfolio, recipes ],
+          default: [ health ],
+        }
+      - {
+          label: Subcategories,
+          name: subcategories,
+          widget: select,
+          options: [ diet, exercise ],
+        }
+      - { 
+          label: Tags, 
+          name: tags, 
+          widget: select, 
+          multiple: true, 
+          required: false, 
+          options: [ paleo, low-net-carbs, low-total-carbs, low-calorie, carnivore, vegetarian ]
+        }
+      - { label: Posted, name: posted, widget: datetime }
+      - { label: Updated, name: updated, widget: datetime }
+      - { 
+          label: Author, 
+          name: author, 
+          widget: select,
+          required: false,
+          options: [ alex ]
+        }
+      - { label: portraitImage, name: portraitImage, widget: image, required: false }
+      - { label: Landscape Image, name: landscapeImage, widget: image, required: false }
+      - { label: Pin, name: pin, widget: image, required: false }
+      - { label: Alt, name: alt, widget: string, required: false }
+      - { label: Photographer, name: photographer, widget: string, required: false }
+      - { label: Comments, name: comments, widget: boolean, default: true }
+      - { label: Associated Health Posts, name: associated, widget: list, required: false }
+      - { label: Excerpt, name: excerpt, widget: text }
+      - { label: Body, name: body, widget: markdown }
+  - label: Recipes
+    name: recipes
+    folder: content/recipes
+    create: true
+    slug: index
+    media_folder: 
+    public_folder: 
+    path: "{{title}}/index"
+    editor: 
+      preview: true
+    fields: 
+      - { label: Title, name: title, widget: string }
+      - { label: Excel_Id, name: x_id, widget: string } 
+      - { 
+          label: Type, 
+          name: type, 
+          multiple: true, 
+          options: [ post, profile, recipe, article, poem, story, family-life, review, photography ], 
+          default: [ recipe ] 
+        }
+      - { label: Slug, name: slug, widget: string }
+      - { 
+          label: Main Categories, 
+          name: mainCategories, 
+          widget: select, 
+          options: [ about, english, health, portfolio, recipes ],
+          default: [ recipes ] 
+        }
+      - {
+          label: By Course,
+          name: by_course,
+          widget: select,
+          multiple: true, 
+          options: [ breakfast-and-lunch, condiments, desserts, main-dish, side-dish, salads-and-soups, snacks-and-appetisers, ]
+        }
+      - {
+          label: By Ingredient,
+          name: by_ingredient,
+          widget: select,
+          multiple: true, 
+          options: [ beef-and-lamb, chicken-and-pork, fish-and-seafood, vegetables, everything-else, ]
+        }
+      - {
+          label: By Diet,
+          name: by_diet,
+          widget: select,
+          multiple: true, 
+          options: [ carnivore, low-calorie, low-carb, paleo, treats, vegetarian, ]
+        }
+      - {
+          label: Tags, 
+          name: tags, 
+          widget: select,
+          multiple: true, 
+          options: [ atkins, keto, meal-in-one, strict-paleo, vinaigrette ],
+        }
+      - { label: Posted, name: posted, widget: datetime }
+      - { label: Updated, name: updated, widget: datetime }
+      - { 
+          label: Author, 
+          name: author, 
+          widget: select,
+          required: false,
+          options: [ alex ]  
+        }
+      - { label: Portrait Image, name: portraitImage, widget: image, required: false}
+      - { label: Landscape Image, name: landscapeImage, widget: image, required: false}
+      - { label: Pin, name: pin, widget: image, required: false}
+      - { label: Alt, name: alt, widget: string, required: false }
+      - { 
+          label: Photographer, 
+          name: photographer, 
+          widget: select, 
+          required: false,
+          options: [ alex ]
+        }
+      - { label: Comments, name: comments, widget: boolean, default: true }
+      - { label: Associated Recipes, name: associated, widget: list, required: false }
+      - { label: Excerpt, name: excerpt, widget: text }
+      - { label: Body, name: body, widget: markdown, required: false }  
+  - label: Writing
+    name: writing
+    folder: content/writing
+    create: true
+    slug: index
+    media_folder:  
+    public_folder: 
+    path: "{{title}}/index"
+    editor:
+      preview: true
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { 
+          label: Type, 
+          name: type, 
+          widget: select,
+          multiple: true, 
+          options: [ post, profile, recipe, article, poem, story, review, photography ],
+          default: [ article ], 
+        }
+      - { label: Slug, name: slug, widget: string }
+      - { 
+          label: Main Categories, 
+          name: mainCategories, 
+          widget: select,
+          options: [ about, english, health, portfolios, recipes ],
+          default: [ portfolios ],
+        }
+      - {
+          label: Subcategories,
+          name: subcategories,
+          widget: select,
+          options: [ expats-in-malta, writing, virtual-how ],
+        }
+      - { 
+          label: Tags, 
+          name: tags, 
+          widget: select, 
+          multiple: true, 
+          required: false, 
+          options: [ hiking, fiction, fact, family-life, kids, movies, books, tv, malta, england, reviews, stories, poems, photographs ]
+        }
+      - { label: Posted, name: posted, widget: datetime }
+      - { label: Updated, name: updated, widget: datetime }
+      - { 
+          label: Author, 
+          name: author, 
+          widget: select,
+          required: false,
+          options: [ alex ]
+        }
+      - { label: portraitImage, name: portraitImage, widget: image, required: false }
+      - { label: Landscape Image, name: landscapeImage, widget: image, required: false }
+      - { label: Alt, name: alt, widget: string, required: false }
+      - { label: Photographer, name: photographer, widget: string, required: false }
+      - { label: Comments, name: comments, widget: boolean, default: true }
+      - { label: Associated Writing Posts, name: associated, widget: list, required: false }
+      - { label: Excerpt, name: excerpt, widget: text }
+      - { label: Body, name: body, widget: markdown }      
+ 

@@ -1,0 +1,7 @@
+  .smallPostList {
+  background-color: var(--color-light);
+  justify-self: center;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  }

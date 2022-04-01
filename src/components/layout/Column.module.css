@@ -1,0 +1,7 @@
+.column {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  width: 90%;
+  margin: auto;
+}

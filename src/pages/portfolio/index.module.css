@@ -1,0 +1,26 @@
+.grid {
+  background: linear-gradient(to right bottom, var(--color-light), var(--color-mid));
+  padding: 3rem;
+  display: grid;
+  grid-template-columns: 30% 70%;
+  gap: 3rem;
+}
+.writingIndex ul {
+  padding: .5rem;
+}
+.writing {
+  padding: 1rem;
+}
+.contentCard h4 {
+  padding: 1rem;
+}
+.contentCardImage {
+  padding: 1rem;
+  width: 90%;
+}
+.blurWriting {
+  border-top: 1px solid var(--color-accent-dark)
+}
+.marginUnderWriting {
+  margin: 1rem auto 5rem auto
+}

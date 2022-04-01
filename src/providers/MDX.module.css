@@ -1,0 +1,32 @@
+.p {
+  padding: 1rem;
+}
+.ingredients, 
+.instructions,
+.postbody {
+  padding-bottom: 2rem;
+}
+.ingredients ul,
+.postBody ul {
+  list-style-type: disc;
+  padding-left: 5rem;
+}
+.instructions ul {
+  list-style-type: none;
+  padding-left: 5rem;
+}
+.ingredients ul li, 
+.instructions ul li,
+.postbody ul li {
+  font-size: 1.5rem;
+}
+.instructions ul ul {
+  list-style-type: disc;
+  padding-left: 2rem;
+}
+.postBody {
+  padding: 2rem;
+}
+.hidden {
+  display: none;
+}

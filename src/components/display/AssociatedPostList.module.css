@@ -1,0 +1,13 @@
+.associatedPostListWrapper {
+  background-color: var(--color-light);
+  padding: 3rem;
+  justify-self: center;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.associatedPostWrapper {
+  background-color: var(--color-mid);
+  padding: 3rem;
+  margin-bottom: 3rem;
+}

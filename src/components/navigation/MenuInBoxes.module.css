@@ -1,0 +1,25 @@
+.menuInBoxesStyling {
+  max-width: 80%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem;
+  margin: auto;
+  padding: 3rem;
+}
+.menuInBoxesStyling > div {
+  max-width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  position: relative;
+}
+.menuInBoxesStyling > div > button {
+  text-align: center;
+  margin: 1rem;
+  position: absolute;
+  z-index: 1;
+}

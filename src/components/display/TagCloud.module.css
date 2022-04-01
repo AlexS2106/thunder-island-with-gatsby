@@ -1,0 +1,13 @@
+.tagCloudStyling {
+  padding: 2rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  flex: 1
+}
+.tagCloudStyling li {
+  font-family: 'Alegreya', serif;
+  text-shadow: 0px 1px 1px var(--color-accent-dark);
+  letter-spacing: .3rem;
+  padding: 1rem;
+}
