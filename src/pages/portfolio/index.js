@@ -1,18 +1,18 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { graphql, Link } from "gatsby";
+import { graphql, Link, navigate } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { v4 as uuidv4 } from 'uuid';
 
 import {
   grid,
-  writingIndex,
+  contentIndex,
   writing,
   contentCard,
   contentCardImage,
-  contentCardBody,
   blurWriting,
-  marginUnderWriting
+  marginUnderWriting,
+  contentCardEnd
 } from "./index.module.css";
 
 import Breadcrumbs from "../../components/navigation/Breadcrumbs";
@@ -39,10 +39,11 @@ const PortfolioPage = ( { data, pageContext } ) => {
   } = pageContext;
 
   ///////// *** VARIABLES *** ///////////
-    ////For the PageTitle
+  ////Unpacking data
+  const { nodes } = data.allMdx;
+  ////For the PageTitle
   const pageTitle = "My Portfolios";
-
-    ////For the menuBoxes
+  ////For the menuBoxes
   const menuBoxesMenuArray = [
     {
       link: "expats-in-malta",
@@ -60,50 +61,52 @@ const PortfolioPage = ( { data, pageContext } ) => {
       image: writingImg(),
     }
   ];
-
-  ///For the content
-  const { nodes } = data.allMdx;
-  const contentCardButtonText = "Continue Reading";
-
-   ///////// *** FUNCTIONS *** ///////////
-  ////For the MenuInBoxes
-  const handleMenuBoxClick = ( e ) => {
-    console.log("You clicked on the menu in rows.")
-  }
   ////For the contentIndex
-          const contentList = [
+  const contentIndexList = [
       {
         ulName: "my-poems",
         liTitles: sortingUlsFromNodes( nodes, "poem" )
       },
       {
-        ulName: "my-stories",
-        liTitles: sortingUlsFromNodes( nodes, "story" )
-      },
-      {
         ulName: "my-reviews",
         liTitles: sortingUlsFromNodes( nodes, "review" )
       },
+      {
+        ulName: "my-stories",
+        liTitles: sortingUlsFromNodes( nodes, "story" )
+      },
   ];
-  const generateContentList = contentList.map( item => {
-    const lis = item.liTitles.map( liTitle => <li key={ uuidv4() }><Link to={"/"}>{ liTitle }</Link></li> )
+  ///For the content
+  const contentCardButtonText = "Continue Reading";
+
+   ///////// *** FUNCTIONS *** ///////////
+  ////For the MenuInBoxes
+  const handleMenuBoxClick = ( e ) => {
+    const clickedTemp = menuBoxesMenuArray.filter( item => item.name === e.target.innerText );
+    const clicked = { ...clickedTemp };
+    navigate( `${ clicked[0].link }` );
+  }
+  ////For the contentIndex
+  const generateContentIndex = contentIndexList.map( item => {
+    const liTitlesList = item.liTitles.map( liTitle => <li key={ uuidv4() }><Link to={"/"}>{ liTitle }</Link></li> )
         return (
-          <ul key={ uuidv4() }>
+          <ul key={ uuidv4() } >
             <h6>{ makeTitle(item.ulName) }</h6>
-            { lis }
+            { liTitlesList }
           </ul>
         );
     } );
   ////For the contentCard
-  const sectionHidden = { maxHeight: "25rem", overflow: "hidden" };
-  const sectionShown = { overflow: "visible" };
-  const handleShowAllContentCardBody = ( ) => {
+
+  const handleShowAllContentCardBody = () => {
     setShowAllContentCardBody( showAllContentCardBody => !showAllContentCardBody );
   };
   const generateContentCards = nodes.map( node => {
     const { body, frontmatter } = node;
     const { title, landscapeImage, alt } = frontmatter;
     const contentBody = MDX( body );
+    const sectionHidden = { maxHeight: "25rem", overflow: "hidden" };
+    const sectionShown = { overflow: "visible" };
     return (
       <div key={ uuidv4() } className={ contentCard } >
         <article>
@@ -111,23 +114,22 @@ const PortfolioPage = ( { data, pageContext } ) => {
             <h4>{ title }</h4>
           </header>
           <div className={ contentCardImage }>
-            <GatsbyImage image={ getImage( landscapeImage ) } alt={ alt } ></GatsbyImage>
+            <GatsbyImage image={ getImage( landscapeImage ) } alt={ alt } />
           </div>
           <Section direction="column" >
             <div style={ showAllContentCardBody ? sectionShown : sectionHidden }>
             { contentBody }
             </div>
           </Section>
-          <div role="presentational" className={ blurWriting }></div>
-          <span role="presentational" className={ marginUnderWriting }>
+          <div role="none" className={ blurWriting }></div>
+          <span className={ marginUnderWriting }>
             <Button onClick={ handleShowAllContentCardBody } innerText={ contentCardButtonText }>Continue Reading</Button>
           </span>
         </article>
+        <hr className={ contentCardEnd }/>
       </div>
     );
   } );
-
-
   ///////// *** COMPONENT *** ///////////
   return (
     <Layout>
@@ -143,8 +145,8 @@ const PortfolioPage = ( { data, pageContext } ) => {
       <Spacer size="large" />
       <Column>
         <main className={ grid } >
-          <div className={ writingIndex }>
-            { generateContentList }
+          <div className={ contentIndex }>
+            { generateContentIndex }
           </div>
           <div className={ writing }>
             { generateContentCards }

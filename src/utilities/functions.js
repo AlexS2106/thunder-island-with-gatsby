@@ -8,9 +8,7 @@ export function makeSlug( sentence ) {
 //Separates out the title from and makes all words in a sentence into individual words which begin with an upper case letter.
 
 export function makeTitle ( sentence ) {
-  const newSentence = sentence.includes("/") ? sentence.substring(sentence.indexOf("/") + 1) : sentence;
-  
-  let words = newSentence.toString().trim().replaceAll( "-", " " ).split( " " );
+  let words = sentence.toString().trim().replaceAll( "-", " " ).replaceAll("/", "").split( " " );
 
 for (let i = 0; i < words.length; i++) {
     words[i] = words[i][0].toUpperCase() + words[i].substr(1);

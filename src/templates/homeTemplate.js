@@ -7,31 +7,34 @@ import {
   withBorder
 } from "./templates.module.css";
 
-import Layout from "../components/layout/Layout";
 import Breadcrumbs from "../components/navigation/Breadcrumbs";
-import Spacer from "../components/layout/Spacer";
+import Carousel from "../components/display/Carousel";
 import Column from "../components/layout/Column";
-import Section from "../components/layout/Section";
 import ExcerptList from "../components/display/ExcerptList";
+import Layout from "../components/layout/Layout";
 import MediumPostList from "../components/display/MediumPostList";
 import MenuInBoxes from "../components/navigation/MenuInBoxes";
-import SmallPostList from "../components/display/SmallPostList";
-import Carousel from "../components/display/Carousel";
 import Pagination from "../components/navigation/Pagination";
+import Section from "../components/layout/Section";
+import SmallPostList from "../components/display/SmallPostList";
+import Spacer from "../components/layout/Spacer";
 
+import { useGetPostSelection } from "../queries/useGetPostSelection.query";
 import { healthImg, recipesImg, maltaBoatsImg, writingImg, pathImg } from "../utilities/staticImgFunctions";
 
 
 const IndexPage = ( { data, pageContext } ) => {
+  ////////// *** STATE *** /////////
+  const {
+    breadcrumb: { crumbs },
+  } = pageContext;
 
-  ////Data
-  const { allPostsList, twoRecipesPost, singleHealthPost, singleExpatsPost, singlePoemPost, singleStoryPost } = data;
-  const posts = [  ...twoRecipesPost.nodes, singleHealthPost, singleExpatsPost, singlePoemPost, singleStoryPost];
-  console.log(posts)
-  const mainData = allPostsList.nodes;
-  const sideData = allPostsList.nodes;
-  const carouselData = allPostsList.nodes;
-
+  ///////// *** VARIABLES *** ///////////
+  ////Unpacking data
+  const { allPostsList } = data;
+  const allPosts = allPostsList.nodes;
+  const { recipePost, reviewPost, healthPost, expatPost, poemPost, storyPost } = useGetPostSelection();
+    ////For the menuBoxes 
   const menuBoxesMenuArray = [
     {
       link: "/recipes",
@@ -60,38 +63,35 @@ const IndexPage = ( { data, pageContext } ) => {
       image: pathImg(),
     },
   ];
-
-  //Component
-  const pageLink = "";
-  const pageInfo = allPostsList.pageInfo;
-  const {
-    breadcrumb: { crumbs },
-  } = pageContext;
-
-  // ///Functions
-  const handleMenuBoxClick = ( e ) => { 
-    const clickedTemp = menuBoxesMenuArray.filter( item => item.name === e.target.innerText );
-    navigate( `${ clickedTemp[ 0 ].link }` );
-   }
   ////for the ExcerptList -> PostMedium
+  const excerptListPosts = [ recipePost, reviewPost,  healthPost, expatPost, poemPost, storyPost ];
   const excerptListInnerText = "Read More";
   const excerptLength = 75;
-
-    ////For the MediumPostList -> PostMedium
+  ////For the MediumPostList -> PostMedium
+  const mainData = allPosts;
   const showDate = true;
   const showAuthor = true;
   const hasPhotographer = true;
   const showSubcategories = true;
   const mainPostsInnerText = "Continue...";
   const mediumPostExcerptLength = 150;
-
   ////For the SmallPostList -> PostSmall
   const asidePostsInnerText = "Read More";
-
+  const sideData = allPosts;
   ////For the Carousel -> PostSmall
+  const carouselData = allPosts;
   const carouselPostsInnerText = "See More";
   const carouselTitle = "Other posts";
+  ////For Pagination
+  const pageLink = "";
+  const pageInfo = allPostsList.pageInfo;
+  ///////// *** FUNCTIONS *** ///////////
+  const handleMenuBoxClick = ( e ) => { 
+    const clickedTemp = menuBoxesMenuArray.filter( item => item.name === e.target.innerText );
+    navigate( `${ clickedTemp[ 0 ].link }` );
+   }
 
+  ///////// *** COMPONENT *** ///////////
   return (
     <Layout>
       <Spacer size="large" />
@@ -109,7 +109,7 @@ const IndexPage = ( { data, pageContext } ) => {
           </header>
           <Spacer size="small" />
           <ExcerptList
-            list={ posts }
+            list={ excerptListPosts }
             innerText={ excerptListInnerText }
             excerptLength={ excerptLength }
           />
@@ -185,7 +185,7 @@ IndexPage.propTypes = {
 
 export default IndexPage;
 
-
+///////// *** PAGE QUERY *** ///////////
 export const data = graphql`
 query ($limit: Int!, $skip: Int!) {
   allPostsList: allMdx(
@@ -213,6 +213,11 @@ query ($limit: Int!, $skip: Int!) {
             gatsbyImageData(placeholder: BLURRED)
           }
         }
+        landscapeImage {
+          childImageSharp {
+            gatsbyImageData(placeholder: BLURRED)
+          }
+        }
         alt
         photographer
         associated
@@ -224,118 +229,6 @@ query ($limit: Int!, $skip: Int!) {
       hasNextPage
       hasPreviousPage
       pageCount
-    }
-  }
-  twoRecipesPost: allMdx(filter: {frontmatter: {mainCategories: {eq: "recipes"}}}, limit: 2) {
-    nodes {
-    frontmatter {
-      title
-      type
-      slug
-      mainCategories
-      subcategories
-      tags
-      posted
-      updated
-      author
-      portraitImage {
-        childImageSharp {
-          gatsbyImageData
-        }
-      }
-      alt
-      photographer
-      associated
-      excerpt
-    }
-  }
-}
-  singleHealthPost: mdx(frontmatter: {mainCategories: {eq: "health"}}) {
-    frontmatter {
-      title
-      type
-      slug
-      mainCategories
-      subcategories
-      tags
-      posted
-      updated
-      author
-      portraitImage {
-        childImageSharp {
-          gatsbyImageData
-        }
-      }
-      alt
-      photographer
-      associated
-      excerpt
-    }
-  }
-  singleExpatsPost: mdx(frontmatter: {subcategories: {eq: "expats-in-malta"}}) {
-    frontmatter {
-      title
-      type
-      slug
-      mainCategories
-      subcategories
-      tags
-      posted
-      updated
-      author
-      portraitImage {
-        childImageSharp {
-          gatsbyImageData
-        }
-      }
-      alt
-      photographer
-      associated
-      excerpt
-    }
-  }
-  singlePoemPost: mdx(frontmatter: {type: {eq: "poem"}}) {
-    frontmatter {
-      title
-      type
-      slug
-      mainCategories
-      subcategories
-      tags
-      posted
-      updated
-      author
-      portraitImage {
-        childImageSharp {
-          gatsbyImageData
-        }
-      }
-      alt
-      photographer
-      associated
-      excerpt
-    }
-  }
-  singleStoryPost: mdx(frontmatter: {type: {eq: "story"}}) {
-    frontmatter {
-      title
-      type
-      slug
-      mainCategories
-      subcategories
-      tags
-      posted
-      updated
-      author
-      portraitImage {
-        childImageSharp {
-          gatsbyImageData
-        }
-      }
-      alt
-      photographer
-      associated
-      excerpt
     }
   }
 }

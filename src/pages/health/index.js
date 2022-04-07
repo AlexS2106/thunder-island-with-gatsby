@@ -1,5 +1,5 @@
 import React from "react";
-import { graphql } from "gatsby";
+import PropTypes from "prop-types";
 
 import {
   grid,
@@ -7,48 +7,44 @@ import {
 } from "./index.module.css";
 
 import Breadcrumbs from "../../components/navigation/Breadcrumbs";
-
 import Carousel from "../../components/display/Carousel";
 import Layout from "../../components/layout/Layout";
 import MediumPostList from "../../components/display/MediumPostList";
 import PageTitle from "../../components/header/PageTitle";
-import Pagination from "../../components/navigation/Pagination";
 import SmallPostList from "../../components/display/SmallPostList";
 import Spacer from "../../components/layout/Spacer";
 
+import useGetAllHealthPosts from "../../queries/useGetAllHealthPosts.query";
 
-const HealthPage = ( { data, pageContext } ) => {
 
-  //Data
-  const mainData = data.allMdx.nodes;
-  const sideData = data.allMdx.nodes;
-  const carouselData = data.allMdx.nodes;
-  const pageInfo = data.allMdx.pageInfo;
-
-  //3rd party
+const HealthPage = ( { pageContext } ) => {
+  ///////// *** STATE *** ///////////
   const {
     breadcrumb: { crumbs },
   } = pageContext;
 
-  //Component
+  ///////// *** VARIABLES *** ///////
+  ////Unpacking data
+  const allHealthPosts = useGetAllHealthPosts();
+  ////For the PageTitle
   const pageTitle = "Health";
-  const pageLink = "health";
-
    ////For the MediumPostList -> PostMedium
+  const mainData = allHealthPosts; 
   const showDate = true;
   const showAuthor = true;
   const hasPhotographer = true;
   const showSubcategories = true;
   const mainPostsInnerText = "Continue...";
   const excerptLength = 150;
-
   ////For the SmallPostList -> PostSmall
+  const sideData = allHealthPosts;  
   const asidePostsInnerText = "Read More";
-
   ////For the Carousel -> PostSmall
+  const carouselData = allHealthPosts;  
   const carouselPostsInnerText = "See More";
   const carouselTitle = "Other posts"
-  
+
+   ///////// *** COMPONENT *** ///////////
   return (
     <Layout>
       <Spacer size="medium" />
@@ -80,10 +76,6 @@ const HealthPage = ( { data, pageContext } ) => {
           </aside>
         </div>
       </div>
-      <Pagination
-        pageLink={ pageLink }
-        pageInfo={ pageInfo }
-      />
       <Spacer size="medium" />
       <Carousel
         title={ carouselTitle }
@@ -94,45 +86,9 @@ const HealthPage = ( { data, pageContext } ) => {
   );
 }
 
-export const data = graphql`
-query allHealthList {
-  allMdx(
-    filter: {frontmatter: {mainCategories: {eq: "health"}}}
-    ) {
-    nodes {
-      id
-      frontmatter {
-        title
-        type
-        slug
-        mainCategories
-        subcategories
-        posted
-        updated
-        author
-        portraitImage {
-          childImageSharp {
-            gatsbyImageData(placeholder: BLURRED)
-          }
-        }
-        landscapeImage {
-          childImageSharp {
-            gatsbyImageData(placeholder: BLURRED)
-          }
-        }
-        alt
-        associated
-        excerpt
-      }
-    }
-    pageInfo {
-      currentPage
-      hasNextPage
-      hasPreviousPage
-      pageCount
-    }
-  }
+///////// *** PROP TYPES *** ///////////
+HealthPage.propTypes = {
+  pageContext: PropTypes.object,
 }
-`;
 
 export default HealthPage;

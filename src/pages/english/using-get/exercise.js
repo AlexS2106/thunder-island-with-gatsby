@@ -1,7 +1,6 @@
 import React from "react";
-import { Link } from "gatsby";
 
-import Spacer from "../../../../../components/layout/Spacer";
+import Spacer from "../../../components/layout/Spacer";
 
 
 const GetAsObtainExercise1 = () => {
@@ -13,7 +12,6 @@ const GetAsObtainExercise1 = () => {
         <Spacer size="medium" />
       <main>
         <p>Need a lesson first?</p>
-        <Link href="/intermediate/lower-intermediate/using-get/lesson">Read about it first.</Link>
         <p> Find all the times ‘got’ or ‘get’ is used and replace with an alternative word. Choose one of the alternative verbs instead.</p>
         <ul>
           <li>To achieve</li> 

@@ -37,11 +37,11 @@ const PostMedium = ( { post, location, ...props } ) => {
     );
   } );
   
-  // const subCats = listSubcategories(frontmatter).map( ( category ) => {
-  //   return (
-  //     <h4 key={ uuidv4() }>{ category.name }</h4>
-  //   );
-  // } );
+  const subCats = listSubcategories(frontmatter).map( ( category ) => {
+    return (
+      <h4 key={ uuidv4() }>{ category.name }</h4>
+    );
+  } );
   
   const generatedImage = portraitImage ?
     <div className={ imageWrapper }>
@@ -57,7 +57,7 @@ const PostMedium = ( { post, location, ...props } ) => {
         { props.showDate && <time dateTime={ date }> { date } </time> }
         <h3>{ title }</h3>
         { mainCats }
-        {/* { props.showSubcategories && subCats } */}
+        { props.showSubcategories && subCats }
         { props.showAuthor && <address rel="author">by { author }</address> }
       </div>
       <div className={ row }>

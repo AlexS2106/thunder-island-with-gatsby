@@ -26,6 +26,10 @@ const Navbar = (  ) => {
       name: "Health",
     },
     {
+      link: "/english",
+      name: "English",
+    },
+    {
       link: "/portfolio",
       name: "Portfolio",
     },

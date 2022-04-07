@@ -27,7 +27,7 @@ import { filterList } from "../../utilities/functions";
 
 const RecipesPage = ( { data, pageContext } ) => {
 
-  ///State
+  ////////// *** STATE *** /////////
   const [ menuInRowsState, setMenuInRowsState ] = useState( [ ...byDietOptions, ...byIngredientOptions, ...byCourseOptions ] );
   
   const {
@@ -35,8 +35,7 @@ const RecipesPage = ( { data, pageContext } ) => {
   } = pageContext;
 
 ////Data
-  const pageInfo = data.allMdx.pageInfo;
-  const dataNodesArray = data.allMdx.nodes;
+
   const menuBoxesMenuArray = [
     {
       list: [ ...byIngredientOptions ],
@@ -71,7 +70,10 @@ const RecipesPage = ( { data, pageContext } ) => {
     console.log("You clicked on the menu in rows.")
   } 
 
-///////Variables
+  ///////// *** VARIABLES *** ///////////
+  ////Unpacking data
+  const pageInfo = data.allMdx.pageInfo;
+  const dataNodesArray = data.allMdx.nodes;
   ////For the PageTitle
   const pageTitle = "Recipes";
 
@@ -93,7 +95,8 @@ const RecipesPage = ( { data, pageContext } ) => {
   ////For the Carousel -> PostSmall
   const carouselPostsInnerText = "See More";
   const carouselTitle = "Todays Suggestion";
-
+  ///////// *** FUNCTIONS *** ///////////
+  ///////// *** COMPONENT *** ///////////
   return (
     <Layout>
       <Spacer size="medium" />

@@ -11,7 +11,6 @@ export function smallLogo () {
     />
   );
 }
-
 export function largeLogo () { 
   return (
     <StaticImage
@@ -24,13 +23,13 @@ export function largeLogo () {
     />
   );
 }
+
 export function booksImg () { 
   return (
     <StaticImage
       src="../images/books-bg.png"
       alt="books"
       aria-hidden="true"
-      style={ { position: "absolute" } }
       placeholder="blurred"
       objectFit="cover"
     />
@@ -42,7 +41,6 @@ export function courseImg () {
       src="../images/course-bg.png"
       alt="sliced steak"
       aria-hidden="true"
-      style={ { position: "absolute" } }
       placeholder="blurred"
       objectFit="cover"
     />
@@ -54,7 +52,6 @@ export function dietImg () {
       src="../images/diet-bg.png"
       alt="sliced steak"
       aria-hidden="true"
-      style={ { position: "absolute" } }
       placeholder="blurred"
       objectFit="cover"
     />
@@ -66,7 +63,6 @@ export function maltaBoatsImg () {
       src="../images/maltaBoats-bg.png"
       alt="the sea and small boats"
       aria-hidden="true"
-      style={ { position: "absolute" } }
       placeholder="blurred"
       objectFit="cover"
     />
@@ -78,7 +74,6 @@ export function healthImg () {
       src="../images/health-bg.png"
       alt="healthy foods"
       aria-hidden="true"
-      style={ { position: "absolute" } }
       placeholder="blurred"
       objectFit="cover"
     />
@@ -90,7 +85,6 @@ export function ingredientsImg () {
       src="../images/ingredient-bg.png"
       alt="sliced steak"
       aria-hidden="true"
-      style={ { position: "absolute" } }
       placeholder="blurred"
       objectFit="cover"
     />
@@ -102,7 +96,6 @@ export function pathImg () {
       src="../images/path-bg.png"
       alt="a path through fields under dark clouds"
       aria-hidden="true"
-      style={ { position: "absolute" } }
       placeholder="blurred"
       objectFit="cover"
     />
@@ -114,9 +107,30 @@ export function recipesImg () {
       src="../images/recipes-bg.png"
       alt="sliced steak"
       aria-hidden="true"
-      style={ { position: "absolute" } }
       placeholder="blurred"
       objectFit="cover"
+    />
+  );
+}
+export function usingGetImg () { 
+  return (
+    <StaticImage
+      src="../images/using-get-bg.jpg"
+      alt="path beneath dark clouds"
+      aria-hidden="true"
+      placeholder="blurred"
+        objectFit="cover"
+    />
+  );
+}
+export function virtualHeroImg () { 
+  return (
+    <StaticImage
+      src="../images/virtual-how-full.png"
+      alt="path beneath dark clouds"
+      aria-hidden="true"
+      placeholder="blurred"
+        objectFit="cover"
     />
   );
 }
@@ -126,7 +140,6 @@ export function writingImg () {
       src="../images/writing-bg.png"
       alt="quill, inkwell and paper"
       aria-hidden="true"
-      style={ { position: "absolute" } }
       placeholder="blurred"
       objectFit="cover"
     />

@@ -5,8 +5,8 @@ import {
   smallPostList
 } from "./SmallPostList.module.css";
 
-import Spacer from "../layout/Spacer";
 import PostSmall from "../posts/PostSmall";
+import Spacer from "../layout/Spacer";
 
 
 const SmallPostList = ( { postData, ...props } ) => {

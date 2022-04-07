@@ -1,8 +1,8 @@
 .menuInBoxesStyling {
-  max-width: 80%;
+  width: 70%;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 3rem;
+  gap: 1rem;
   margin: auto;
   padding: 3rem;
 }

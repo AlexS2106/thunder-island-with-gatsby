@@ -33,7 +33,7 @@ const RecipeTemplate = ( { data, pageContext } ) => {
   } = pageContext;
   
   ///////// *** VARIABLES *** ///////////
-  ////Unpacking queried data
+  ////Unpacking data
   const { recipePost, associated } = data;
   const associatedRecipes = associated.nodes;
   const { frontmatter, body } = recipePost;

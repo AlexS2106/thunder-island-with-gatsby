@@ -140,7 +140,7 @@ collections:
           label: Type, 
           name: type, 
           multiple: true, 
-          options: [ post, profile, recipe, article, poem, story, family-life, review, photography ], 
+          options: [ post, profile, recipe, article, poem, story, review, photography ], 
           default: [ recipe ] 
         }
       - { label: Slug, name: slug, widget: string }

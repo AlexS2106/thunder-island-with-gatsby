@@ -10,10 +10,6 @@
   display: none;
 }
 .searchDropdown {
-position: fixed;
-
-}
-.searchDropdown ul {
   text-align: end;
   padding: 1rem 1rem .5rem 0rem;
   background-color: var(--color-mid);

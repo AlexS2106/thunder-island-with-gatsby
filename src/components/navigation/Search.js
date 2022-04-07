@@ -8,23 +8,42 @@ import {
   searchDropdown
 } from "./Search.module.css";
 
+import useAllPostsList from "../../queries/useAllPostsList.query";
+
 import { makeTitle } from "../../utilities/functions";
 
+
 const Search = () => {
-  
-  // const [ index, setIndex ] = useState( [] );
-  // const [ query, setQuery ] = useState( "" );
-  // const [ dropdown, setDropdown ] = useState( [] );
 
+  const { nodes } = useAllPostsList();
+  const slugs = nodes.map(node => node.slug);
 
+  const [ index, setIndex ] = useState( () => {
+     const initialState = slugs;
+  return initialState;
+});
+  const [ query, setQuery ] = useState( "" );
+  const [ dropdown, setDropdown ] = useState( [] );
+  const [ show, setShow ] = useState( false );
 
-  function handleChange (e) { 
-   //handleChnage here
+  useEffect( () => {
+    dropdown.length !== 0 ? setShow( true ) : setShow(false)
+  }, [dropdown] )
+
+  function handleChange ( e ) { 
+    setQuery( e.target.value );
+    if ( query.length > 2 ) { 
+      const regExp = new RegExp( query.replaceAll( " ", "-" ) );
+      const list = index.filter( i => i.match( regExp ) );
+      setDropdown( list );
+    } 
+    if ( query.length <= 2 ) { 
+      setDropdown( [] );
+    } 
   }
 
   function handleSubmit (e) { 
-    e.preventDefault();
-    
+    e.preventDefault(); 
   }
 
   return (
@@ -35,25 +54,24 @@ const Search = () => {
           type="text"
           id="query"
           placeholder="To be done!"
-          //value={ query }
+          value={ query }
           onChange={ handleChange }
         />
       </form>
-      {/* Implement after query problem sorted
-      { dropdown.length ?
-        <div className={ searchDropdown } >
-          <ul>
+      <div style={ show ? { display: "flex", position: "fixed" } : { display: "none" } }>
+        <ul className={ searchDropdown }>
             {
               dropdown.map( item =>
                 <Link key={ uuidv4() } to={ `/${ item }` } >
-                  { makeTitle( item ) }</Link>)
+                  { makeTitle( item ) }</Link> )
             }
           </ul>
-        </div> : null } */}
+      </div>
     </div>
   );
-
 }
 
  
- export default Search;
+export default Search;
+ 
+

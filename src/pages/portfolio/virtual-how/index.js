@@ -1,23 +1,24 @@
 import React from "react";
 
-import Layout from "../../../components/layout/Layout";
+import Navbar from "../../../components/navigation/Navbar";
+import Footer from "../../../components/footer/Footer";
 
-import { pathImg } from "../../../utilities/staticImgFunctions";
+import { virtualHeroImg } from "../../../utilities/staticImgFunctions";
+
 
 const VirtualHowPage = () => {
 
-  const hero = pathImg();
-
+  const hero = virtualHeroImg();
   return (
-    <Layout>
+    <>
+      <Navbar />
       { hero }
       <header>
         <h1>Thunder Island Virtual How</h1>
-     </header>
+      </header>
       <h2>A simpler path to follow.</h2>
-    
-      
-    </Layout>
+      <Footer />
+    </>
   );
 }
 

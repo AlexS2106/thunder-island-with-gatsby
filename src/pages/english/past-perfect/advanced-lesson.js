@@ -1,7 +1,7 @@
 import React from "react";
 
-import Column from "../../../../../components/layout/Column";
-import Layout from "../../../../../components/layout/Layout";
+import Column from "../../../components/layout/Column";
+import Layout from "../../../components/layout/Layout";
 
 const AdvancedPastPerfect = () => {
   
