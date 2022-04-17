@@ -9,43 +9,48 @@ import {
 } from "./Search.module.css";
 
 import useAllPostsList from "../../queries/useAllPostsList.query";
-
 import { makeTitle } from "../../utilities/functions";
 
-
+////** COMPONENT **////
 const Search = () => {
 
+  ////** STATE **////
+  //Initial state for the index.
   const { nodes } = useAllPostsList();
   const slugs = nodes.map(node => node.slug);
-
+  //State for the index and user query
   const [ index, setIndex ] = useState( () => {
      const initialState = slugs;
   return initialState;
 });
   const [ query, setQuery ] = useState( "" );
+  //State for making the dropdown to show the serch results
   const [ dropdown, setDropdown ] = useState( [] );
   const [ show, setShow ] = useState( false );
-
+  //Component did mount state for dropdown - will only alter if dropdown state alters
   useEffect( () => {
     dropdown.length !== 0 ? setShow( true ) : setShow(false)
   }, [dropdown] )
 
-  function handleChange ( e ) { 
+  ////** FUNCTIONS **////
+  //Manages events on user input
+  const handleChange = ( e ) => { 
     setQuery( e.target.value );
-    if ( query.length > 2 ) { 
-      const regExp = new RegExp( query.replaceAll( " ", "-" ) );
+    if ( e.target.value.length > 2 ) { 
+      const regExp = new RegExp( e.target.value.replaceAll( " ", "-" ) );
       const list = index.filter( i => i.match( regExp ) );
       setDropdown( list );
     } 
-    if ( query.length <= 2 ) { 
+    if ( e.target.value.length <= 2 ) { 
       setDropdown( [] );
     } 
   }
-
-  function handleSubmit (e) { 
+//Manages events on user submit (enter press)
+ const handleSubmit = (e) => { 
     e.preventDefault(); 
   }
 
+  ////** MARK UP **////
   return (
     <div className={ search }>
       <form className={ searchForm } onSubmit={ handleSubmit }>
@@ -53,7 +58,7 @@ const Search = () => {
         <input
           type="text"
           id="query"
-          placeholder="To be done!"
+          placeholder="Search"
           value={ query }
           onChange={ handleChange }
         />

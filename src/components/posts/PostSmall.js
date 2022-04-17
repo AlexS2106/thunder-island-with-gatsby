@@ -12,19 +12,20 @@ import Button from "../buttons/Button";
 
 import { DispatchContext } from "../../providers/ContextProvider";
 
-
+////** COMPONENT **////
 const PostSmall = ( { post, ...props } ) => {
 
-  //Data 
-  const { id, frontmatter } = post;
-  const { title, slug, mainCategories, landscapeImage, alt } = frontmatter;
-
-   //3rd Party
+  ////** STATE **////
   const dispatch = useContext( DispatchContext );
 
-  //Component
+  ////** VARIABLES **////
+  //Unpacking data
+  const { id, frontmatter } = post;
+  const { title, slug, mainCategories, landscapeImage, alt } = frontmatter;
+  //Button
   const { innerText } = props;
 
+  ////** MARK UP **////
   return (
     <div className={ `${postSmall} ${props.addedClasses}` }>
       <h4>{ title }</h4>
@@ -41,6 +42,7 @@ const PostSmall = ( { post, ...props } ) => {
   );
 }
 
+  ////** PROP TYPES **////
 PostSmall.propTypes = {
   post: PropTypes.object,
   innerText: PropTypes.string,

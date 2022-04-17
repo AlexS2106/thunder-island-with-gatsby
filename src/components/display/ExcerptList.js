@@ -9,9 +9,11 @@ import {
 import PostMedium from "../posts/PostMedium";
 
 
+////** COMPONENT **////
 const ExcerptList = ( { list, ...props } ) => {
 
-  //Components
+////** FUNCTIONS **////
+  //Generate a list of excerpts of random posts 
   const generatedExcerpts = list.map( ( listItem ) => {
     return (
       <div key={ uuidv4() }>
@@ -22,8 +24,9 @@ const ExcerptList = ( { list, ...props } ) => {
         <h3><Link to={ `/${ listItem.frontmatter.mainCategories[ 0 ] }` }>See more in { listItem.frontmatter.mainCategories }?</Link></h3>
       </div>
     );
-    })
+  } );
   
+  ////** MARK UP**////
   return (
     <div className={ excerptList }>
       { generatedExcerpts }

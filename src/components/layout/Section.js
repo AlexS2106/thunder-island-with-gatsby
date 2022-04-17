@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 import {
   section,
@@ -6,17 +7,29 @@ import {
   row
 } from "./Section.module.css";
 
-
+////** COMPONENT **////
 const Section = ( { children, ...props } ) => {
 
+  ////** VARIABLES **////
+  //Determine flex col or flex row for section styling
   const flexDirect = !props.direction ? null : props.direction === "column" ? column : row;
 
+  ////** MARK UP **////
   return (
     <section className={ `${ section } ${ flexDirect }` } >
       { children }
     </section>
   );
+}
 
+////** PROP TYPES **////
+Section.propTypes = {
+  children: PropTypes.oneOfType( [
+    PropTypes.node,
+    PropTypes.array,
+    PropTypes.element
+  ] ).isRequired,
+  direction: PropTypes.string,
 }
 
 export default Section;

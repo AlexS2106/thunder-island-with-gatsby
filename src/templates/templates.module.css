@@ -41,9 +41,6 @@
   padding: 1rem;
   background-color: var(--color-accent-light);
 }
-.withBorder {
-    border-left: 1px solid var(--color-accent-dark);
-}
 .itemsEnd {
  justify-content: flex-end;
  margin-right: 2rem;

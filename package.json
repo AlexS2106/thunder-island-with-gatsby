@@ -10,7 +10,7 @@
     "@fortawesome/react-fontawesome": "^0.1.18",
     "@mdx-js/mdx": "^1.6.22",
     "@mdx-js/react": "^1.6.22",
-    "gatsby": "^4.11.1",
+    "gatsby": "^4.11.2",
     "gatsby-plugin-breadcrumb": "^12.3.1",
     "gatsby-plugin-gatsby-cloud": "^4.10.1",
     "gatsby-plugin-image": "^2.11.1",
@@ -23,7 +23,6 @@
     "prop-types": "^15.8.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "react-helmet": "^6.1.0",
     "uuid": "^8.3.2"
   },
   "devDependencies": {

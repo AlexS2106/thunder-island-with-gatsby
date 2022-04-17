@@ -86,7 +86,7 @@ const HealthPage = ( { pageContext } ) => {
   );
 }
 
-///////// *** PROP TYPES *** ///////////
+////** PROP TYPES **////
 HealthPage.propTypes = {
   pageContext: PropTypes.object,
 }

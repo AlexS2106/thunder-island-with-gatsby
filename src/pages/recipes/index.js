@@ -10,32 +10,65 @@ import {
 import Breadcrumbs from "../../components/navigation/Breadcrumbs";
 import Carousel from "../../components/display/Carousel";
 import Layout from "../../components/layout/Layout";
+import MainColumn from "../../components/layout/MainColumn";
 import MediumPostList from "../../components/display/MediumPostList";
 import MenuInBoxes from "../../components/navigation/MenuInBoxes";
 import MenuInRows from "../../components/navigation/MenuInRows";
 import PageTitle from "../../components/header/PageTitle";
-import Pagination from "../../components/navigation/Pagination";
 import Section from "../../components/layout/Section";
 import SmallPostList from "../../components/display/SmallPostList";
 import Spacer from "../../components/layout/Spacer";
 import TagCloud from "../../components/display/TagCloud";
 
-
-import { byDietOptions, byIngredientOptions, byCourseOptions, recipeTags, recipeSuggestions1 } from "../../utilities/indices";
+import { byDietOptions, byIngredientOptions, byCourseOptions, recipeTags, favouriteRecipes } from "../../utilities/indices";
 import { ingredientsImg, dietImg, courseImg } from "../../utilities/staticImgFunctions";
-import { filterList } from "../../utilities/functions";
+import { filterList, makeTitle } from "../../utilities/functions";
 
+////** COMPONENT **////
 const RecipesPage = ( { data, pageContext } ) => {
 
-  ////////// *** STATE *** /////////
+  ////** STATE **////
   const [ menuInRowsState, setMenuInRowsState ] = useState( [ ...byDietOptions, ...byIngredientOptions, ...byCourseOptions ] );
+  const [ selectedCategory, setSelectedCategory] = useState( () => { 
+    const initialState = "All My ";
+    return initialState;
+  } );
+  const [ shownRecipes, setShownRecipes ] = useState( () => { 
+    const initialState = [ ...data.allMdx.nodes ];
+    return initialState;
+  } );
+  const [ selectedTag, setSelectedTag] = useState( () => { 
+    const initialState = "My Favourite Recipes";
+    return initialState;
+  } );
+  const [ shownTagRecipes, setShownTagRecipes ] = useState( () => {
+    const nodes = filterList( favouriteRecipes, data.allMdx.nodes );
+    const initialState = [ ...nodes ];
+    return initialState;
+  } );
   
   const {
     breadcrumb: { crumbs },
   } = pageContext;
 
-////Data
-
+  ////** VARIABLES **////
+  //Unpacking data
+  const dataNodesArray = data.allMdx.nodes;
+  //PageTitle
+  const pageTitle = "Recipes";
+ //MediumPostList -> PostMedium
+  const showDate = true;
+  const showAuthor = true;
+  const hasPhotographer = true;
+  const showSubcategories = true;
+  const mainPostsInnerText = "Continue...";
+  const excerptLength = 150;
+  //SmallPostList -> PostSmall
+  const asidePostsInnerText = "Read More";
+  //Carousel -> PostSmall
+  const carouselPostsInnerText = "See More";
+  const carouselTitle = "Todays Suggestion";
+  //Menuboxes (bg image, categories and their groupings)
   const menuBoxesMenuArray = [
     {
       list: [ ...byIngredientOptions ],
@@ -54,49 +87,33 @@ const RecipesPage = ( { data, pageContext } ) => {
     }
   ];
 
-    ///Functions
+   ////** FUNCTIONS ** ////
+  //Menubox + MenuInRows - accepts a click which selects a recipe category and shows all the subcategories within the selected category.
   const handleMenuBoxClick = ( e ) => {
     const clickedTemp = menuBoxesMenuArray.filter( item => item.name === e.target.innerText );
     const clicked = Object.values( clickedTemp[ 0 ].list );
 
     if ( menuInRowsState.length === clicked.length && clicked.filter( item => menuInRowsState.includes( item ) ).length === menuInRowsState.length ) {
       setMenuInRowsState( [ ...byDietOptions, ...byIngredientOptions, ...byCourseOptions ] );
-    } else { 
+    } else {
       setMenuInRowsState( clicked );
     }
-  }
+  };
+  //MenuInRows + PageTitle - accepts a click which selects a recipe subcategory and changes all the recipes on the page to be only those of that category and alters the pageTitle heading.
+  const handleMenuInRowsClick = (e) => {
+    const showTheseRecipes = dataNodesArray.filter( node => node.frontmatter.by_ingredient.includes( e.target.value ) || node.frontmatter.by_diet.includes( e.target.value ) || node.frontmatter.by_course.includes( e.target.value ) );
+    setSelectedCategory(() => makeTitle(e.target.value))
+    setShownRecipes(() => showTheseRecipes)
+  };
+    //TagCloud + SmallPostMenu - accepts a click which selects a recipe tag and changes all the recipes in the smallPostMenu to be only those of that tag.
+  const handleTagCloudClick = ( e ) => {
+    const showTheseRecipes = dataNodesArray.filter( node => node.frontmatter.tags && node.frontmatter.tags.length && node.frontmatter.tags.includes(e.target.value) );
+    console.log(showTheseRecipes)
+    setSelectedTag( () => makeTitle( e.target.value ) );
+    setShownTagRecipes( () => showTheseRecipes );
+  };
 
-  const handleMenuInRowsClick = () => { 
-    console.log("You clicked on the menu in rows.")
-  } 
-
-  ///////// *** VARIABLES *** ///////////
-  ////Unpacking data
-  const pageInfo = data.allMdx.pageInfo;
-  const dataNodesArray = data.allMdx.nodes;
-  ////For the PageTitle
-  const pageTitle = "Recipes";
-
- ////For the MediumPostList -> PostMedium
-  const showDate = true;
-  const showAuthor = true;
-  const hasPhotographer = true;
-  const showSubcategories = true;
-  const mainPostsInnerText = "Continue...";
-  const excerptLength = 150;
-
-  ////For the SmallPostList -> PostSmall
-  const asidePostsInnerText = "Read More";
-  const asideRecipeSuggestions = filterList( recipeSuggestions1, dataNodesArray );
-
-  ////For Pagination
-  const pageLink = "recipes";
-
-  ////For the Carousel -> PostSmall
-  const carouselPostsInnerText = "See More";
-  const carouselTitle = "Todays Suggestion";
-  ///////// *** FUNCTIONS *** ///////////
-  ///////// *** COMPONENT *** ///////////
+  ////** MARK UP **////
   return (
     <Layout>
       <Spacer size="medium" />
@@ -115,9 +132,10 @@ const RecipesPage = ( { data, pageContext } ) => {
       />
       <Spacer size="small" />
       <div className={ grid }>
-        <main>
+        <MainColumn>
+          <PageTitle title={ `${selectedCategory} Recipes` } />
           <MediumPostList
-            postData={ dataNodesArray }
+            postData={ shownRecipes }
             excerptLength={ excerptLength }
             showDate={ showDate }
             showAuthor={ showAuthor }
@@ -125,18 +143,22 @@ const RecipesPage = ( { data, pageContext } ) => {
             showSubCategories={ showSubcategories }
             innerText={ mainPostsInnerText }
           />
-        </main>
+        </MainColumn>
         <div className={ asideWrapper }>
           <aside>
-            <TagCloud tags={ recipeTags } />
+            <TagCloud
+              tags={ recipeTags }
+              onClick={ handleTagCloudClick }
+            />
             <Spacer size="small" />
             <Section direction="column">
               <header>
-                <h3>My Favourite Recipes</h3>
+                <h3>{ selectedTag }</h3>
               </header>
               <Spacer size="small" />
               <SmallPostList
-                postData={ asideRecipeSuggestions }
+                postData={ shownTagRecipes }
+                onClick={ handleTagCloudClick }
                 innerText={ asidePostsInnerText }
               />
             </Section>
@@ -144,11 +166,6 @@ const RecipesPage = ( { data, pageContext } ) => {
           </aside>
         </div>
       </div>
-      <Pagination
-        pageLink={ pageLink }
-        pageInfo={ pageInfo }
-      />
-      <Spacer size="medium" />
       <Carousel
         title={ carouselTitle }
         carouselData={ dataNodesArray }
@@ -158,16 +175,14 @@ const RecipesPage = ( { data, pageContext } ) => {
   );
 }
 
-///////// *** PROP TYPES *** ///////////
+////** PROP TYPES **////
 RecipesPage.propTypes = {
   data: PropTypes.object,
-  pageContext: PropTypes.object,
 }
 
 export default RecipesPage;
 
-///////// *** PAGE QUERY *** ///////////
-
+////** PAGE QUERY **////
 export const data = graphql`
 query allRecipesList {
   allMdx(
@@ -183,6 +198,7 @@ query allRecipesList {
         by_course
         by_ingredient
         by_diet
+        tags
         posted
         updated
         author

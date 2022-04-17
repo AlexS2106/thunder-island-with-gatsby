@@ -10,14 +10,24 @@ import Section from "../../components/layout/Section";
 import { makeTitle } from "../../utilities/functions";
 
 
-const TagCloud = ( { tags } ) => { 
+////** COMPONENTS **////
+const TagCloud = ( { tags, ...props } ) => { 
 
+  ////** FUNCTIONS **////
+  //Generates a list, button and onclick prop for each tag
   const generateTagCloud = tags.map( tag => {
     return (
-      <li key={ uuidv4() }>{ makeTitle( tag ) }</li>
+      <li key={ uuidv4() }>
+        <button
+          value={ tag }
+          onClick={ props.onClick }>
+          { makeTitle( tag ) }
+        </button>
+      </li>
     );
   } );
 
+  ////** MARK UP **////
   return (
     <Section direction="column">
       <header>
@@ -27,7 +37,6 @@ const TagCloud = ( { tags } ) => {
         { generateTagCloud }
       </ul>
     </Section>
-
   );
 }
 

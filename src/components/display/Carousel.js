@@ -6,10 +6,11 @@ import {
 
 import PostSmall from "../posts/PostSmall";
 
-
+////** COMPONENT **////
 const Carousel = ( { carouselData, ...props } ) => {
 
-  //Component
+////** FUNCTIONS **////
+//Generates the carousel posts
   const generateCarousel =
     carouselData.slice( 0, 3 ).map( ( item, index ) =>
     (
@@ -22,6 +23,7 @@ const Carousel = ( { carouselData, ...props } ) => {
       </div>
     ) );
   
+  ////** MARK UP **////
   return (
       <div className={ carousel }>
         { generateCarousel }

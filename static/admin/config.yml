@@ -116,7 +116,6 @@ collections:
         }
       - { label: portraitImage, name: portraitImage, widget: image, required: false }
       - { label: Landscape Image, name: landscapeImage, widget: image, required: false }
-      - { label: Pin, name: pin, widget: image, required: false }
       - { label: Alt, name: alt, widget: string, required: false }
       - { label: Photographer, name: photographer, widget: string, required: false }
       - { label: Comments, name: comments, widget: boolean, default: true }
@@ -190,7 +189,6 @@ collections:
         }
       - { label: Portrait Image, name: portraitImage, widget: image, required: false}
       - { label: Landscape Image, name: landscapeImage, widget: image, required: false}
-      - { label: Pin, name: pin, widget: image, required: false}
       - { label: Alt, name: alt, widget: string, required: false }
       - { 
           label: Photographer, 

@@ -1,14 +1,14 @@
 import React from "react";
 
-import Column from "../../../components/layout/Column";
 import Layout from "../../../components/layout/Layout";
+import MainColumn from "../../../components/layout/MainColumn";
 
 const AdvancedPastPerfect = () => {
   
   return (
 <Layout>
       <h1>Past Perfect</h1>
-      <Column>
+      <MainColumn>
       <main>
         <article>
           <section>
@@ -185,7 +185,7 @@ const AdvancedPastPerfect = () => {
           </section>
         </article>
       </main>
-      </Column>
+      </MainColumn>
    </Layout>
   );
 }

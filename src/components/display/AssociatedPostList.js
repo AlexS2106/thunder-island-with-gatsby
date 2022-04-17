@@ -9,9 +9,10 @@ import {
 import Spacer from "../layout/Spacer";
 import PostMedium from "../posts/PostMedium";
 
-
+////** COMPONENT **////
 const AssociatedPostList = ( { postData } ) => {
 
+////** MARK UP **////
   return (
     <div className={ associatedPostListWrapper }>
       { postData.map( ( item ) => {
@@ -30,7 +31,6 @@ const AssociatedPostList = ( { postData } ) => {
       } ) }
     </div>
   );
-  
 }
 
 export default AssociatedPostList;

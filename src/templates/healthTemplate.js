@@ -6,51 +6,56 @@ import { v4 as uuidv4 } from 'uuid';
 
 import {
   row,
-  itemsEnd,
-  withBorder,
+  itemsEnd
 } from "./templates.module.css";
 
-import Layout from "../components/layout/Layout";
 import Breadcrumbs from "../components/navigation/Breadcrumbs";
+import Button from "../components/buttons/Button";
+import Layout from "../components/layout/Layout";
+import MainColumn from "../components/layout/MainColumn";
+import PageTitle from "../components/header/PageTitle";
 import Spacer from "../components/layout/Spacer";
-import Column from "../components/layout/Column";
-import Button from "../components/buttons/Button"
 
 import MDX from "../providers/MDX";
 
 
+////**  COMPONENT **////
 const HealthTemplate = ( { data, pageContext } ) => {
 
-  ////////// *** STATE *** /////////
+  ////** STATE **////
   const {
     breadcrumb: { crumbs }
   } = pageContext;
 
-   ///////// *** VARIABLES *** /////////// 
+  ////** VARIABLES **//// 
+  //Unpacking data
   const { frontmatter, body } = data.mdx;
   const { title, tags, posted, updated, author, landscapeImage, alt, photographer, associated, excerpt } = frontmatter;
-
-  
-  ////For the Button in the article
+  //Article -> Button
   const innerText = "Go Back";
+  //Page Title
+  const pageTitle = { title };
 
-    ///////// *** FUNCTIONS *** ///////////
-  ////For the tags
+  ////** FUNCTIONS **////
+  //Tags
   const generateTags = tags > 0 ? tags.map( ( tag ) => {
     return (
       <h4 key={ uuidv4() } >{ tag.name }</h4>
     );
   } ) : null;
 
-////To render MDX in the article body
+  //Article MDX
   const contentBody = MDX( body );
 
-    ///////// *** COMPONENT *** ///////////
+  ////** MARK UP **////
   return (
-    <Layout title={ title } >
+    <Layout>
+      <Spacer size="medium" />
+      <PageTitle title={ pageTitle } />
+      <Spacer size="small" />
       <Breadcrumbs crumbs={ crumbs } />
       <Spacer size="small" />
-      <Column>
+      <MainColumn>
         <article>
           <address rel="author">By { author }</address>
           <time dateTime={ updated }> { updated } </time>
@@ -58,24 +63,24 @@ const HealthTemplate = ( { data, pageContext } ) => {
           <GatsbyImage image={ getImage( landscapeImage ) } alt={ alt }></GatsbyImage>
           <cite>photo by { photographer }</cite>
           { generateTags }
-          <div className={ withBorder }>
+          <div className="withSideBorder addBorderPadding">
             <p>{ excerpt }</p>
           </div>
           { contentBody }
           <p>{ associated }</p>
-          <div className={ `${row} ${itemsEnd}` }>
-             <Button onClick={() => {
-           navigate( -1 );
-        }
-      } innerText={ innerText }></Button>
+          <div className={ `${ row } ${ itemsEnd }` }>
+            <Button onClick={ () => {
+              navigate( -1 );
+            }
+            } innerText={ innerText }></Button>
           </div>
         </article>
-      </Column>
+      </MainColumn>
     </Layout>
   );
 }
 
-///////// *** PROP TYPES *** ///////////
+////** PROP TYPES **////
 HealthTemplate.propTypes = {
   data: PropTypes.object,
   pageContext: PropTypes.object,
@@ -83,7 +88,7 @@ HealthTemplate.propTypes = {
 
 export default HealthTemplate;
 
-///////// *** PAGE QUERY *** ///////////
+////** PAGE QUERY **////
 export const data = graphql`
 query healthQuery($slug: String) {
   mdx(

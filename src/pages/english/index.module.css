@@ -1,7 +1,57 @@
-.cluster {
-
-}
 .clusterGrid {
+  max-width: 90%;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin: auto;
 }
+.clusterStyling {
+  display: grid;
+  grid-template-areas:  "image image"
+                        "title title"
+                        "excerpt excerpt"
+                        "level level"
+                        "lessons lessons"
+                        "exercises exercises" ;
+  grid-template-rows: min-content 50px 1fr min-content max-content max-content;
+  padding: .5rem;
+  border: 1px solid var(--color-accent-light);
+  border-radius: 5px;
+}
+.clusterStyling > div {
+  grid-area: image;
+}
+.clusterStyling > h4 {
+  grid-area: title;
+  margin: auto;
+}
+.clusterStyling p {
+  font-size: 1.5rem;
+  text-align: center;
+  text-justify: distribute;
+  padding-bottom: 1rem;
+  grid-area: excerpt;
+}
+.clusterStyling h5 {
+  grid-area: level;
+  margin-top: 3rem;
+}
+.clusterStyling ul {
+  padding: .5rem;
+}
+.clusterStyling ul li a {
+  text-decoration: underline;
+  text-decoration-color: var(--color-accent-dark);
+  padding: 0.25rem;
+}
+.clusterStyling ul li a:hover {
+  text-decoration: dotted underline;
+  text-decoration-color: var(--color-accent-dark);
+}
+.clusterStyling ul:first-of-type {
+  grid-area: lessons;
+}
+.clusterStyling ul:last-of-type {
+  grid-area: exercises;
+}
+

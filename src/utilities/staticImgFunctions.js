@@ -123,17 +123,6 @@ export function usingGetImg () {
     />
   );
 }
-export function virtualHeroImg () { 
-  return (
-    <StaticImage
-      src="../images/virtual-how-full.png"
-      alt="path beneath dark clouds"
-      aria-hidden="true"
-      placeholder="blurred"
-        objectFit="cover"
-    />
-  );
-}
 export function writingImg () { 
   return (
     <StaticImage

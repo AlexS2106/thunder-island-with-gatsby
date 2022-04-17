@@ -22,6 +22,11 @@ export const byIngredientOptions = [ "beef-and-lamb", "chicken-and-pork", "fish-
 export const byCourseOptions = [ "breakfast-and-lunch", "condiments", "main", "side", "salads-and-soups", "snacks-and-appetisers", "desserts" ];
 export const recipeTags = [ "atkins", "bread", "curry", "keto", "meal-in-one", "strict-paleo", "slow-cooked", "vinaigrette" ];
 
+///My favourite recipes list
+export const favouriteRecipes = [
+  "keto-prawn-cocktail-with-marie-rose-sauce",
+  "peach-meringue-roulade",
+]
 /// Rotating recipe arrays
 export const recipeSuggestions1 = [
   "simply-chicken-drumsticks",

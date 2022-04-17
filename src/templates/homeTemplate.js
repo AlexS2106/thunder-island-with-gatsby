@@ -3,13 +3,12 @@ import PropTypes from "prop-types";
 import { graphql, navigate } from "gatsby";
 
 import {
-  grid,
-  withBorder
+  grid
 } from "./templates.module.css";
 
 import Breadcrumbs from "../components/navigation/Breadcrumbs";
 import Carousel from "../components/display/Carousel";
-import Column from "../components/layout/Column";
+import DivColumn from "../components/layout/DivColumn";
 import ExcerptList from "../components/display/ExcerptList";
 import Layout from "../components/layout/Layout";
 import MediumPostList from "../components/display/MediumPostList";
@@ -20,21 +19,23 @@ import SmallPostList from "../components/display/SmallPostList";
 import Spacer from "../components/layout/Spacer";
 
 import { useGetPostSelection } from "../queries/useGetPostSelection.query";
-import { healthImg, recipesImg, maltaBoatsImg, writingImg, pathImg } from "../utilities/staticImgFunctions";
+import { healthImg, recipesImg, maltaBoatsImg, writingImg, pathImg, booksImg } from "../utilities/staticImgFunctions";
 
 
+////** COMPONENT **////
 const IndexPage = ( { data, pageContext } ) => {
-  ////////// *** STATE *** /////////
+
+  ////** STATE **////
   const {
     breadcrumb: { crumbs },
   } = pageContext;
 
-  ///////// *** VARIABLES *** ///////////
-  ////Unpacking data
+  ////** VARIABLES **////
+  //Unpacking data
   const { allPostsList } = data;
   const allPosts = allPostsList.nodes;
   const { recipePost, reviewPost, healthPost, expatPost, poemPost, storyPost } = useGetPostSelection();
-    ////For the menuBoxes 
+  //MenuBoxes (images displayed, button innertext, links)
   const menuBoxesMenuArray = [
     {
       link: "/recipes",
@@ -62,12 +63,17 @@ const IndexPage = ( { data, pageContext } ) => {
       name: "Virtual How",
       image: pathImg(),
     },
+    {
+      link: "/english",
+      name: "Learn English",
+      image: booksImg(),
+    },
   ];
-  ////for the ExcerptList -> PostMedium
+  //ExcerptList -> PostMedium
   const excerptListPosts = [ recipePost, reviewPost,  healthPost, expatPost, poemPost, storyPost ];
   const excerptListInnerText = "Read More";
   const excerptLength = 75;
-  ////For the MediumPostList -> PostMedium
+  //MediumPostList -> PostMedium
   const mainData = allPosts;
   const showDate = true;
   const showAuthor = true;
@@ -75,75 +81,77 @@ const IndexPage = ( { data, pageContext } ) => {
   const showSubcategories = true;
   const mainPostsInnerText = "Continue...";
   const mediumPostExcerptLength = 150;
-  ////For the SmallPostList -> PostSmall
+  //SmallPostList -> PostSmall
   const asidePostsInnerText = "Read More";
   const sideData = allPosts;
-  ////For the Carousel -> PostSmall
+  //Carousel -> PostSmall
   const carouselData = allPosts;
   const carouselPostsInnerText = "See More";
   const carouselTitle = "Other posts";
-  ////For Pagination
+  //Pagination
   const pageLink = "";
   const pageInfo = allPostsList.pageInfo;
-  ///////// *** FUNCTIONS *** ///////////
+
+  ////** FUNCTIONS **////
+  //Manages menu selection clicks in menuboxes
   const handleMenuBoxClick = ( e ) => { 
     const clickedTemp = menuBoxesMenuArray.filter( item => item.name === e.target.innerText );
     navigate( `${ clickedTemp[ 0 ].link }` );
    }
 
-  ///////// *** COMPONENT *** ///////////
+  ////** MARK UP **////
   return (
     <Layout>
       <Spacer size="large" />
-      <MenuInBoxes
-        menu={ menuBoxesMenuArray }
-        onClick={ handleMenuBoxClick }
-          />
-      <Spacer size="large" />
-      <Column>
+      <DivColumn>
+        <MenuInBoxes
+          menu={ menuBoxesMenuArray }
+          onClick={ handleMenuBoxClick }
+        />
+        <Spacer size="small" />
         {
           pageContext.currentPage === 1 ?
-        <Section direction="column">
-          <header>
-            <h3>All My Latest Posts</h3>
-          </header>
-          <Spacer size="small" />
-          <ExcerptList
-            list={ excerptListPosts }
-            innerText={ excerptListInnerText }
-            excerptLength={ excerptLength }
-          />
-            </Section>
+            <>
+              <Section direction="column">
+                <header>
+                  <h3 className="addPaddingLeft5">All My Latest Posts</h3>
+                </header>
+                <Spacer size="small" />
+                <ExcerptList
+                  list={ excerptListPosts }
+                  innerText={ excerptListInnerText }
+                  excerptLength={ excerptLength }
+                />
+              </Section>
+              <Spacer size="large" />
+            </>
             : null
         }
-      </Column>
-      <Spacer size="large" />
-      <Column>
-      <Section direction="column">
-        <header>
-          <h3>Latest posts</h3>
-        </header>
-        <Spacer size="small" />
+        <Section direction="column">
+          <header>
+            <h3 className="addPaddingLeft5">Latest posts</h3>
+          </header>
+          <Spacer size="small" />
           { pageContext.currentPage !== 1 ?
             <>
               <Breadcrumbs crumbs={ crumbs } />
               <Spacer size="small" />
             </>
             : null }
-        <div className={ grid }>
-          <main>
-            <MediumPostList
-              postData={ mainData }
-              excerptLength={ mediumPostExcerptLength }
-              showDate={ showDate }
-              showAuthor={ showAuthor }
-              hasPhotographer={ hasPhotographer }
-              showSubCategories={ showSubcategories }
-              innerText={ mainPostsInnerText }
-            />
-          </main>
+          <div className={ grid }>
+            <main>
+              <MediumPostList
+                postData={ mainData }
+                excerptLength={ mediumPostExcerptLength }
+                showDate={ showDate }
+                showAuthor={ showAuthor }
+                hasPhotographer={ hasPhotographer }
+                showSubCategories={ showSubcategories }
+                innerText={ mainPostsInnerText }
+              />
+            </main>
             <aside>
-              <div className={ withBorder }>
+              <div className="withSideBorder">
                 <header>
                   <h3>Popular Posts</h3>
                 </header>
@@ -153,17 +161,17 @@ const IndexPage = ( { data, pageContext } ) => {
                 />
               </div>
             </aside>
-        </div>
-      </Section>
-      <Pagination
-        pageLink={ pageLink }
-        pageInfo={ pageInfo }
-      />
-      <Spacer size="medium" />
-      </Column>
+          </div>
+          <Pagination
+            pageLink={ pageLink }
+            pageInfo={ pageInfo }
+          />
+          <Spacer size="medium" />
+        </Section>
+      </DivColumn>
       <Section direction="column">
         <header>
-          <h3>{ carouselTitle }</h3>
+          <h3 className="addPaddingLeft5">{ carouselTitle }</h3>
         </header>
         <Spacer size="small" />
         <Carousel
@@ -172,20 +180,20 @@ const IndexPage = ( { data, pageContext } ) => {
           innerText={ carouselPostsInnerText }
         />
       </Section >
-      
     </Layout>
   );
 }
 
-///////// *** PROP TYPES *** ///////////
+////** PROP TYPES **////
 IndexPage.propTypes = {
   data: PropTypes.object,
   pageContext: PropTypes.object,
+  useGetPostSelection: PropTypes.func
 }
 
 export default IndexPage;
 
-///////// *** PAGE QUERY *** ///////////
+////** PAGE QUERY **////
 export const data = graphql`
 query ($limit: Int!, $skip: Int!) {
   allPostsList: allMdx(

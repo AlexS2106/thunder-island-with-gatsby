@@ -3,8 +3,7 @@ import { Link } from "gatsby";
 
 import {
   navbar,
-  linksWrapper,
-  isActive
+  linksWrapper
 } from "./Navbar.module.css";
 
 import Search from "./Search";
@@ -41,7 +40,7 @@ const Navbar = (  ) => {
   
   const generateNavLinks = topMenu.map( page => {
     return (
-      <Link key={ page.link } to={ page.link } activeClassName={ isActive }>{ page.name }</Link>
+      <Link key={ page.link } to={ page.link } activeClassName="isActive">{ page.name }</Link>
     );
   })
 

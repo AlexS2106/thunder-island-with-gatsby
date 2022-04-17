@@ -1,11 +1,13 @@
 import React from "react";
 
 import Layout from "../../../components/layout/Layout";
+import MainColumn from "../../../components/layout/MainColumn";
 import Spacer from "../../../components/layout/Spacer";
 
 import { doubleArrowRight } from "../../../utilities/iconFunctions";
 
-function GetAsObtainLesson1 () {
+
+const GetAsObtainLesson1 = () => {
 
   const arrow = doubleArrowRight();
 
@@ -15,7 +17,7 @@ function GetAsObtainLesson1 () {
         <h2>Use Get Instead To Obtain Something</h2>
       </header>
        <Spacer size="medium" />
-      <main>
+      <MainColumn>
         <p>In most cases, get is used instead of another, more formal, verb.</p>
         <p>Get is used a lot when speaking but not much in writing.</p>
         <p>Look at the examples below, in each sentence get is used instead of a more formal verb. Each alternative verb has meaning like obtain.</p>
@@ -84,7 +86,7 @@ function GetAsObtainLesson1 () {
             <li>i will take the train home. { arrow } I will get the train home.</li>
           </ul>
         </section>
-      </main>
+      </MainColumn>
     </Layout>
   );
 }

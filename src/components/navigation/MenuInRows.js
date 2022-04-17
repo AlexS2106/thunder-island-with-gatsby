@@ -12,9 +12,11 @@ const MenuInRows = ( { menu, ...props } ) => {
   const generateMenuList = menu.map( ( item ) => {
     return (
       <li
-        key={ uuidv4() }
+        key={ uuidv4() }>
+        <button value={ item }
         onClick={ props.onClick } >
         { makeTitle( item ) }
+        </button>
       </li>
     );
   } );

@@ -14,6 +14,10 @@
   text-decoration-color: var(--color-accent-dark);
   padding: 0.25rem;
 }
+.contentIndex ul li a:hover {
+text-decoration: dotted underline;
+  text-decoration-color: var(--color-accent-dark);
+}
 .writing {
   padding: 1rem 3rem 1rem 1rem;
 }
@@ -36,5 +40,4 @@
   width: 75%;
   border-top: 1px dotted var(--color-accent-light);
   margin: 2rem auto;
-
 }

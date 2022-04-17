@@ -16,8 +16,9 @@ import {
 } from "./index.module.css";
 
 import Breadcrumbs from "../../components/navigation/Breadcrumbs";
-import Column from "../../components/layout/Column";
+import Button from "../../components/buttons/Button";
 import Layout from "../../components/layout/Layout";
+import MainColumn from "../../components/layout/MainColumn";
 import MenuInBoxes from "../../components/navigation/MenuInBoxes";
 import PageTitle from "../../components/header/PageTitle";
 import Section from "../../components/layout/Section";
@@ -26,24 +27,24 @@ import Spacer from "../../components/layout/Spacer";
 import MDX from "../../providers/MDX";
 import { makeTitle, sortingUlsFromNodes } from "../../utilities/functions";
 import { maltaBoatsImg, writingImg, pathImg } from "../../utilities/staticImgFunctions";
-import Button from "../../components/buttons/Button";
 
 
+////** COMPONENT **////
 const PortfolioPage = ( { data, pageContext } ) => {
 
-  ////////// *** STATE *** /////////
+////** STATE **////
   const [ showAllContentCardBody, setShowAllContentCardBody ] = useState( false ); 
   
   const {
     breadcrumb: { crumbs },
   } = pageContext;
 
-  ///////// *** VARIABLES *** ///////////
-  ////Unpacking data
+  ////** VARIABLES **////
+  //Unpacking data
   const { nodes } = data.allMdx;
-  ////For the PageTitle
+  //PageTitle
   const pageTitle = "My Portfolios";
-  ////For the menuBoxes
+  //MenuBoxes (bg images, titles, links to pages)
   const menuBoxesMenuArray = [
     {
       link: "expats-in-malta",
@@ -61,7 +62,7 @@ const PortfolioPage = ( { data, pageContext } ) => {
       image: writingImg(),
     }
   ];
-  ////For the contentIndex
+  //ContentIndex (side menu of all writing content)
   const contentIndexList = [
       {
         ulName: "my-poems",
@@ -76,19 +77,19 @@ const PortfolioPage = ( { data, pageContext } ) => {
         liTitles: sortingUlsFromNodes( nodes, "story" )
       },
   ];
-  ///For the content
+  //Content -> Button
   const contentCardButtonText = "Continue Reading";
 
-   ///////// *** FUNCTIONS *** ///////////
-  ////For the MenuInBoxes
+   ////** FUNCTIONS **////
+  //MenuInBoxes
   const handleMenuBoxClick = ( e ) => {
     const clickedTemp = menuBoxesMenuArray.filter( item => item.name === e.target.innerText );
     const clicked = { ...clickedTemp };
     navigate( `${ clicked[0].link }` );
   }
-  ////For the contentIndex
+  //ContentIndex (make the post titles into a list)
   const generateContentIndex = contentIndexList.map( item => {
-    const liTitlesList = item.liTitles.map( liTitle => <li key={ uuidv4() }><Link to={"/"}>{ liTitle }</Link></li> )
+    const liTitlesList = item.liTitles.map( liTitle => <li key={ uuidv4() }><Link to={"/"} activeClassName="isActive" >{ liTitle }</Link></li> )
         return (
           <ul key={ uuidv4() } >
             <h6>{ makeTitle(item.ulName) }</h6>
@@ -96,11 +97,11 @@ const PortfolioPage = ( { data, pageContext } ) => {
           </ul>
         );
     } );
-  ////For the contentCard
-
+  //ContentCard (toggles the opening to show the full content or closing to show an excerpt)
   const handleShowAllContentCardBody = () => {
     setShowAllContentCardBody( showAllContentCardBody => !showAllContentCardBody );
   };
+  //ContentCard (generates the ContentCards)
   const generateContentCards = nodes.map( node => {
     const { body, frontmatter } = node;
     const { title, landscapeImage, alt } = frontmatter;
@@ -126,11 +127,12 @@ const PortfolioPage = ( { data, pageContext } ) => {
             <Button onClick={ handleShowAllContentCardBody } innerText={ contentCardButtonText }>Continue Reading</Button>
           </span>
         </article>
-        <hr className={ contentCardEnd }/>
+        <hr role="none" className={ contentCardEnd }/>
       </div>
     );
   } );
-  ///////// *** COMPONENT *** ///////////
+
+  ////** MARK UP **////
   return (
     <Layout>
       <Spacer size="large" />
@@ -138,22 +140,21 @@ const PortfolioPage = ( { data, pageContext } ) => {
       <Spacer size="small" />
       <Breadcrumbs crumbs={ crumbs } />
       <Spacer size="medium" />
-    <MenuInBoxes
+      <MenuInBoxes
         menu={ menuBoxesMenuArray }
         onClick={ handleMenuBoxClick }
       />
       <Spacer size="large" />
-      <Column>
-        <main className={ grid } >
+      <MainColumn>
+        <div className={ grid } >
           <div className={ contentIndex }>
             { generateContentIndex }
           </div>
           <div className={ writing }>
             { generateContentCards }
           </div>
-        </main>
-      </Column>
-
+        </div>
+      </MainColumn>
     </Layout>
   );
 }

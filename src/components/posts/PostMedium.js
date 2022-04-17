@@ -63,7 +63,7 @@ const PostMedium = ( { post, location, ...props } ) => {
       <div className={ row }>
         { generatedImage }
         <div className={ textWrapper }>
-          <p>{ generatedExcerpt }</p>
+          <p className="withSideborder">{ generatedExcerpt }</p>
         </div>
       </div>
       <div className={ col }>
