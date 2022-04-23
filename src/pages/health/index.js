@@ -9,6 +9,7 @@ import {
 import Breadcrumbs from "../../components/navigation/Breadcrumbs";
 import Carousel from "../../components/display/Carousel";
 import Layout from "../../components/layout/Layout";
+import MainColumn from "../../components/layout/MainColumn"
 import MediumPostList from "../../components/display/MediumPostList";
 import PageTitle from "../../components/header/PageTitle";
 import SmallPostList from "../../components/display/SmallPostList";
@@ -17,18 +18,20 @@ import Spacer from "../../components/layout/Spacer";
 import useGetAllHealthPosts from "../../queries/useGetAllHealthPosts.query";
 
 
+////** COMPONENT **////
 const HealthPage = ( { pageContext } ) => {
-  ///////// *** STATE *** ///////////
+
+  ////** CONTEXT **////
   const {
     breadcrumb: { crumbs },
   } = pageContext;
 
-  ///////// *** VARIABLES *** ///////
-  ////Unpacking data
+  ////** VARIABLES **////
+  //Unpacking data
   const allHealthPosts = useGetAllHealthPosts();
-  ////For the PageTitle
+  //PageTitle
   const pageTitle = "Health";
-   ////For the MediumPostList -> PostMedium
+   //MediumPostList -> PostMedium
   const mainData = allHealthPosts; 
   const showDate = true;
   const showAuthor = true;
@@ -36,24 +39,23 @@ const HealthPage = ( { pageContext } ) => {
   const showSubcategories = true;
   const mainPostsInnerText = "Continue...";
   const excerptLength = 150;
-  ////For the SmallPostList -> PostSmall
+  //SmallPostList -> PostSmall
   const sideData = allHealthPosts;  
   const asidePostsInnerText = "Read More";
-  ////For the Carousel -> PostSmall
+  //Carousel -> PostSmall
   const carouselData = allHealthPosts;  
   const carouselPostsInnerText = "See More";
   const carouselTitle = "Other posts"
 
-   ///////// *** COMPONENT *** ///////////
+   ////** COMPONENT **////
   return (
     <Layout>
-      <Spacer size="medium" />
+      <Spacer size="small" />
       <PageTitle title={ pageTitle } />
       <Spacer size="small" />
       <Breadcrumbs crumbs={ crumbs } />
-      <Spacer size="medium" />
       <div className={ grid }>
-        <main>
+        <MainColumn>
           <MediumPostList
             postData={ mainData }
             excerptLength={ excerptLength }
@@ -63,12 +65,10 @@ const HealthPage = ( { pageContext } ) => {
             showSubCategories={ showSubcategories }
             innerText={ mainPostsInnerText }
           />
-        </main>
+        </MainColumn>
         <div className={ asideWrapper }>
           <aside>
-            <header>
               <h3>Popular Posts</h3>
-            </header>
             <SmallPostList
               postData={ sideData }
               innerText={ asidePostsInnerText }
@@ -88,7 +88,7 @@ const HealthPage = ( { pageContext } ) => {
 
 ////** PROP TYPES **////
 HealthPage.propTypes = {
-  pageContext: PropTypes.object,
+  pageContext: PropTypes.object.isRequired,
 }
 
 export default HealthPage;

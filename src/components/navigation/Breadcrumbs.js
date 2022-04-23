@@ -16,12 +16,12 @@ import { DispatchContext, StateContext } from "../../providers/ContextProvider";
 ////** COMPONENT **////
 const Breadcrumbs = ( { crumbs } ) => {
 
-////** STATE **////
+////** CONTEXT **////
   const dispatch = useContext( DispatchContext );
   const state = useContext( StateContext );
 
   ////** FUNCTIONS **////
-  //Generates the breadcrumbs and arrows, manages clickable navigation paths. 
+  //Generates the breadcrumbs and arrows, manages clickable navigation paths.  (via props.crumbs)
   const generateBreadcrumbs = crumbs.map( ( crumb ) => {
     return (
       crumb.crumbLabel !== "Home" ?
@@ -54,12 +54,7 @@ const Breadcrumbs = ( { crumbs } ) => {
 
 ////** PROP TYPES **////
 Breadcrumbs.propTypes = {
-  crumbs: PropTypes.array,
-  DispatchContext: PropTypes.object,
-  makeTitle: PropTypes.func,
-  singleArrowRight: PropTypes.func,
-  StateContext: PropTypes.object,
-  topLevelPages: PropTypes.array,
+  crumbs: PropTypes.array.isRequired,
 }
 
 export default Breadcrumbs;

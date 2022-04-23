@@ -23,11 +23,11 @@ const Layout = ( { ...props } ) => {
   );
 }
 
-///////// *** PROP TYPES *** ///////////
+////** PROP TYPES **////
 Layout.propTypes = {
   children: PropTypes.oneOfType( [
     PropTypes.node,
-    PropTypes.array,
+    PropTypes.object,
     PropTypes.element
   ] ).isRequired,
 }

@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 import { v4 as uuidv4 } from 'uuid';
 
@@ -14,26 +15,35 @@ import PostSmall from "../../components/posts/PostSmall";
 import Profile from "../../components/posts/Profile";
 import Spacer from "../../components/layout/Spacer";
 
+
+////** COMPONENT **////
 const AboutPage = ( { data, pageContext } ) => {
 
-  //Data
-  const { authors, posts } = data;
-  
-  //Component
-  const pageTitle = "About";
-  const {
-    breadcrumb: { crumbs },
+    ////** CONTEXT **////
+   const {
+    breadcrumb: { crumbs }
   } = pageContext;
+
+  ////** VARIABLES **////
+  //Unpacking imported data
+  const { authors, posts } = data;
+  //PageTitle
+  const pageTitle = "About";
+
+  ////** FUNCTIONS **////
+  //Generates random posts by a chosen author in the aside (an array of posts passed in as props.data.posts by the page query)
   const generateAside = posts.edges.map( ( item ) => (
     <div key={ uuidv4() }>
       <PostSmall post={ item.node } innerText="Read More" />
       <Spacer size="small" />
     </div>
   ) );
+  //Generates a list of profiles in the main column (an array of authors passed in as props.data.authors by the page query)
   const generateProfiles = authors.edges.map( ( author ) => (
     <Profile person={ author } key={ uuidv4() } ></Profile>
   ) );
-  
+
+    ////** MARK UP **////
   return (
     <Layout>
       <Spacer size="medium" />
@@ -61,6 +71,13 @@ const AboutPage = ( { data, pageContext } ) => {
 
 export default AboutPage;
 
+////** PROP TYPES **////
+AboutPage.propTypes = {
+  data: PropTypes.object.isRequired,
+  pageContext: PropTypes.object.isRequired,
+}
+
+////** PAGE QUERY **////
 export const data = graphql`
 query getAuthorPosts {
   authors: allMdx(filter: {frontmatter: {type: {eq: "profile"}}}) {

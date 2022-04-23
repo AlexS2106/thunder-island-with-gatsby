@@ -1,9 +1,9 @@
 import React from "react";
 
-const TagQuestionsExercise = () => {
+const MakeTheTagQuestions = () => {
   return (
 <h1>TagQuestionsExercise </h1>
   )
 }
 
-export default TagQuestionsExercise;
+export default MakeTheTagQuestions;

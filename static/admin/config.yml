@@ -24,7 +24,7 @@ collections:
           name: type, 
           widget: select,
           multiple: true,
-          options: [ post, profile, recipe, article, poem, story, family-life, review, photography ], 
+          options: [ post, profile, recipe, article, poem, story, family-life, review, photography, lesson ], 
           default: [ profile ],
         }
       - { label: Slug, name: slug, widget: string }
@@ -80,7 +80,7 @@ collections:
           name: type, 
           widget: select,
           multiple: true, 
-          options: [ post, profile, recipe, article, poem, story, review, photography ], 
+          options: [ post, profile, recipe, article, poem, story, review, photography, lesson ], 
           default: [ article ],
         }
       - { label: Slug, name: slug, widget: string }
@@ -139,7 +139,7 @@ collections:
           label: Type, 
           name: type, 
           multiple: true, 
-          options: [ post, profile, recipe, article, poem, story, review, photography ], 
+          options: [ post, profile, recipe, article, poem, story, review, photography, lesson ], 
           default: [ recipe ] 
         }
       - { label: Slug, name: slug, widget: string }
@@ -201,9 +201,9 @@ collections:
       - { label: Associated Recipes, name: associated, widget: list, required: false }
       - { label: Excerpt, name: excerpt, widget: text }
       - { label: Body, name: body, widget: markdown, required: false }  
-  - label: Writing
-    name: writing
-    folder: content/writing
+  - label: Portfolios
+    name: portfolios
+    folder: content/portfolios
     create: true
     slug: index
     media_folder:  
@@ -218,8 +218,7 @@ collections:
           name: type, 
           widget: select,
           multiple: true, 
-          options: [ post, profile, recipe, article, poem, story, review, photography ],
-          default: [ article ], 
+          options: [ post, profile, recipe, article, poem, story, review, photography, lesson ],
         }
       - { label: Slug, name: slug, widget: string }
       - { 
@@ -229,9 +228,9 @@ collections:
           options: [ about, english, health, portfolios, recipes ],
           default: [ portfolios ],
         }
-      - {
-          label: Subcategories,
-          name: subcategories,
+      - { 
+          label: Subcategories, 
+          name: subategories, 
           widget: select,
           options: [ expats-in-malta, writing, virtual-how ],
         }
@@ -258,6 +257,66 @@ collections:
       - { label: Photographer, name: photographer, widget: string, required: false }
       - { label: Comments, name: comments, widget: boolean, default: true }
       - { label: Associated Writing Posts, name: associated, widget: list, required: false }
+      - { label: Excerpt, name: excerpt, widget: text }
+      - { label: Body, name: body, widget: markdown }      
+  - label: English
+    name: english
+    folder: content/english
+    create: true
+    slug: index
+    media_folder:  
+    public_folder: 
+    path: "{{title}}/index"
+    editor:
+      preview: true
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { 
+          label: Type, 
+          name: type, 
+          widget: select,
+          multiple: true, 
+          options: [ post, profile, recipe, article, poem, story, review, photography, lesson ],
+          default: [ lesson ], 
+        }
+      - { label: Slug, name: slug, widget: string }
+      - { 
+          label: Main Categories, 
+          name: mainCategories, 
+          widget: select,
+          options: [ about, english, health, portfolios, recipes ],
+          default: [ english ],
+        }
+      - {
+          label: Subcategories,
+          name: subcategories,
+          widget: select,
+          multiple: true,
+          options: [ tenses, conditionals, questions, tricky-words ],
+        }
+      - { 
+          label: Tags, 
+          name: tags, 
+          widget: select, 
+          multiple: true, 
+          required: false, 
+          options: [ past, present, future, informal, formal ]
+        }
+      - { label: Posted, name: posted, widget: datetime }
+      - { label: Updated, name: updated, widget: datetime }
+      - { 
+          label: Author, 
+          name: author, 
+          widget: select,
+          required: false,
+          options: [ alex ]
+        }
+      - { label: portraitImage, name: portraitImage, widget: image, required: false }        
+      - { label: Landscape Image, name: landscapeImage, widget: image, required: false }
+      - { label: Alt, name: alt, widget: string, required: false }
+      - { label: Photographer, name: photographer, widget: string, required: false }
+      - { label: Comments, name: comments, widget: boolean, default: false }
+      - { label: Associated Lessons, name: associated, widget: list, required: false }
       - { label: Excerpt, name: excerpt, widget: text }
       - { label: Body, name: body, widget: markdown }      
  

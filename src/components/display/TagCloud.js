@@ -29,7 +29,7 @@ const TagCloud = ( { tags, ...props } ) => {
 
   ////** MARK UP **////
   return (
-    <Section direction="column">
+    <Section>
       <header>
         <h3>Tag Cloud</h3>
       </header>

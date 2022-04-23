@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 import {
   carousel,
@@ -17,7 +18,7 @@ const Carousel = ( { carouselData, ...props } ) => {
       <div key={ index }>
         <PostSmall
           post={ item }
-          addedClasses="withBorder"
+          addedClasses="withSideBorder"
           { ...props }
         />
       </div>
@@ -29,6 +30,12 @@ const Carousel = ( { carouselData, ...props } ) => {
         { generateCarousel }
       </div>
   );
+}
+
+  ////** MARK UP **////
+Carousel.propTypes = {
+  carouselData: PropTypes.array.isRequired,
+  innerText: PropTypes.string
 }
 
 export default Carousel;

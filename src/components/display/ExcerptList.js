@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Link } from "gatsby";
 import { v4 as uuidv4 } from 'uuid';
 
@@ -32,6 +33,12 @@ const ExcerptList = ( { list, ...props } ) => {
       { generatedExcerpts }
     </div>
   );
+}
+
+ExcerptList.propTypes = {
+  list: PropTypes.array.isRequired,
+  innerText: PropTypes.string,
+  excerptLength: PropTypes.number
 }
 
 export default ExcerptList;

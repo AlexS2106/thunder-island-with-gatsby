@@ -148,4 +148,7 @@ table {
 .withSideBorder {
   border-left: 1px solid var(--color-accent-dark);
 }
+.withSideBorderLight {
+  border-left: 1px solid var(--color-accent-light);
+}
  

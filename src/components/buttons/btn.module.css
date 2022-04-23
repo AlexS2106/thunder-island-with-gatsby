@@ -14,5 +14,4 @@
   letter-spacing: 5px;
   border-top: 3px solid var(--color-accent-dark);
   border-bottom: 3px solid var(--color-accent-dark);
-  transform: translate(1.5rem);
 }

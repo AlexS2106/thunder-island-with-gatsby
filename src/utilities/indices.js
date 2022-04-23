@@ -1,11 +1,15 @@
 
-export const topLevelPages = [ "health", "recipes", "portfolios", "about" ];
+export const topLevelPages = [ "health", "recipes", "portfolios", "about", "english" ];
 
-export const mainCategories = [ "health", "recipes", "portfolios", "about" ];
+export const mainCategories = [ "health", "recipes", "portfolios", "about", "english" ];
 
 //About subcategories
 export const aboutSubcategories = [ "authors" ];
 export const aboutTags = [ "alex" ];
+
+//English subcategories
+export const englishSubcategories = [ "tenses", "conditionals", "questions", "tricky-words" ];
+export const englishTags = [ "past", "present", "future", "informal", "formal" ];
 
 //Portfolio subcategories
 export const portfolioSubcategories = [ "expats-in-malta", "writing", "virtual-how" ];
@@ -19,26 +23,31 @@ export const healthTags = [ "paleo", "low-net-carbs", "low-total-carbs", "low-ca
 export const recipeSubcategories = [ "by-diet", "by-ingredient", "by-course" ];
 export const byDietOptions = [ "paleo", "low-carb", "low-calorie", "carnivore", "vegetarian", "treats" ];
 export const byIngredientOptions = [ "beef-and-lamb", "chicken-and-pork", "fish-and-seafood", "vegetables", "everything-else" ];
-export const byCourseOptions = [ "breakfast-and-lunch", "condiments", "main", "side", "salads-and-soups", "snacks-and-appetisers", "desserts" ];
+export const byCourseOptions = [ "breakfast-and-lunch", "condiments", "main-dish", "side-dish", "salads-and-soups", "snacks-and-appetisers", "desserts" ];
 export const recipeTags = [ "atkins", "bread", "curry", "keto", "meal-in-one", "strict-paleo", "slow-cooked", "vinaigrette" ];
 
-///My favourite recipes list
-export const favouriteRecipes = [
+///A favourite recipes list - alter this occasionally!
+export const favouriteRecipes1 = [
   "keto-prawn-cocktail-with-marie-rose-sauce",
   "peach-meringue-roulade",
-]
-/// Rotating recipe arrays
-export const recipeSuggestions1 = [
-  "simply-chicken-drumsticks",
-  "keto-prawn-cocktail-with-marie-rose-sauce",
-  "pork-chops-with-apple-cinnamon-sauce",
-  "peach-meringue-roulade",
+  "beefburgers-with-a-tangy-sauce",
+  "creamy-parsnip-and-leek",
+  "banoffee-pie",
+  "butternut-squash-and-carrot-soup"
+];
+//Used in aside on home page - alter this occasionally!
+export const popularPosts1 = [
+  "blackened-shrimp",
+  "my-pregnancy-story",
+  "avocado-filled-with-tuna-mayo",
+  "calculating-a-keto-day",
+  "almond-flour-skillet-flatbread"
 ];
 
 //Types
 //article refers to a short text of interest on a particular subject e.g text about a recipe, a short report on an ingredient etc
 //post refers to anything which is worth being on the home page
-export const types = [ "post", "profile", "recipe", "article", "poem", "story", "review", "photography" ];
+export const types = [ "post", "profile", "recipe", "article", "poem", "story", "review", "photography", "lesson" ];
 
 
  

@@ -6,15 +6,12 @@
   gap: 3rem;
   border-radius: 5px;
 }
-.contentIndex ul {
-  padding: .5rem;
-}
-.contentIndex ul li a {
+.indexItem {
   text-decoration: underline;
   text-decoration-color: var(--color-accent-dark);
   padding: 0.25rem;
 }
-.contentIndex ul li a:hover {
+.indexItem:hover {
 text-decoration: dotted underline;
   text-decoration-color: var(--color-accent-dark);
 }

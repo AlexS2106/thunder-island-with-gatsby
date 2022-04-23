@@ -21,9 +21,9 @@ const DivColumn = ( { children } ) => {
 DivColumn.propTypes = {
   children: PropTypes.oneOfType( [
     PropTypes.node,
-    PropTypes.array,
+    PropTypes.object,
     PropTypes.element
-  ] ),
+  ] ).isRequired,
 }
 
 export default DivColumn;

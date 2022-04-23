@@ -34,7 +34,7 @@ const Footer = () => {
           <address>@ClairesWebsite</address>
         </div>
         <div>
-          <p>All the design, coding and content of Thunder Island is the result of the interests, hobbies and dabblings of { author }.</p>
+            <p>All the design, coding and content of Thunder Island is the result of the interests, hobbies and dabblings of { author }.</p>
         </div>
         </div>
       </div>

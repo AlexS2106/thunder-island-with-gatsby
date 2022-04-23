@@ -3,10 +3,10 @@ import PropTypes from "prop-types";
 import { Link } from "gatsby";
 
 import { 
-  getExerciseStyling,
-  getExerciseText,
-  clusterIndex
-} from "./UsingGet.module.css";
+  contentIndexGrid,
+  exercise,
+  indexItem
+} from "./index.module.css";
 
 import Breadcrumbs from "../../../components/navigation/Breadcrumbs";
 import Button from "../../../components/buttons/Button";
@@ -16,8 +16,9 @@ import PageTitle from "../../../components/header/PageTitle";
 import Section from "../../../components/layout/Section";
 import Spacer from "../../../components/layout/Spacer";
 
- 
-const GetAsObtainExercise1 = ( { pageContext } ) => {
+
+  ////** COMPONENT **////
+const UsingGetForObtain = ( { pageContext } ) => {
   
   ////** STATE **////
   //Initial state for answers
@@ -128,6 +129,8 @@ const GetAsObtainExercise1 = ( { pageContext } ) => {
     return initialState;
   } );
   const [ success, setSuccess ] = useState( false );
+
+  ////** CONTEXT **////
   //Breadcrumb state
   const {
     breadcrumb: { crumbs }
@@ -181,15 +184,14 @@ const GetAsObtainExercise1 = ( { pageContext } ) => {
   ////** MARK UP **////
   return (
     <Layout>
-      <Spacer size="medium" />
+      <Spacer size="small" />
       <PageTitle title={ pageTitle } />
       <Spacer size="small" />
       <Breadcrumbs crumbs={ crumbs } />
-      <Spacer size="medium" />
-      <div className={ getExerciseStyling }>
+      <div className={ contentIndexGrid }>
         <MainColumn>
-          <div className={ getExerciseText }>
-            <p>Often get is used instead of alternative words which all mean obtain.</p>
+          <div className={ exercise }>
+            <p>Often <em>get</em> is used instead of alternative words which all mean obtain.</p>
             <Spacer size="small" />
             <p>In the text below, find all the times <em>got</em> or <em>get</em> is used and replace them with an alternative word.</p>
             <Spacer size="small" />
@@ -204,7 +206,7 @@ const GetAsObtainExercise1 = ( { pageContext } ) => {
               <li>To take</li>
             </ol>
             <Spacer size="small" />
-            <Section direction="column">
+            <Section>
               <h3>Speech</h3>
               <p>When my son { answerInput( 0 ) } his degree, I was so happy because I knew he had worked so hard for these last three years to { answerInput( 1 ) } it.</p>
               <p>I had saved up all the money I could and { answerInput( 2 ) } him a brand new car as a graduation present. All he had to do was go and { answerInput( 3 ) } it from the car shop. You should’ve seen his face when he { answerInput( 4 ) } it. He was so happy! </p>
@@ -213,17 +215,18 @@ const GetAsObtainExercise1 = ( { pageContext } ) => {
               <p>Eventually, I got a phone call. It was him! He told me he was in Italy. He said he’d { answerInput( 8 ) } himself an Italian girlfriend and been offered a job at some firm in Italy. He's signed the contract already, and that company’s { answerInput( 9 ) } him now for a whole year. I was so happy but sad as well! I miss him, you see? Well, in the end, he asked me if I'd { answerInput( 10 ) } a parcel from him yet. Well, I hadn’t. Obviously! So I said no. </p>
               <p>  ‘Well, Mum, { answerInput( 11 ) } yourself to the post office and go { answerInput( 12 ) } it.’ He said. And that’s why I’m here! Can I { answerInput( 13 ) } my parcel?</p>
             </Section>
-            <Spacer size="small" />           
+            <Spacer size="small" />
             <Button onClick={ handleSubmit } innerText="Submit" />
             { success && <Button onClick={ handleReset } innerText="Reset" /> }
             { submitted && success && <p style={ { fontSize: "2rem", textAlign: "center", padding: "1rem" } }>Congratulations! Points are coming!</p> }
           </div>
         </MainColumn>
-        <aside className="withSideBorder addBorderPadding">
-          <header>
-            <h3>Lessons on Using Get</h3>
-          </header>
-          <Link to={ `using-get/advanced-lesson}` } className={ clusterIndex } >Advanced Lesson On Using Get</Link>
+        <aside className="withSideBorderLight addBorderPadding">
+          <h3>Lessons on Using Get</h3>
+          <Link to={ `/english/using-get/complete-lesson` } className={ indexItem } activeClassName="isActive" >A complete Lesson On Using Get</Link>
+          <Spacer size="small" />
+          <h4>Learn In Small Easy Lessons</h4>
+          <Link to={ `/english/using-get/mini-lesson-1` } className={ indexItem } activeClassName="isActive" >Mini Lesson On Using Get Part 1</Link>
         </aside>
       </div>
     </Layout>
@@ -231,8 +234,8 @@ const GetAsObtainExercise1 = ( { pageContext } ) => {
 }
   
 ///////// *** PROP TYPES *** ///////////
-GetAsObtainExercise1.propTypes = {
-   pageContext: PropTypes.object, 
+UsingGetForObtain.propTypes = {
+   pageContext: PropTypes.object.isRequired, 
 }
 
-export default GetAsObtainExercise1;
+export default UsingGetForObtain;

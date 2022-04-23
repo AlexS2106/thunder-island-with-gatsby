@@ -11,8 +11,8 @@ import {
 const Section = ( { children, ...props } ) => {
 
   ////** VARIABLES **////
-  //Determine flex col or flex row for section styling
-  const flexDirect = !props.direction ? null : props.direction === "column" ? column : row;
+  //Determine flex col or flex row for section styling - defaults to column
+  const flexDirect = !props.direction ? column : props.direction === "row" ? row : column;
 
   ////** MARK UP **////
   return (

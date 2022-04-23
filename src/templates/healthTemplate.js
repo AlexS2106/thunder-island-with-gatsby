@@ -22,7 +22,7 @@ import MDX from "../providers/MDX";
 ////**  COMPONENT **////
 const HealthTemplate = ( { data, pageContext } ) => {
 
-  ////** STATE **////
+  ////** CONTEXT **////
   const {
     breadcrumb: { crumbs }
   } = pageContext;
@@ -50,13 +50,14 @@ const HealthTemplate = ( { data, pageContext } ) => {
   ////** MARK UP **////
   return (
     <Layout>
-      <Spacer size="medium" />
+      <Spacer size="small" />
       <PageTitle title={ pageTitle } />
       <Spacer size="small" />
       <Breadcrumbs crumbs={ crumbs } />
       <Spacer size="small" />
       <MainColumn>
         <article>
+          <header>
           <address rel="author">By { author }</address>
           <time dateTime={ updated }> { updated } </time>
           <time dateTime={ posted }> Originally written on { posted } </time>
@@ -66,6 +67,7 @@ const HealthTemplate = ( { data, pageContext } ) => {
           <div className="withSideBorder addBorderPadding">
             <p>{ excerpt }</p>
           </div>
+          </header>
           { contentBody }
           <p>{ associated }</p>
           <div className={ `${ row } ${ itemsEnd }` }>
@@ -82,8 +84,8 @@ const HealthTemplate = ( { data, pageContext } ) => {
 
 ////** PROP TYPES **////
 HealthTemplate.propTypes = {
-  data: PropTypes.object,
-  pageContext: PropTypes.object,
+  data: PropTypes.object.isRequired,
+  pageContext: PropTypes.object.isRequired,
 }
 
 export default HealthTemplate;

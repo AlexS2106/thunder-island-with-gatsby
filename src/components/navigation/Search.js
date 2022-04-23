@@ -61,7 +61,7 @@ const Search = () => {
           placeholder="Search"
           value={ query }
           onChange={ handleChange }
-        />
+          />
       </form>
       <div style={ show ? { display: "flex", position: "fixed" } : { display: "none" } }>
         <ul className={ searchDropdown }>
@@ -75,7 +75,6 @@ const Search = () => {
     </div>
   );
 }
-
  
 export default Search;
  

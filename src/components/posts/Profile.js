@@ -8,15 +8,19 @@ import {
 
 import MDX from "../../providers/MDX";
 
+
+////** COMPONENT **////
 const Profile = ( { person } ) => {
   
-  //Data
+  ////** VARIABLES **////
+  //Unpacking imported data
   const { frontmatter, body } = person.node;
   const { title, portraitImage, alt } = frontmatter;
 
-  //Component
+  //Parses the mdx for the contentbody (via props.person.body)
   const contentBody = MDX( body );
 
+  ////** MARK UP **////
   return (
     <article className={ profile }>
       <h3>{ title }</h3>
@@ -28,8 +32,9 @@ const Profile = ( { person } ) => {
   );
 }
 
+////** PROP TYPES **////
 Profile.propTypes = {
-  person: PropTypes.object,
+  person: PropTypes.object.isRequired,
 }
 
 export default Profile;

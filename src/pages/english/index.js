@@ -15,13 +15,13 @@ import PageTitle from "../../components/header/PageTitle";
 import Spacer from "../../components/layout/Spacer";
 
 import { makeTitle } from "../../utilities/functions";
-import { usingGetImg } from "../../utilities/staticImgFunctions";
+import { usingGetImg, pastImg, questionMarksImg, secondImg } from "../../utilities/staticImgFunctions";
 
 
 ////** COMPONENT **////
 const EnglishPage = ( { pageContext } ) => { 
 
-  ////** STATE **////
+  ////** CONTEXT **////
   const {
     breadcrumb: { crumbs },
   } = pageContext;
@@ -34,44 +34,44 @@ const EnglishPage = ( { pageContext } ) => {
     {
       title: "Get And Got",
       image: usingGetImg(),
-      excerpt: "The use of get and got by native English speakers is very confusing.",
+      excerpt: "The use of get and got by native English speakers is very confusing. Make it clearer with these lessons and exercises.",
       level: "CEFR B1",
       link: "using-get/",
-      lessons: ["advanced-lesson"],
-      exercises: ["exercise"],
+      lessons: [ "complete-lesson" ],
+      exercises: ["using-get-for-obtain"],
       previousClusters: [],
       nextClusters: [],
     },
     {
       title: "Past Perfect",
-      image: usingGetImg(),
-      excerpt: "All about the past perfect.",
+      image: pastImg(),
+      excerpt: "All about the past perfect. Learn to talk about a past action before another past action. Start with a simple lesson and exercises and then move on to advanced.",
       level: "CEFR B1",
       link: "past-perfect/",
-      lessons: ["advanced-lesson"],
-      exercises: ["exercise"],
+      lessons: [ "advanced-lesson" ],
+      exercises: [],
       previousClusters: [],
       nextClusters: [],
     },
     {
       title: "Second Conditional",
-      image: usingGetImg(),
-      excerpt: "Learn the conditional which deals with an imagined condition in the present.",
+      image: secondImg(),
+      excerpt: "Learn the conditional for an imagined condition in the present. Start simply then move on to advanced.",
       level: "CEFR B1",
       link: "second-conditional/",
       lessons: ["advanced-lesson"],
-      exercises: ["exercise"],
+      exercises: [],
       previousClusters: [],
       nextClusters: [],
     },
     {
       title: "Tag Questions",
-      image: usingGetImg(),
-      excerpt: "Tiny questions to add to the end of a sentence.",
+      image: questionMarksImg(),
+      excerpt: "Want to make tiny informal questions to add to the end of a sentence? Here's how!",
       level: "CEFR B1",
       link: "tag-questions/",
       lessons: ["advanced-lesson"],
-      exercises: ["exercise"],
+      exercises: ["make-the-tag-questions"],
       previousClusters: [],
       nextClusters: [],
     },
@@ -98,11 +98,10 @@ const EnglishPage = ( { pageContext } ) => {
   ////** MARK UP **////
   return (
     <Layout>
-      <Spacer size="medium" />
+      <Spacer size="small" />
       <PageTitle title={ pageTitle } />
       <Spacer size="small" />
       <Breadcrumbs crumbs={ crumbs } />
-      <Spacer size="medium" />
       <MainColumn>
       <div className={ clusterGrid }>
         { clusters }
@@ -114,9 +113,7 @@ const EnglishPage = ( { pageContext } ) => {
 
 ////** PROP TYPES **////
 EnglishPage.propTypes = {
-  pageContext: PropTypes.object,
-  makeTitle: PropTypes.func,
-  usingGetImg: PropTypes.func
+  pageContext: PropTypes.object.isRequired
 }
 
 export default EnglishPage;

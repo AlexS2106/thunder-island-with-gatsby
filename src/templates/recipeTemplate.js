@@ -1,12 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { graphql,  navigate } from "gatsby";
+import { graphql, navigate } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { v4 as uuidv4 } from 'uuid';
 
 import {
   grid,
-  addPadding,
   row,
   itemsEnd,
   card,
@@ -30,7 +29,7 @@ import { listSubcategories, makeTitle } from "../utilities/functions";
 ////** COMPONENT **////
 const RecipeTemplate = ( { data, pageContext } ) => {
   
-  ////** STATE **////
+  ////** CONTEXT **////
    const {
     breadcrumb: { crumbs }
   } = pageContext;
@@ -50,16 +49,16 @@ const RecipeTemplate = ( { data, pageContext } ) => {
   const pageTitle = { title };
 
   ////** FUNCTIONS **////
-  //Subcategories in the article
+  //Checks for subcategories and generates a list of subcategories from the frontmatter in the article (via props.data.recipePost through the page query)
   const subcats = listSubcategories( frontmatter );
   const generateSubcats = subcats.map( ( tag, index ) => index === 0 ? <span key={ uuidv4() } >| { makeTitle( tag ) } | </span> : index === subcats.length - 1 ? <span key={ uuidv4() }>{ makeTitle( tag ) } |</span> : <span key={ uuidv4() } >{ makeTitle( tag ) } |</span> );
-  //MDX article content
+  //MDX article content (via props.data.recipePost.body through the page query)
   const contentBody = MDX( body );
 
    ////** MARK UP **////
   return (
     <Layout>
-      <Spacer size="medium" />
+      <Spacer size="small" />
       <PageTitle title={ pageTitle } />
       <Spacer size="small" />
       <Breadcrumbs crumbs={ crumbs } />
@@ -73,16 +72,16 @@ const RecipeTemplate = ( { data, pageContext } ) => {
             <GatsbyImage image={ getImage( landscapeImage ) } alt={ alt } ></GatsbyImage>
             <cite>photo by { photographer }</cite>
             <Spacer size="small" />
-            <div className="withSideBorder">
-              <p className={ addPadding }>{ excerpt }</p>
+            <div className="withSideBorder" style={ { width: "75%", margin: "auto" } }>
+              <p className="addBorderPadding">{ excerpt }</p>
             </div>
             <Spacer size="small" />
             <div className={ card }>
-              <div className={ cardHeading }>
+              <header className={ cardHeading }>
                 <GatsbyImage image={ getImage( landscapeImage ) } alt={ alt } ></GatsbyImage>
                 <h2>{ title }</h2>
                 <h6> { generateSubcats } </h6>
-              </div>
+              </header>
               <div className={ cardBody } >
                 { contentBody }
               </div>
@@ -116,8 +115,8 @@ const RecipeTemplate = ( { data, pageContext } ) => {
 
 ////** PROP TYPES **////
 RecipeTemplate.propTypes = {
-  data: PropTypes.object,
-  pageContext: PropTypes.object,
+  data: PropTypes.object.isRequired,
+  pageContext: PropTypes.object.isRequired,
 }
 
 export default RecipeTemplate;

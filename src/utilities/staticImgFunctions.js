@@ -24,6 +24,17 @@ export function largeLogo () {
   );
 }
 
+export function authorRightImg () { 
+  return (
+    <StaticImage
+      src="../images/alex-profile-portrait-right.jpg"
+      alt="the author"
+      aria-hidden="true"
+      placeholder="blurred"
+      objectFit="cover"
+    />
+  );
+}
 export function booksImg () { 
   return (
     <StaticImage
@@ -90,6 +101,17 @@ export function ingredientsImg () {
     />
   );
 }
+export function pastImg () { 
+  return (
+    <StaticImage
+      src="../images/past-bg.jpg"
+      alt="a woman watching the sky"
+      aria-hidden="true"
+      placeholder="blurred"
+      objectFit="cover"
+    />
+  );
+}
 export function pathImg () { 
   return (
     <StaticImage
@@ -101,11 +123,33 @@ export function pathImg () {
     />
   );
 }
+export function questionMarksImg () { 
+  return (
+    <StaticImage
+      src="../images/questionMarks-bg.jpg"
+      alt="a woman surounded by question marks"
+      aria-hidden="true"
+      placeholder="blurred"
+      objectFit="cover"
+    />
+  );
+}
 export function recipesImg () { 
   return (
     <StaticImage
       src="../images/recipes-bg.png"
       alt="sliced steak"
+      aria-hidden="true"
+      placeholder="blurred"
+      objectFit="cover"
+    />
+  );
+}
+export function secondImg () { 
+  return (
+    <StaticImage
+      src="../images/second-bg.jpg"
+      alt="letters spelling out the word second"
       aria-hidden="true"
       placeholder="blurred"
       objectFit="cover"

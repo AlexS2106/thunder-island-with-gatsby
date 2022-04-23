@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { navigate } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
@@ -10,17 +10,17 @@ import {
 
 import Button from "../buttons/Button";
 
-import { DispatchContext } from "../../providers/ContextProvider";
 
 ////** COMPONENT **////
 const PostSmall = ( { post, ...props } ) => {
 
   ////** STATE **////
-  const dispatch = useContext( DispatchContext );
+
+  ////** CONTEXT **////
 
   ////** VARIABLES **////
   //Unpacking data
-  const { id, frontmatter } = post;
+  const { frontmatter } = post;
   const { title, slug, mainCategories, landscapeImage, alt } = frontmatter;
   //Button
   const { innerText } = props;
@@ -33,10 +33,7 @@ const PostSmall = ( { post, ...props } ) => {
         <GatsbyImage image={ getImage( landscapeImage ) } alt={ alt } ></GatsbyImage>
       </div>
       <Button onClick={
-        () => {
-          dispatch( { type: "select_posts", payload: id } )
-           navigate( `/${ mainCategories }/${ slug }/` );
-        }
+        () => { navigate( `/${ mainCategories }/${ slug }/` )}
       } innerText={ innerText }></Button>
     </div>
   );
@@ -44,8 +41,9 @@ const PostSmall = ( { post, ...props } ) => {
 
   ////** PROP TYPES **////
 PostSmall.propTypes = {
-  post: PropTypes.object,
+  post: PropTypes.object.isRequired,
   innerText: PropTypes.string,
+  addedClasses: PropTypes.string,
 }
 
 export default PostSmall;

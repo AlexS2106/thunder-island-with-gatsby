@@ -1,0 +1,25 @@
+.contentIndexGrid {
+  display: grid;
+  grid-template-columns: 72.5% 25%;
+  gap: 2.5%;
+  width: 90%;
+  margin: auto;
+}
+.indexItem {
+  text-decoration: underline;
+  text-decoration-color: var(--color-accent-dark);
+  padding: 0.25rem;
+}
+.indexItem:hover {
+  text-decoration: dotted underline;
+  text-decoration-color: var(--color-accent-dark);
+}
+.exercise input {
+  width: 6rem;
+}
+.exercise input:focus {
+  outline: none;
+}
+.exercise button {
+  margin: 1rem 3rem;
+}

@@ -7,10 +7,14 @@ import {
 import { largeLogo } from "../../utilities/staticImgFunctions";
 
 
+////** COMPONENT **////
 const Header = () => {
-  
+
+  ////** VARIABLES **////
+  //Holds the logo banner (via an imported image)
   const logo = largeLogo();
-  
+
+  ////** MARK UP **////
   return (
     <header className={ header }>
       { logo }
@@ -18,5 +22,6 @@ const Header = () => {
     </header>
   );
 }
+
 
 export default Header;

@@ -8,9 +8,11 @@ import {
 
 import Search from "./Search";
 
-
+////** COMPONENT **////
 const Navbar = (  ) => {
 
+  ////** VARIABLES **////
+  //List of pages and links for navlinks
   const topMenu = [
     {
       link: "/",
@@ -37,13 +39,15 @@ const Navbar = (  ) => {
       name: "About"
     },
   ];
-  
+  ////** FUNCTIONS **////
+  //Generates clickable links from the pages array (via topmenu in VARIABLES)
   const generateNavLinks = topMenu.map( page => {
     return (
       <Link key={ page.link } to={ page.link } activeClassName="isActive">{ page.name }</Link>
     );
-  })
-
+  } );
+  
+  ////** MARK UP **////
   return (
     <nav className={ navbar }>
       <ul className={ linksWrapper }>

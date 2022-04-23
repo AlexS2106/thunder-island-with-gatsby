@@ -2,7 +2,7 @@ import { graphql, useStaticQuery } from "gatsby";
 
 
 export const useGetPostSelection = () => {
-  const { reviewPost, recipePost, healthPost, expatPost, poemPost, storyPost } = useStaticQuery( graphql`
+  const { reviewPost, recipePost, healthPost, expatPost, writingPost, englishPost } = useStaticQuery( graphql`
   {
     healthPost: mdx(frontmatter: {mainCategories: {eq: "health"}}) {
       frontmatter {
@@ -48,7 +48,7 @@ export const useGetPostSelection = () => {
         excerpt
       }
     }
-    poemPost: mdx(frontmatter: {type: {eq: "poem"}}) {
+    writingPost: mdx(frontmatter: {subcategories: {eq: "writing"}}) {
       frontmatter {
         title
         type
@@ -70,7 +70,7 @@ export const useGetPostSelection = () => {
         excerpt
       }
     }
-    storyPost: mdx(frontmatter: {type: {eq: "story"}}) {
+    englishPost: mdx(frontmatter: {type: {eq: "lesson"}}) {
       frontmatter {
         title
         type
@@ -145,8 +145,8 @@ export const useGetPostSelection = () => {
     recipePost,
     healthPost,
     expatPost,
-    poemPost,
-    storyPost,
+    writingPost,
+    englishPost,
   };
 }
 

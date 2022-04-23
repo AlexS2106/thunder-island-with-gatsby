@@ -11,13 +11,15 @@ import {
 
 import { doubleArrowRight, doubleArrowLeft } from "../../utilities/iconFunctions";
 
-
+////** COMPONENT **////
 const Pagination = ( { pageInfo } ) => {
 
-  //Data
+  ////** VARIABLES **////
+  //Unpacking imported data
   const { pageCount, currentPage } = pageInfo;
 
-  //Component
+  ////** FUNCTIONS **////
+  //Creates li list with numbers for the pages, each one is a clickable link to the page of that number. (via props.pageinfo.pageCount)
   const paginationArray = Array.from( { length: pageCount }, ( _, index ) => {
     return (
       <li key={ uuidv4() } className={ paginationLi } >
@@ -25,7 +27,7 @@ const Pagination = ( { pageInfo } ) => {
       </li>
     );
   } );
-  
+  //Takes the entire page list (via paginationArray in FUNCTIONS) and chops it into smaller parts, it will show the current page plus one on either side and clickable arrows
   const paginationList = paginationArray.map( ( listItem, index ) => {
     const num = index + 1;
     return (
@@ -36,6 +38,7 @@ const Pagination = ( { pageInfo } ) => {
     );
   } );
 
+  ////** MARK UP **////
   return (
     <nav className={ pagination }>
       <ul>
@@ -44,10 +47,9 @@ const Pagination = ( { pageInfo } ) => {
     </nav>
   );
 }
-
+////** PROP TYPES **////
 Pagination.propTypes = {
-  pageInfo: PropTypes.object,
-  pageLink: PropTypes.string,
+  pageInfo: PropTypes.object.isRequired,
 }
 
 export default Pagination;

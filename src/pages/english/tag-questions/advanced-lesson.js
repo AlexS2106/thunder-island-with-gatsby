@@ -1,140 +1,178 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Link } from "gatsby";
 
+import { 
+  contentIndexGrid,
+  indexItem
+} from "./index.module.css";
+
+import Breadcrumbs from "../../../components/navigation/Breadcrumbs";
 import Layout from "../../../components/layout/Layout";
+import MainColumn from "../../../components/layout/MainColumn";
+import PageTitle from "../../../components/header/PageTitle";
+import Section from "../../../components/layout/Section";
+import Spacer from "../../../components/layout/Spacer";
 
-const TagQuestions = ( ) => {
 
-  const tooltip = "";
+  ////** COMPONENT **////
+const AdvancedLesson = ( { pageContext} ) => {
   
+  ////** STATE **////
+
+  ////** CONTEXT **////
+  //Breadcrumb context
+    const {
+    breadcrumb: { crumbs }
+  } = pageContext;
+
+  ////** VARIABLES **////
+  //PageTitle
+  const pageTitle = "";
+  //Tooltip
+  const tooltip = "";
+
+  ////** MARK UP **////
   return (
     <Layout>
-      <h1>Tag Questions Lessons</h1>
-      <main>
-        <article>
-          <section>
-            <h3>What is a tag question?</h3>
-            <p>Tag questions are another way to ask a question.</p>
-            <p>Usually, we ask questions in English like this: <br />
-              Question word + modal verb + subject + main verb + ...</p>
-            <ul>
-              <li>Where are you going today?</li>
-              <span>or</span>
-              <li>When is it happening?</li>
-              <span>or</span>
-              <li>Why did he do that?</li>
-              <span>or</span>
-              <li>Can she make it?</li>
-            </ul>
-            <p>Tag questions are a little different.</p>
-            <p>Tag questions are a mini question added or 'tagged' on to the end of a <span className={ tooltip } title="A statement is sentence you believe is true.">statement</span>.</p>
-            <ul>
-              <li>You are going today, aren't you?</li>
-              <span>or</span>
-              <li>It is happening, isn't it?</li>
-              <span>or</span>
-              <li>He did that, didn't he?</li>
-              <span>or</span>
-              <li>She made it, didn't she?</li>
-            </ul>
-          </section>
-          <section>
-            <h6>Something to remember!</h6>
-            <p>While tag questions are mostly used when speaking and not writing, if you are writing a sentence with a tag question place a <span className={ tooltip } title=",">comma</span> between the statement and the tag question.</p>
-          </section>
-          <hr />
-          <section>
-            <h3>What do I use tag questions for?</h3>
-            <dl>
-              <dt>Use tag questions to check you have understood.</dt>
-              <dd>The medicine is in the top drawer. Isn’t it?</dd>
-              <dt>Use tag questions to soften a statement.</dt>
-              <dd>You couldn’t do it, could you?</dd>
-              <dt>Use tag questions to ask a question more indirectly.</dt>
-              <dd>He's going, isn't he?</dd>
-              <dt>Use tag questions to check a piece of information is true.</dt>
-              <dd>This is where you live, isn't it?</dd>
-              <dt>Use tag questions as a <span className={ tooltip } title="A question you ask of yourself and requires no answer.">rhetorical</span> question.</dt>
-              <dd>I didn't do that very well, did I?</dd>
-            </dl>
-          </section>
-          <section>
-            <h6>Something to remember!</h6>
-            <ul>
-              <li>Tag questions are mostly used in informal conversations and used a lot.</li>
-              <li>Tag questions are rarely written down and when they are the message is often meant harshly.</li>
-            </ul>
-          </section>
-          <hr />
-          <section>
-            <h3>How do I make a tag question?</h3>
-            <p>To make tag questions you use a positive and a negative.</p>
-            <p>If the statement is positive, the tag question must be negative.</p>
-            <p>But, if the statement is negative then the tag question must be positive.</p>
-            <p>Like this:
-              <ul>
-                <li>This is a positive statement with a negative tag question, isn't it?</li>
-                <li>This isn't the same, is it?</li>
-              </ul>
-            </p>
-            <p>There are three different ways to make tag questions, let's look at them.</p>
-            <p>Most tag questions look like this:
-              <span className={ tooltip } title="The statement.">Subject + <span className={ tooltip } title="A verb that helps other verbs."><a href="/">auxiliary verb</a></span> + verb</span>, <span className={ tooltip } title="The tag question.">the same <span className="tooltip" title="A verb that helps other verbs."><a href="/">auxiliary verb</a></span> + <a href="/">pronoun</a>?</span>
-            </p>
-            <ul>
-              <li>You haven’t been here, have you?</li>
-              <li>He is cooking tonight, isn’t he?</li>
-              <li>She could have gone with them, couldn’t she?</li>
-              <li>I should have told him, shouldn’t I?</li>
-            </ul>
-            <p>Sometimes tag questions look like this:
-              <span className={ tooltip } title="The statement.">Subject + verb</span>, <span className={ tooltip } title="The tag question.">do/does/did + pronoun ?</span>
-            </p>
-            <ul>
-              <li>They decided, didn’t they?</li>
-              <li>We left everything behind, didn’t we?</li>
-              <li>He runs very fast, doesn’t he?</li>
-              <li>You don’t, do you?</li>
-            </ul>
-            <p>There is one exception to remember:
-              <span className={ tooltip } title="The statement.">I + am</span>, <span className={ tooltip } title="The tag question.">aren't I<a href="/">pronoun</a>?</span>
-            </p>
-            <ul>
-              <li>I am going, aren’t I?</li>
-              <li>I am working right now, aren’t I?</li>
-              <li>I'm here, aren’t I?</li>
-            </ul>
-          </section>
-          <hr />
-          <section>
-            <h6>Something to remember!</h6>
-            <p>Usually, we use these verbs for tag questions:
-              <ul>
-                <li>to be</li>
-                <li>to have</li>
-                <li>to do</li>
-                <li>could</li>
-                <li>should</li>
-              </ul>
-            </p>
-          </section>
-          <hr />
-          <section>
-            <h3>Can I see some examples?</h3>
-            <ul>
-              <li>There's nobody here, is there?</li>
-              <li>You kept the receipt, didn't you?</li>
-              <li>I asked you, didn't I?</li>
-              <li>This boat is safe, isn't it?</li>
-              <li>I'm learning quickly, aren't I?</li>
-            </ul>
-          </section>
-        </article>
-        <Link href="/">Return to Home</Link>
-      </main>
+      <Spacer size="small" />
+      <PageTitle title={ pageTitle } />
+      <Spacer size="small" />
+      <Breadcrumbs crumbs={ crumbs } />
+      <div className={ contentIndexGrid }>
+        <MainColumn>
+          <article>
+            <Section>
+              <h3>What is a tag question?</h3>
+              <p>Tag questions are another way to ask a question.</p>
+              <p>Usually, we ask questions in English like this: <br />
+                Question word + modal verb + subject + main verb + ...</p>
+              <dl>
+                <dd>Where are you going today?</dd>
+                <span>or</span>
+                <dd>When is it happening?</dd>
+                <span>or</span>
+                <dd>Why did he do that?</dd>
+                <span>or</span>
+                <dd>Can she make it?</dd>
+              </dl>
+              <p>Tag questions are a little different.</p>
+              <p>Tag questions are a mini question added or 'tagged' on to the end of a <span className={ tooltip } title="A statement is sentence you believe is true.">statement</span>.</p>
+              <dl>
+                <dd>You are going today, aren't you?</dd>
+                <span>or</span>
+                <dd>It is happening, isn't it?</dd>
+                <span>or</span>
+                <dd>He did that, didn't he?</dd>
+                <span>or</span>
+                <dd>She made it, didn't she?</dd>
+              </dl>
+            </Section>
+            <Section>
+              <h6>Something to remember!</h6>
+              <p>While tag questions are mostly used when speaking and not writing, if you are writing a sentence with a tag question place a <span className={ tooltip } title=",">comma</span> between the statement and the tag question.</p>
+            </Section>
+            <hr role="none" />
+            <Section>
+              <h3>What do I use tag questions for?</h3>
+              <dl>
+                <dt>Use tag questions to check you have understood.</dt>
+                <dd>The medicine is in the top drawer. Isn’t it?</dd>
+                <dt>Use tag questions to soften a statement.</dt>
+                <dd>You couldn’t do it, could you?</dd>
+                <dt>Use tag questions to ask a question more indirectly.</dt>
+                <dd>He's going, isn't he?</dd>
+                <dt>Use tag questions to check a piece of information is true.</dt>
+                <dd>This is where you live, isn't it?</dd>
+                <dt>Use tag questions as a <span className={ tooltip } title="A question you ask of yourself and requires no answer.">rhetorical</span> question.</dt>
+                <dd>I didn't do that very well, did I?</dd>
+              </dl>
+            </Section>
+            <Section>
+              <h6>Something to remember!</h6>
+              <dl>
+                <dd>Tag questions are mostly used in informal conversations and used a lot.</dd>
+                <dd>Tag questions are rarely written down and when they are the message is often meant harshly.</dd>
+              </dl>
+            </Section>
+            <hr role="none" />
+            <Section>
+              <h3>How do I make a tag question?</h3>
+              <p>To make tag questions you use a positive and a negative.</p>
+              <p>If the statement is positive, the tag question must be negative.</p>
+              <p>But, if the statement is negative then the tag question must be positive.</p>
+              <p>Like this:
+                <dl>
+                  <dd>This is a positive statement with a negative tag question, isn't it?</dd>
+                  <dd>This isn't the same, is it?</dd>
+                </dl>
+              </p>
+              <p>There are three different ways to make tag questions, let's look at them.</p>
+              <p>Most tag questions look like this:
+                <span className={ tooltip } title="The statement.">Subject + <span className={ tooltip } title="A verb that helps other verbs."><a href="/">auxiliary verb</a></span> + verb</span>, <span className={ tooltip } title="The tag question.">the same <span className="tooltip" title="A verb that helps other verbs."><a href="/">auxiliary verb</a></span> + <a href="/">pronoun</a>?</span>
+              </p>
+              <dl>
+                <dd>You haven’t been here, have you?</dd>
+                <dd>He is cooking tonight, isn’t he?</dd>
+                <dd>She could have gone with them, couldn’t she?</dd>
+                <dd>I should have told him, shouldn’t I?</dd>
+              </dl>
+              <p>Sometimes tag questions look like this:
+                <span className={ tooltip } title="The statement.">Subject + verb</span>, <span className={ tooltip } title="The tag question.">do/does/did + pronoun ?</span>
+              </p>
+              <dl>
+                <dd>They decided, didn’t they?</dd>
+                <dd>We left everything behind, didn’t we?</dd>
+                <dd>He runs very fast, doesn’t he?</dd>
+                <dd>You don’t, do you?</dd>
+              </dl>
+              <p>There is one exception to remember:
+                <span className={ tooltip } title="The statement.">I + am</span>, <span className={ tooltip } title="The tag question.">aren't I<a href="/">pronoun</a>?</span>
+              </p>
+              <dl>
+                <dd>I am going, aren’t I?</dd>
+                <dd>I am working right now, aren’t I?</dd>
+                <dd>I'm here, aren’t I?</dd>
+              </dl>
+            </Section>
+            <hr role="none" />
+            <Section>
+              <h6>Something to remember!</h6>
+              <dl>
+              <dt>Usually, we use these verbs for tag questions:</dt>
+                  <dd>to be</dd>
+                  <dd>to have</dd>
+                  <dd>to do</dd>
+                  <dd>could</dd>
+                  <dd>should</dd>
+              </dl>
+            </Section>
+            <hr role="none" />
+            <Section>
+              <h3>Can I see some examples?</h3>
+              <dl>
+                <dd>There's nobody here, is there?</dd>
+                <dd>You kept the receipt, didn't you?</dd>
+                <dd>I asked you, didn't I?</dd>
+                <dd>This boat is safe, isn't it?</dd>
+                <dd>I'm learning quickly, aren't I?</dd>
+              </dl>
+            </Section>
+          </article>
+        </MainColumn>
+        <aside className="withSideBorder addBorderPadding">
+          <h3>Exercises Tag Questions</h3>
+          <Link to={ `/english/tag-questions/exercise` } className={ indexItem } activeClassName="isActive" >Tag Questions Exercise 1</Link>
+        </aside>
+      </div>
+      <Link href="/">Return to Home</Link>
     </Layout>
-    
   );
 }
 
-export default TagQuestions;
+////** PROP TYPES **////
+AdvancedLesson.propTypes = {
+  pageContext: PropTypes.object.isRequired,
+}
+
+export default AdvancedLesson;

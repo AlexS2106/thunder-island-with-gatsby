@@ -18,31 +18,35 @@ import { DispatchContext } from "../../providers/ContextProvider";
 import { listSubcategories, reduceSentenceLength } from "../../utilities/functions";
 
 
-const PostMedium = ( { post, location, ...props } ) => {
+////** COMPONENT **////
+const PostMedium = ( { post, ...props } ) => {
+
+  ////** CONTEXT **////
+  const dispatch = useContext( DispatchContext );
     
-  //Data Variables
+  ////** VARIABLES **////
+  //Unpacking imported data
   const { frontmatter } = post;
   const { title, slug, mainCategories, date, author, portraitImage, alt, photographer, excerpt } = frontmatter;
-
-  //3rd party Variables
-  const dispatch = useContext( DispatchContext );
-
-  //Component
+  //article -> Button
   const innerText = props.innerText ? props.innerText : "See More";
-  const generatedExcerpt = reduceSentenceLength(excerpt, props.excerptLength || 100);
 
+  ////** FUNCTIONS **////
+  //Cuts the excerpt of the post into the required length passed by props or to 100 characters (excerpt passed by props.post)
+  const generatedExcerpt = reduceSentenceLength(excerpt, props.excerptLength || 100);
+  //Generates a list of h4 from the mainCategories (via props.post.frontmatter.mainCategories)
   const mainCats = mainCategories.map( ( category ) => {
     return (
       <h4 key={ uuidv4() } >{ category.name }</h4>
     );
   } );
-  
+  //Checks for a list on subcategories and generates a list of h4 from the mainCategories (via props.post.frontmatter.subcategories)
   const subCats = listSubcategories(frontmatter).map( ( category ) => {
     return (
       <h4 key={ uuidv4() }>{ category.name }</h4>
     );
   } );
-  
+   //Checks for a portraitImage and makes an image and wrapper if one is found (via props.post.frontmatter.portraitImage) 
   const generatedImage = portraitImage ?
     <div className={ imageWrapper }>
       <GatsbyImage image={ getImage( portraitImage ) } alt={ alt } />
@@ -50,7 +54,7 @@ const PostMedium = ( { post, location, ...props } ) => {
     </div>
     : null;
   
-  
+    ////** MARK UP **////
   return (
     <article className={ postMedium }>
       <div>
@@ -79,16 +83,15 @@ const PostMedium = ( { post, location, ...props } ) => {
   );
 }
   
+////** PROP TYPES **////
 PostMedium.propTypes = {
   post: PropTypes.object,
-  location: PropTypes.object,
   excerptLength: PropTypes.number,
   showDate: PropTypes.bool,
   showAuthor: PropTypes.bool,
   hasPhotographer: PropTypes.bool,
   showSubCategories: PropTypes.bool,
   innerText: PropTypes.string,
-
 }
   
 export default PostMedium;

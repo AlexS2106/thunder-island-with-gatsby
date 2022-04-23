@@ -14,7 +14,7 @@
 .grid .asideWrapper aside {
     border-left: 1px solid var(--color-accent-dark);
 }
-.grid .asideWrapper aside header{
+.grid .asideWrapper aside h3{
   text-align: center;
   padding: 1rem;
   background-color: var(--color-accent-light);
