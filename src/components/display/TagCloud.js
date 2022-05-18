@@ -5,7 +5,7 @@ import {
   tagCloudStyling
 } from "./TagCloud.module.css"
 
-import Section from "../../components/layout/Section";
+import Section from "../layout/Section";
 
 import { makeTitle } from "../../utilities/functions";
 

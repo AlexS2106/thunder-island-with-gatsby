@@ -12,29 +12,9 @@
   padding: 0.25rem;
 }
 .indexItem:hover {
-text-decoration: dotted underline;
+  text-decoration: dotted underline;
   text-decoration-color: var(--color-accent-dark);
 }
 .writing {
   padding: 1rem 3rem 1rem 1rem;
-}
-.contentCard {
-  margin-bottom: 3rem;
-}
-.contentCard h4 {
-  padding: 1rem;
-}
-.contentCardImage {
-  padding: 1rem;
-}
-.blurWriting {
-  border-top: 2px solid var(--color-accent-light);
-}
-.marginUnderWriting {
-  margin: 1rem auto
-}
-.contentCardEnd {
-  width: 75%;
-  border-top: 1px dotted var(--color-accent-light);
-  margin: 2rem auto;
 }

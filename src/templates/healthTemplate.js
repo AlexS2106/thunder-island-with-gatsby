@@ -34,8 +34,7 @@ const HealthTemplate = ( { data, pageContext } ) => {
   //Article -> Button
   const innerText = "Go Back";
   //Page Title
-  const pageTitle = { title };
-
+  const pageTitle = title;
   ////** FUNCTIONS **////
   //Tags
   const generateTags = tags > 0 ? tags.map( ( tag ) => {

@@ -8,7 +8,7 @@ import {
   searchDropdown
 } from "./Search.module.css";
 
-import useAllPostsList from "../../queries/useAllPostsList.query";
+import useGetAllSlugs from "../../queries/useGetAllSlugs.query";
 import { makeTitle } from "../../utilities/functions";
 
 ////** COMPONENT **////
@@ -16,8 +16,8 @@ const Search = () => {
 
   ////** STATE **////
   //Initial state for the index.
-  const { nodes } = useAllPostsList();
-  const slugs = nodes.map(node => node.slug);
+  const nodes = useGetAllSlugs();
+  const slugs = nodes.map(node => node.frontmatter.mainCategories[0].concat("/", node.slug));
   //State for the index and user query
   const [ index, setIndex ] = useState( () => {
      const initialState = slugs;
@@ -68,7 +68,7 @@ const Search = () => {
             {
               dropdown.map( item =>
                 <Link key={ uuidv4() } to={ `/${ item }` } >
-                  { makeTitle( item ) }</Link> )
+                  { makeTitle( item.slice(item.indexOf("/")) ) }</Link> )
             }
           </ul>
       </div>

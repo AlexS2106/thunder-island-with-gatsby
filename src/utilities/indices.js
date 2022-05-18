@@ -12,8 +12,8 @@ export const englishSubcategories = [ "tenses", "conditionals", "questions", "tr
 export const englishTags = [ "past", "present", "future", "informal", "formal" ];
 
 //Portfolio subcategories
-export const portfolioSubcategories = [ "expats-in-malta", "writing", "virtual-how" ];
-export const portfolioTags = [ "hiking", "fiction", "fact", "fiction", "family-life", "kids", "movies", "books", "tv", "malta", "reviews", "stories", "poems", "photographs" ];
+export const portfolioSubcategories = [ "writing", "photography" ];
+export const portfolioTags = [ "hiking", "fiction", "fact", "family-life", "kids", "movies", "books", "tv", "malta", "england", "reviews", "stories", "poems" ];
 
 //Health subcategories
 export const healthSubcategories = [ "diet", "exercise" ];
@@ -26,8 +26,14 @@ export const byIngredientOptions = [ "beef-and-lamb", "chicken-and-pork", "fish-
 export const byCourseOptions = [ "breakfast-and-lunch", "condiments", "main-dish", "side-dish", "salads-and-soups", "snacks-and-appetisers", "desserts" ];
 export const recipeTags = [ "atkins", "bread", "curry", "keto", "meal-in-one", "strict-paleo", "slow-cooked", "vinaigrette" ];
 
-///A favourite recipes list - alter this occasionally!
-export const favouriteRecipes1 = [
+//Types
+//article refers to a short text of interest on a particular subject e.g text about a recipe, a short report on an ingredient etc
+//post refers to anything which is worth being on the home page
+export const types = [ "post", "profile", "recipe", "article", "poem", "story", "review", "photograph", "lesson" ];
+
+//Changing Posts
+///A favourite recipes list - this will be manually altered occasionally!
+export const favouriteRecipes = [
   "keto-prawn-cocktail-with-marie-rose-sauce",
   "peach-meringue-roulade",
   "beefburgers-with-a-tangy-sauce",
@@ -35,19 +41,24 @@ export const favouriteRecipes1 = [
   "banoffee-pie",
   "butternut-squash-and-carrot-soup"
 ];
-//Used in aside on home page - alter this occasionally!
-export const popularPosts1 = [
+//Used in the about page in the aside - this will be manually altered occasionally!
+export const recommendedPosts = [
   "blackened-shrimp",
   "my-pregnancy-story",
   "avocado-filled-with-tuna-mayo",
   "calculating-a-keto-day",
-  "almond-flour-skillet-flatbread"
+  "almond-flour-skillet-flatbread",
+  "the-characters-of-david-gemmell"
+];
+//Used in the homepage in the carousel - this will be manually altered occasionally!
+export const recipesOfToday = [
+  "bacon-and-eggs",
+  "shrimp-salad",
+  "cajun-chicken",
+  "parsnip-chips",
+  "mixed-berries-on-cream",
 ];
 
-//Types
-//article refers to a short text of interest on a particular subject e.g text about a recipe, a short report on an ingredient etc
-//post refers to anything which is worth being on the home page
-export const types = [ "post", "profile", "recipe", "article", "poem", "story", "review", "photography", "lesson" ];
 
 
  

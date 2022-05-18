@@ -196,7 +196,7 @@ const UsingGetForObtain = ( { pageContext } ) => {
             <p>In the text below, find all the times <em>got</em> or <em>get</em> is used and replace them with an alternative word.</p>
             <Spacer size="small" />
             <p>Choose an alternative meaning from the verbs listed below, then change the verb into the correct tense.</p>
-            <ol className="addPaddingLeft5">
+            <ol>
               <li>To achieve</li>
               <li>To buy</li>
               <li>To fetch</li>

@@ -14,9 +14,7 @@ import Button from "../buttons/Button";
 ////** COMPONENT **////
 const PostSmall = ( { post, ...props } ) => {
 
-  ////** STATE **////
-
-  ////** CONTEXT **////
+  ////** STATE & CONTEXT **////
 
   ////** VARIABLES **////
   //Unpacking data

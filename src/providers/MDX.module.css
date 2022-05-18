@@ -3,11 +3,14 @@
 }
 .ingredients, 
 .instructions,
-.postbody {
+.recipeBody {
   padding-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 .ingredients ul,
-.postBody ul {
+.recipeBody ul {
   list-style-type: disc;
   padding-left: 5rem;
 }
@@ -17,16 +20,22 @@
 }
 .ingredients ul li, 
 .instructions ul li,
-.postbody ul li {
+.recipeBody ul li {
   font-size: 1.5rem;
 }
 .instructions ul ul {
   list-style-type: disc;
   padding-left: 2rem;
 }
-.postBody {
-  padding: 2rem;
+.authorBody h3 {
+ text-align: left;
+ padding: 5%;
 }
-.hidden {
-  display: none;
+.healthBody, 
+.poemBody,
+.reviewBody,
+.writingBody {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }

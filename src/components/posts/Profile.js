@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { GatsbyImage, getImage } from "gatsby-plugin-image";
 
 import {
   profile
@@ -14,8 +13,8 @@ const Profile = ( { person } ) => {
   
   ////** VARIABLES **////
   //Unpacking imported data
-  const { frontmatter, body } = person.node;
-  const { title, portraitImage, alt } = frontmatter;
+  const { frontmatter, body } = person;
+  const { title } = frontmatter;
 
   //Parses the mdx for the contentbody (via props.person.body)
   const contentBody = MDX( body );
@@ -24,9 +23,6 @@ const Profile = ( { person } ) => {
   return (
     <article className={ profile }>
       <h3>{ title }</h3>
-      <div>
-        <GatsbyImage image={ getImage( portraitImage ) } alt={ alt } ></GatsbyImage>
-      </div>
       { contentBody }
     </article>
   );

@@ -1,7 +1,7 @@
 
 //puts all words in a sentence to lower case, with dashes and no spaces
 export function makeSlug( sentence ) {
-  return sentence.toString().replaceAll( " ", "-" ).replaceAll( ",", "" ).trim().toLowerCase(); 
+  return sentence.toString().replaceAll( " ", "-" ).replaceAll( ",", "" ).replaceAll("'", "").trim().toLowerCase(); 
 
 }
 

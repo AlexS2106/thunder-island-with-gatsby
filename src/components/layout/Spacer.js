@@ -20,7 +20,7 @@ const Spacer = ( { size } ) => {
   
   ////** MARK UP **////  
   return (
-    <div className={ space }></div>
+    <div className={ space } role="none" />
   );
 }
 

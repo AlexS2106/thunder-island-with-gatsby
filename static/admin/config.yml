@@ -24,7 +24,7 @@ collections:
           name: type, 
           widget: select,
           multiple: true,
-          options: [ post, profile, recipe, article, poem, story, family-life, review, photography, lesson ], 
+          options: [ post, profile, recipe, article, poem, story, review, photograph, lesson ], 
           default: [ profile ],
         }
       - { label: Slug, name: slug, widget: string }
@@ -80,7 +80,7 @@ collections:
           name: type, 
           widget: select,
           multiple: true, 
-          options: [ post, profile, recipe, article, poem, story, review, photography, lesson ], 
+          options: [ post, profile, recipe, article, poem, story, review, photograph, lesson ], 
           default: [ article ],
         }
       - { label: Slug, name: slug, widget: string }
@@ -103,7 +103,7 @@ collections:
           widget: select, 
           multiple: true, 
           required: false, 
-          options: [ paleo, low-net-carbs, low-total-carbs, low-calorie, carnivore, vegetarian ]
+          options: [ paleo, low-net-carbs, low-total-carbs, low-calorie, carnivore, vegetarian, beginner ]
         }
       - { label: Posted, name: posted, widget: datetime }
       - { label: Updated, name: updated, widget: datetime }
@@ -139,7 +139,7 @@ collections:
           label: Type, 
           name: type, 
           multiple: true, 
-          options: [ post, profile, recipe, article, poem, story, review, photography, lesson ], 
+          options: [ post, profile, recipe, article, poem, story, review, photograph, lesson ], 
           default: [ recipe ] 
         }
       - { label: Slug, name: slug, widget: string }
@@ -218,7 +218,7 @@ collections:
           name: type, 
           widget: select,
           multiple: true, 
-          options: [ post, profile, recipe, article, poem, story, review, photography, lesson ],
+          options: [ post, profile, recipe, article, poem, story, review, photograph, lesson ],
         }
       - { label: Slug, name: slug, widget: string }
       - { 
@@ -232,7 +232,7 @@ collections:
           label: Subcategories, 
           name: subategories, 
           widget: select,
-          options: [ expats-in-malta, writing, virtual-how ],
+          options: [ writing, photography ],
         }
       - { 
           label: Tags, 
@@ -240,7 +240,7 @@ collections:
           widget: select, 
           multiple: true, 
           required: false, 
-          options: [ hiking, fiction, fact, family-life, kids, movies, books, tv, malta, england, reviews, stories, poems, photographs ]
+          options: [ hiking, fiction, fact, family-life, kids, movies, books, tv, malta, england, reviews, stories, poems ]
         }
       - { label: Posted, name: posted, widget: datetime }
       - { label: Updated, name: updated, widget: datetime }

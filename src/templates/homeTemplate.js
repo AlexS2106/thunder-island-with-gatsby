@@ -5,12 +5,14 @@ import { graphql, navigate } from "gatsby";
 import {
   grid,
   intro,
+  authorImage,
   greeting,
-  welcome
+  welcome,
+  rotated
 } from "./templates.module.css";
 
 import Breadcrumbs from "../components/navigation/Breadcrumbs";
-import Carousel from "../components/display/Carousel";
+import Carousel from "../components/carousel/Carousel";
 import DivColumn from "../components/layout/DivColumn";
 import ExcerptList from "../components/display/ExcerptList";
 import Layout from "../components/layout/Layout";
@@ -19,15 +21,21 @@ import MediumPostList from "../components/display/MediumPostList";
 import MenuInBoxes from "../components/navigation/MenuInBoxes";
 import Pagination from "../components/navigation/Pagination";
 import Section from "../components/layout/Section";
+import Signature from "../components/address/Signature";
 import Spacer from "../components/layout/Spacer";
 
-import { useGetPostSelection } from "../queries/useGetPostSelection.query";
+import useGetPostSelection from "../queries/useGetPostSelection.query";
+import useGetAllRecipes from "../queries/useGetAllRecipes.query";
+
+import { filterList } from "../utilities/functions";
+import { recipesOfToday } from "../utilities/indices";
 import { healthImg, recipesImg, maltaBoatsImg, writingImg, pathImg, booksImg, authorRightImg } from "../utilities/staticImgFunctions";
+
 
 
 ////** COMPONENT **////
 const IndexPage = ( { data, pageContext } ) => {
-
+  const recipes = useGetAllRecipes();
   ////** CONTEXT **////
   const {
     breadcrumb: { crumbs },
@@ -44,7 +52,6 @@ const IndexPage = ( { data, pageContext } ) => {
       link: "/recipes",
       name: "Recipes",
       image: recipesImg(),
-
     },
     {
       link: "/health",
@@ -90,9 +97,8 @@ const IndexPage = ( { data, pageContext } ) => {
   const pageLink = "";
   const pageInfo = allPostsList.pageInfo; 
   //Carousel -> PostSmall
-  const carouselData = allPosts;
   const carouselPostsInnerText = "See More";
-  const carouselTitle = "Other posts";
+  const carouselTitle = `Recipes for ${day()}`;
 
   ////** FUNCTIONS **////
   //Manages menu selection clicks in menuboxes
@@ -100,6 +106,23 @@ const IndexPage = ( { data, pageContext } ) => {
     const clickedTemp = menuBoxesMenuArray.filter( item => item.name === e.target.innerText );
     navigate( `${ clickedTemp[ 0 ].link }` );
   }
+  //Displays todays day for the carousel title. Written as function for hoisting as it is also used in the variables above.
+  function day () {
+   const date = new Date().getDay();
+    switch ( date ) {
+      case 0: return "Sunday";
+      case 1: return "Monday";
+      case 2: return "Tuesday";
+      case 3: return "Wednesday";
+      case 4: return "Thursday";
+      case 5: return "Friday";
+      case 6: return "Saturday";
+      default: return "Today";
+    }
+  }
+  //Filters a list for carousel content
+  const carouselContent = filterList( recipesOfToday, recipes );
+
   ////** MARK UP **////
   return (
     <Layout>
@@ -114,7 +137,7 @@ const IndexPage = ( { data, pageContext } ) => {
           pageContext.currentPage === 1 ?
             <>
               <Section>
-                <h3 className="addPaddingLeft5">All My Latest Posts</h3>
+                <h3>All My Latest Posts</h3>
                 <Spacer size="small" />
                 <ExcerptList
                   list={ excerptListPosts }
@@ -128,7 +151,7 @@ const IndexPage = ( { data, pageContext } ) => {
         }
         <div className={ grid }>
           <MainColumn>
-            <h3 style={ { marginLeft: "10%" } }>Latest posts</h3>
+            <h3>Latest posts</h3>
             <Spacer size="small" />
             { pageContext.currentPage !== 1 ?
               <>
@@ -148,17 +171,20 @@ const IndexPage = ( { data, pageContext } ) => {
           <aside>
             <div className="withSideBorder">
               <div className={ intro } >
-                <h3 className={ greeting }>Hi And Welcome!</h3>
-                <div>{ image }</div>
+                <div className={ rotated }>
+                  <h3 className={ greeting }>Hello <br /> And Welcome!</h3>
+                </div>
+                <div className={ authorImage } >{ image }</div>
                 <div className={ welcome }>
                   <p>I'm Alex and Thunder Island is my creative corner.</p>
                   <p>This space is a passionate mix of everything great and nothing important.</p>
-                  <p>Looking for recipe ideas for your diet? Paleo, keto, atkins or low cal?</p> 
-                  <p>Do you need to learn or practice some points of English?</p> 
+                  <p>Looking for recipe ideas for your diet? Paleo, keto, atkins or low cal? Carnivore or vegetarian?</p>
+                  <p>Do you need to learn or practice some points of English?</p>
                   <p>Do you feel like passing some time with a short read or seeing a bit of the island of Malta?</p>
                   <p>Or, do you just want a recipe for the most delicious peach meringue roulade you've ever tasted and a great book recommendation while you eat it?</p>
-                  <hr role="none" />
+                  <p>Whatever it is - poke about and enjoy!</p>
                 </div>
+                  <Signature rotate />
               </div>
             </div>
           </aside>
@@ -170,11 +196,9 @@ const IndexPage = ( { data, pageContext } ) => {
         <Spacer size="medium" />
       </DivColumn>
       <Section>
-        <h3 className="addPaddingLeft5">{ carouselTitle }</h3>
-        <Spacer size="small" />
         <Carousel
           title={ carouselTitle }
-          carouselData={ carouselData }
+          carouselData={ carouselContent }
           innerText={ carouselPostsInnerText }
         />
       </Section >

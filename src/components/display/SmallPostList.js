@@ -9,8 +9,10 @@ import PostSmall from "../posts/PostSmall";
 import Spacer from "../layout/Spacer";
 
 
+////** COMPONENT **////
 const SmallPostList = ( { postData, ...props } ) => {
 
+    ////** MARK UP **////
   return (
     <div className={ smallPostList }>
       { postData.map( ( item, index ) => (

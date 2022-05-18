@@ -1,10 +1,6 @@
 .profile {
   background-color: var(--color-light);
 }
-.profile div {
-  padding: 3rem;
-  margin: auto;
-}
 .profile h3 {
   text-shadow: 0px 1px 1px var(--color-accent-dark);
   letter-spacing: .3rem;

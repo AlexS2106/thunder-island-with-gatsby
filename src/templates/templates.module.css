@@ -22,24 +22,25 @@
   flex: 1;
 }
 .intro .greeting {
-  font-style: italic;
+  font-family: var(--font-handwritten);
+  font-size: 4.5rem;
   background-color: transparent;
 }
-.intro div {
+.authorImage {
   align-self: center;
-  border-radius: 100px;
+  border-radius: 100%;
   margin-bottom: 1rem;
 }
 .intro .welcome p {
-  font-family: 'Alegreya', serif;
-  font-size: 1.8rem;
+  font-family: var(--font-handwritten);
+  font-size: 3.5rem;
   font-weight: bolder;
-  letter-spacing: .1rem;
-  padding: .5rem;
+  letter-spacing: .2rem;
+  line-height: 4rem;
+  padding: 1rem;
 }
-.intro hr {
-  width: 50%;
-  margin: 1rem auto;
+.rotated {
+  transform: rotate(-15deg);
 }
 .itemsEnd {
  justify-content: flex-end;

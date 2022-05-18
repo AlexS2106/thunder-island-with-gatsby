@@ -1,12 +1,16 @@
 import React from "react"
 
 import Layout from "../components/layout/Layout"
+import PageTitle from "../components/header/PageTitle";
 
 const NotFoundPage = () => (
   <Layout>
-    <h1>404: Not Found</h1>
-    <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
+    <div style={ {margin: "auto"} }>
+      <PageTitle pageTitle="404: Not Found" />
+      <p>This route doesn't exist.</p>
+      <p>But there are lots that do. How about we pick one of those instead.</p>
+    </div>
   </Layout>
-)
+);
 
-export default NotFoundPage
+export default NotFoundPage;

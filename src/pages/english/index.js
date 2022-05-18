@@ -102,6 +102,7 @@ const EnglishPage = ( { pageContext } ) => {
       <PageTitle title={ pageTitle } />
       <Spacer size="small" />
       <Breadcrumbs crumbs={ crumbs } />
+      <Spacer size="small" />
       <MainColumn>
       <div className={ clusterGrid }>
         { clusters }

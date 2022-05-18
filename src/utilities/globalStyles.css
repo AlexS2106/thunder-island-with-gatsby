@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Alegreya&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Square+Peg&display=swap');
 
 *,
 *:before,
@@ -21,6 +22,7 @@ body {
   
   --color-correct: green;
   --color-incorrect: red;
+  --font-handwritten: 'Square Peg', cursive;
   
   padding: 0;
   margin: 0;
@@ -53,19 +55,12 @@ time,
 address {
   text-shadow: 0px 1px 1px var(--color-accent-dark);
   letter-spacing: .3rem;
-  padding: .5rem;
 }
 h2,
 h6,
 time,
 address {
   text-align: center;
-}
-h4,
-h5,
-time,
-address {
-  padding-top: 0rem;
 }
 cite {
   text-align: end;
@@ -138,9 +133,6 @@ table {
 }
 .isCorrect {
   border: 1px dashed var(--color-correct);
-}
-.addPaddingLeft5 {
-  padding-left: 5%;
 }
 .addBorderPadding {
   padding-left: .5rem;

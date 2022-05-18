@@ -7,7 +7,7 @@ import {
 } from "./index.module.css";
 
 import Breadcrumbs from "../../components/navigation/Breadcrumbs";
-import Carousel from "../../components/display/Carousel";
+import Carousel from "../../components/carousel/Carousel";
 import Layout from "../../components/layout/Layout";
 import MainColumn from "../../components/layout/MainColumn"
 import MediumPostList from "../../components/display/MediumPostList";

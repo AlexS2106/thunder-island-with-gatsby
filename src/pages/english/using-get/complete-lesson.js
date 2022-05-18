@@ -20,9 +20,7 @@ import { doubleArrowRight } from "../../../utilities/iconFunctions";
   ////** COMPONENT **////
 const CompleteLesson = ( { pageContext } ) => {
 
-  ////** STATE **////
-
-  ////** CONTEXT **////
+  ////** STATE & CONTEXT **////
   //Breadcrumb context
   const {
     breadcrumb: { crumbs }
@@ -31,7 +29,7 @@ const CompleteLesson = ( { pageContext } ) => {
   ////** VARIABLES **////
   //PageTitle
   const pageTitle = "An Full Lesson On The Way Native English Speakers Use Get.";
-  //Occurs throughout the text - a decorative-only arrow showing use to show formal to informal when using get in a sentence.
+  //Occurs throughout the text - a decorative-ONLY arrow showing use to show formal to informal when using get in a sentence.
   const arrow = doubleArrowRight();
 
   ////** MARK UP **////
@@ -51,7 +49,7 @@ const CompleteLesson = ( { pageContext } ) => {
             <Section>
               <h4>Buy</h4>
               <ul>
-                <li>Shall we buy more fruit? { arrow } Shall we get more fruit?</li>
+                <li>Shall we buy some fruit? { arrow } Shall we get some fruit?</li>
                 <li>They bought a new pet. { arrow } They got a new pet.</li>
                 <li>I'm buying a new sofa! { arrow } I'm getting a new sofa!</li>
               </ul>
@@ -61,7 +59,7 @@ const CompleteLesson = ( { pageContext } ) => {
               <ul>
                 <li>I received a lovely necklace for my birthday. { arrow } I got a lovely necklace for my birthday.</li>
                 <li>That new movie is receiving really great reviews. { arrow } That new movie is getting really great reviews.</li>
-                <li>Did you receive the emial I sent? { arrow } Did you get the email I sent?</li>
+                <li>Did you receive the email I sent? { arrow } Did you get the email I sent?</li>
               </ul>
             </Section>
             <Section>
@@ -146,7 +144,7 @@ const CompleteLesson = ( { pageContext } ) => {
               <h4>Arrive</h4>
               <ul>
                 <li>She arrived there in the afternoon. { arrow } She got there in the afternoon.</li>
-                <li>They didn’t arrive Germany yet. { arrow } They didn’t get to Germany yet.</li>
+                <li>They didn't arrive Germany yet. { arrow } They didn't get to Germany yet.</li>
                 <li>I arrived at work late because of the snow. { arrow } I got to work late because of the snow.</li>
               </ul>
             </Section>
@@ -167,7 +165,7 @@ const CompleteLesson = ( { pageContext } ) => {
             <Section>
               <h4>Experience</h4>
               <ul>
-                <li>John’s just experienced a great idea!{ arrow } John’s just got a great idea!</li>
+                <li>John's just experienced a great idea!{ arrow } John's just got a great idea!</li>
                 <li>She experiences travel sickness. { arrow } She gets travel sick.</li>
                 <li>He will gain experience from an internship.  { arrow } He will get experience from an internship. </li>
               </ul>
@@ -186,9 +184,9 @@ const CompleteLesson = ( { pageContext } ) => {
             <Section>
               <h4>Make (something happen)</h4>
               <ul>
-                <li>o	We’re getting the passports renewed before our holiday.{ arrow } We’re getting the passports renewed before our holiday.</li>
-                <li>o	We got the car fixed. { arrow } o	We got the car fixed.</li>
-                <li>o	He will get it done by tomorrow. { arrow } o	He will get it done by tomorrow.</li>
+                <li>We're renewing the passports before our holiday.{ arrow } We're getting the passports renewed before our holiday.</li>
+                <li>We have fixed the car. { arrow } We got the car fixed.</li>
+                <li>He will be done (be finished) by tomorrow. { arrow } He will get it done by tomorrow.</li>
               </ul>
             </Section>
           </Section>
@@ -197,20 +195,20 @@ const CompleteLesson = ( { pageContext } ) => {
             <Section>
               <h4>Obtain revenge on</h4>
               <ul>
-                <li>We’ll obtain revenge on them! { arrow } o	We’ll get them! </li>
-                <li>o	Are you going to obtain revenge on me in return? { arrow } Are you going to get me back?</li>
-                <li>o	Just wait until I obtain revenge on you!{ arrow } Just wait until I get you!</li>
+                <li>We'll obtain revenge on them! { arrow } o	We'll get them! </li>
+                <li>Are you going to obtain revenge on me in return? { arrow } Are you going to get me back?</li>
+                <li>Just wait until I obtain revenge on you!{ arrow } Just wait until I get you!</li>
               </ul>
             </Section>
           </Section>
           <Section>
-            <h3>Use 'Get' Instead Of The Verb ‘To Be’ When The Sentence Structure Is Object Then Verb (known as the passive voice).</h3>
+            <h3>Use 'Get' Instead Of The Verb 'To Be' When The Sentence Structure Is Object Then Verb (known as the passive voice).</h3>
             <Section>
               <h4>Was</h4>
               <ul>
                 <li>Their car was stolen last night. { arrow } Their car got stolen last night. </li>
-                <li>The website was finished. { arrow } The website got finished.</li>
-                <li>The ball was thrown really far.{ arrow }The ball got thrown really far.</li>
+                <li>The company's new website was finished. { arrow } The company's new website got finished.</li>
+                <li>The ball was thrown really far. { arrow } The ball got thrown really far.</li>
               </ul>
             </Section>
           </Section>
@@ -229,7 +227,7 @@ const CompleteLesson = ( { pageContext } ) => {
               <h4>Get across</h4>
               <h5>Meaning To successfully communicate an idea.</h5>
               <ul>
-                <li>I’m not sure he got his view across in that meeting.</li>
+                <li>I'm not sure he got his view across in that meeting.</li>
                 <li>If I can get my point across, I am sure you will agree.</li>
               </ul>
               <h5>Meaning To Cross from one side to another.</h5>
@@ -248,9 +246,9 @@ const CompleteLesson = ( { pageContext } ) => {
             </Section>
             <Section>
               <h4>Get around to</h4>
-              <h5>To start something. (Usually, this is something you don’t really want to do.).</h5>
+              <h5>To start something. (Usually, this is something you don't really want to do.).</h5>
               <ul>
-                <li>I’ll get around to the cleaning later.</li>
+                <li>I'll get around to the cleaning later.</li>
                 <li>	When I have the time, I will also get around to your problem.</li>
               </ul>
             </Section>
@@ -258,7 +256,7 @@ const CompleteLesson = ( { pageContext } ) => {
               <h4>Get at</h4>
               <h5>To repeatedly criticise someone.</h5>
               <ul>
-                <li>You’re getting at me!</li>
+                <li>You're getting at me!</li>
                 <li>The manager really got at John in the meeting. It was really unfair!</li>
               </ul>
             </Section>
@@ -285,23 +283,23 @@ const CompleteLesson = ( { pageContext } ) => {
               </ul>
               <h5>Move backwards(often as a warning).</h5>
               <ul>
-                <li>The car’s on fire! Get back!</li>
-                <li>You’re too close. Get back.</li>
+                <li>The car's on fire! Get back!</li>
+                <li>You're too close. Get back.</li>
               </ul>
             </Section>
             <Section>
               <h4>Get behind</h4>
-              <h5>Become late with paying for something. (Also ‘fell behind’.)</h5>
+              <h5>Become late with paying for something. (Also 'fell behind'.)</h5>
               <ul>
                 <li>If you get behind with your payments, you can lose the car.</li>
-                <li>She couldn’t work this month and got behind with her bills.</li>
+                <li>She couldn't work this month and got behind with her bills.</li>
               </ul>
             </Section>
             <Section>
               <h4>Get by</h4>
               <h5>Manage with difficulty.</h5>
               <ul>
-                <li>My English isn’t good, but I know enough to get by on holiday.</li>
+                <li>My English isn't good, but I know enough to get by on holiday.</li>
                 <li>	Money is tight; they only just get by.</li>
               </ul>
             </Section>
@@ -323,7 +321,7 @@ const CompleteLesson = ( { pageContext } ) => {
               <h4>Get on</h4>
               <h5>Enter a bus, train, plane, bike or boat.</h5>
               <ul>
-                <li>Let’s get on the bus.</li>
+                <li>Let's get on the bus.</li>
                 <li>We are getting on the plane now!</li>
               </ul>
               <h4>Get off</h4>
@@ -338,7 +336,7 @@ const CompleteLesson = ( { pageContext } ) => {
               <h5>Stop</h5>
               <ul>
                 <li>	Can I get off work early? I need to collect my kids.</li>
-                <li>	Don’t touch me! Get off! </li>
+                <li>	Don't touch me! Get off! </li>
               </ul>
             </Section>
             <Section>
@@ -347,20 +345,20 @@ const CompleteLesson = ( { pageContext } ) => {
               <h5>Have a good relationship with someone.</h5>
               <ul>
                 <li>Did you get along with him?</li>
-                <li>The team just didn’t get on together. </li>
+                <li>The team just didn't get on together. </li>
               </ul>
             </Section>
             <Section>
               <h4>Getting on</h4>
               <h5>Becoming older.</h5>
               <ul>
-                <li>It’s my 60th birthday next month. I’m getting on a bit.</li>
-                <li>My parents are getting on, they can’t manage like they used to.</li>
+                <li>It's my 60th birthday next month. I'm getting on a bit.</li>
+                <li>My parents are getting on, they can't manage like they used to.</li>
               </ul>
               <h5>Time is becoming late.</h5>
               <ul>
-                <li>It’s getting on for 4pm, I have to leave soon.</li>
-                <li>It’s getting on a bit, you will have to go home.</li>
+                <li>It's getting on for 4pm, I have to leave soon.</li>
+                <li>It's getting on a bit, you will have to go home.</li>
               </ul>
             </Section>
             <Section>
@@ -373,7 +371,7 @@ const CompleteLesson = ( { pageContext } ) => {
             </Section>
             <Section>
               <h4>Get out of</h4>
-              <h5>Avoid doing something you don’t want to do.</h5>
+              <h5>Avoid doing something you don't want to do.</h5>
               <ul>
                 <li>I told my teacher I was ill and I got out of doing the exam today.</li>
                 <li>I got out of cleaning my room.</li>
@@ -388,7 +386,7 @@ const CompleteLesson = ( { pageContext } ) => {
               <h4>Get over</h4>
               <h5>Recover from an illness or a bad situation.</h5>
               <ul>
-                <li>I was really sick, but I’ve got over it now.</li>
+                <li>I was really sick, but I've got over it now.</li>
                 <li>They divorced recently, but she got over it quickly.</li>
               </ul>
             </Section>
@@ -404,16 +402,16 @@ const CompleteLesson = ( { pageContext } ) => {
               <h4>Get stuck</h4>
               <h5>delayed</h5>
               <ul>
-                <li>I’m late because I got stuck in traffic.</li>
-                <li>John’s probably got stuck in the office; we were very busy today.</li>
+                <li>I'm late because I got stuck in traffic.</li>
+                <li>John's probably got stuck in the office; we were very busy today.</li>
               </ul>
             </Section>
             <Section>
               <h4>Get through</h4>
               <h5>Make contact</h5>
               <ul>
-                <li>Mary says she can’t get through to Joe. Is his phone ringing?</li>
-                <li>I couldn’t get through. I will try to speak to them later.</li>
+                <li>Mary says she can't get through to Joe. Is his phone ringing?</li>
+                <li>I couldn't get through. I will try to speak to them later.</li>
               </ul>
             </Section>
             <Section>
@@ -421,7 +419,7 @@ const CompleteLesson = ( { pageContext } ) => {
               <h5>Communicate an understanding</h5>
               <ul>
                 <li>My son and I always seem to be arguing nowadays; I cannot get through to him.</li>
-                <li>I have had enough! I tried to get through to her, but she won’t listen to me.</li>
+                <li>I have had enough! I tried to get through to her, but she won't listen to me.</li>
               </ul>
             </Section>
             <Section>
@@ -442,7 +440,7 @@ const CompleteLesson = ( { pageContext } ) => {
               <h5>From a chair or the floor.</h5>
               <ul>
                 <li>Get up from the chair because I need to move it.</li>
-                <li>Get up! The floor’s dirty!</li>
+                <li>Get up! The floor's dirty!</li>
               </ul>
             </Section>
             <Section>
@@ -457,7 +455,7 @@ const CompleteLesson = ( { pageContext } ) => {
               <h4>Get used to</h4>
               <h5>Adjust to something</h5>
               <ul>
-                <li>It’s really hot here, but you get used to it.</li>
+                <li>It's really hot here, but you get used to it.</li>
                 <li>I got used to working at night.</li>
               </ul>
             </Section>
@@ -471,7 +469,7 @@ const CompleteLesson = ( { pageContext } ) => {
             </Section>
             <Section>
               <h4>Have got</h4>
-              <h5>Use like have. (It is always ‘have got’, never ‘have get’.)</h5>
+              <h5>Use like have. (It is always 'have got', never 'have get'.)</h5>
               <ul>
                 <li>She has got a new car.</li>
                 <li>Have you got any brothers and sisters?</li>

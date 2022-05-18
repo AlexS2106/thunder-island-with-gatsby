@@ -18,7 +18,8 @@ import Breadcrumbs from "../components/navigation/Breadcrumbs";
 import Button from "../components/buttons/Button";
 import Layout from "../components/layout/Layout";
 import MainColumn from "../components/layout/MainColumn";
-import PageTitle from "../components/layout/MainColumn";
+import PageTitle from "../components/header/PageTitle";
+import Signature from "../components/address/Signature";
 import SmallPostList from "../components/display/SmallPostList";
 import Spacer from "../components/layout/Spacer";
 
@@ -40,13 +41,13 @@ const RecipeTemplate = ( { data, pageContext } ) => {
   const associatedRecipes = associated.nodes;
   const { frontmatter, body } = recipePost;
   const { title, posted, updated, author, landscapeImage, alt, photographer, excerpt } = frontmatter;
-  //Button inner text
-  const innerText = "Go Back";
+  //PageTitle
+  const pageTitle = title;
+  //Buttons inner text
+  const endButtonInnerText = "Go back?";
   //SmallPostList -> PostSmall
   const asidePostsInnerText = "Read More";
   const asidePostsHeaderText = "Add another recipe?";
-  //PageTitle
-  const pageTitle = { title };
 
   ////** FUNCTIONS **////
   //Checks for subcategories and generates a list of subcategories from the frontmatter in the article (via props.data.recipePost through the page query)
@@ -66,15 +67,13 @@ const RecipeTemplate = ( { data, pageContext } ) => {
       <div className={ grid }>
         <MainColumn>
           <article>
-            <address rel="author">by { author }</address>
-            { posted === updated ? <time dateTime={ updated }> Updated on { updated } </time> : null }
             <time dateTime={ posted }> Written on { posted } </time>
+            { posted === updated ? <time dateTime={ updated }> Updated on { updated } </time> : null }
+            <Spacer size="small" />
             <GatsbyImage image={ getImage( landscapeImage ) } alt={ alt } ></GatsbyImage>
             <cite>photo by { photographer }</cite>
             <Spacer size="small" />
-            <div className="withSideBorder" style={ { width: "75%", margin: "auto" } }>
-              <p className="addBorderPadding">{ excerpt }</p>
-            </div>
+            <p className="addBorderPadding withSideBorder" style={ { maxInlineSize: "fit-content", margin: "auto" } }>{ excerpt }</p>
             <Spacer size="small" />
             <div className={ card }>
               <header className={ cardHeading }>
@@ -85,8 +84,11 @@ const RecipeTemplate = ( { data, pageContext } ) => {
               <div className={ cardBody } >
                 { contentBody }
               </div>
+              <div style={ { alignSelf: "end", padding: "1rem 6rem 3rem 3rem" } }>
+                <Signature rotate signedBy={ author } />
+              </div>
               <div className={ cardFooter }>
-                <p>Nutrition... coming soon!</p>
+                <p>Nutrition... I'm working on it! It's coming soon!</p>
               </div>
             </div>
           </article>
@@ -106,7 +108,7 @@ const RecipeTemplate = ( { data, pageContext } ) => {
           <Button onClick={ () => {
             navigate( -1 );
           }
-          } innerText={ innerText }></Button>
+          } innerText={ endButtonInnerText }></Button>
         </div>
       </div>
     </Layout>

@@ -63,6 +63,66 @@ query allHealthSlugs {
     } );
   } );
   
+    ///////Single Writing Post (NOT poems or the "ongoing writing post")
+  const writing = await graphql( `
+query allWritingSlugs {
+  allMdx(
+    filter: {frontmatter: {subcategories: {eq: "writing"}, type: {nin: "poem"}}}
+    ) {
+    nodes {
+      frontmatter {
+        slug
+      }
+    }
+  }
+}
+  `);
+  // Handle errors
+  if ( writing.errors ) {
+    reporter.panicOnBuild( `Error while running GraphQL query for writing docs.` );
+    return;
+  };
+
+  writing.data.allMdx.nodes.forEach( node => {
+    createPage( {
+      component: path.resolve( "./src/templates/writingTemplate.js" ),
+      path: `portfolio/${ node.frontmatter.slug }`,
+      context: {
+        slug: node.frontmatter.slug,
+      }
+    } );
+  } );
+
+      ///////Single Poem Post
+  const poems = await graphql( `
+query allPoemsSlugs {
+  allMdx(
+    filter: {frontmatter: {subcategories: {eq: "writing"}, type: {in: "poem"}}}
+    ) {
+    nodes {
+      frontmatter {
+        slug
+      }
+    }
+  }
+}
+  `);
+  // Handle errors
+  if ( poems.errors ) {
+    reporter.panicOnBuild( `Error while running GraphQL query for poem docs.` );
+    return;
+  };
+
+  poems.data.allMdx.nodes.forEach( node => {
+    createPage( {
+      component: path.resolve( "./src/templates/poemTemplate.js" ),
+      path: `portfolio/${ node.frontmatter.slug }`,
+      context: {
+        slug: node.frontmatter.slug,
+      }
+    } );
+  } );
+
   ///////Front page with multiple posts and pagination
   const postList = await graphql( `
 query allPosts {
