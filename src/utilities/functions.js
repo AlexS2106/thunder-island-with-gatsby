@@ -37,3 +37,17 @@ export function filterList (listOfChoicesArray, nodeArrayToFilter) {
 export function sortingUlsFromNodes ( nodes, ulType ) {
   return nodes.filter( node => node.frontmatter.type.includes( ulType ) ).map(node => node.frontmatter.title);
 }
+//Takes the date and returns the correct day.
+ export function today () {
+   const date = new Date().getDay();
+    switch ( date ) {
+      case 0: return "Sunday";
+      case 1: return "Monday";
+      case 2: return "Tuesday";
+      case 3: return "Wednesday";
+      case 4: return "Thursday";
+      case 5: return "Friday";
+      case 6: return "Saturday";
+      default: return "Today";
+    }
+  }

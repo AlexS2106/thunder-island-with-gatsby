@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import PropTypes from "prop-types";
-import { graphql, Link } from "gatsby";
+import { graphql } from "gatsby";
 import { v4 as uuidv4 } from 'uuid';
 
 import {
@@ -23,7 +23,6 @@ import { makeTitle, makeSlug, sortingUlsFromNodes } from "../../utilities/functi
 const PortfolioPage = ( { data, pageContext } ) => {
 
 ////** STATE & CONTEXT **////
-  const contentRef = useRef(); 
   const {
     breadcrumb: { crumbs },
   } = pageContext;

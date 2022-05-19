@@ -27,14 +27,14 @@ import Spacer from "../components/layout/Spacer";
 import useGetPostSelection from "../queries/useGetPostSelection.query";
 import useGetAllRecipes from "../queries/useGetAllRecipes.query";
 
-import { filterList } from "../utilities/functions";
+import { filterList, today } from "../utilities/functions";
 import { recipesOfToday } from "../utilities/indices";
 import { healthImg, recipesImg, maltaBoatsImg, writingImg, pathImg, booksImg, authorRightImg } from "../utilities/staticImgFunctions";
 
 
 
 ////** COMPONENT **////
-const IndexPage = ( { data, pageContext } ) => {
+const HomeTemplate = ( { data, pageContext } ) => {
   const recipes = useGetAllRecipes();
   ////** CONTEXT **////
   const {
@@ -54,7 +54,7 @@ const IndexPage = ( { data, pageContext } ) => {
       image: recipesImg(),
     },
     {
-      link: "/health",
+      link: "/recipes",
       name: "Health",
       image: healthImg(),
     },
@@ -98,7 +98,7 @@ const IndexPage = ( { data, pageContext } ) => {
   const pageInfo = allPostsList.pageInfo; 
   //Carousel -> PostSmall
   const carouselPostsInnerText = "See More";
-  const carouselTitle = `Recipes for ${day()}`;
+  const carouselTitle = `Recipes for ${today()}`;
 
   ////** FUNCTIONS **////
   //Manages menu selection clicks in menuboxes
@@ -107,19 +107,7 @@ const IndexPage = ( { data, pageContext } ) => {
     navigate( `${ clickedTemp[ 0 ].link }` );
   }
   //Displays todays day for the carousel title. Written as function for hoisting as it is also used in the variables above.
-  function day () {
-   const date = new Date().getDay();
-    switch ( date ) {
-      case 0: return "Sunday";
-      case 1: return "Monday";
-      case 2: return "Tuesday";
-      case 3: return "Wednesday";
-      case 4: return "Thursday";
-      case 5: return "Friday";
-      case 6: return "Saturday";
-      default: return "Today";
-    }
-  }
+
   //Filters a list for carousel content
   const carouselContent = filterList( recipesOfToday, recipes );
 
@@ -184,7 +172,7 @@ const IndexPage = ( { data, pageContext } ) => {
                   <p>Or, do you just want a recipe for the most delicious peach meringue roulade you've ever tasted and a great book recommendation while you eat it?</p>
                   <p>Whatever it is - poke about and enjoy!</p>
                 </div>
-                  <Signature rotate />
+                <Signature signedBy="Alex" rotate />
               </div>
             </div>
           </aside>
@@ -207,12 +195,12 @@ const IndexPage = ( { data, pageContext } ) => {
 }
 
 ////** PROP TYPES **////
-IndexPage.propTypes = {
+HomeTemplate.propTypes = {
   data: PropTypes.object.isRequired,
   pageContext: PropTypes.object.isRequired,
 }
 
-export default IndexPage;
+export default HomeTemplate;
 
 ////** PAGE QUERY **////
 export const data = graphql`

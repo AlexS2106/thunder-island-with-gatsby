@@ -16,13 +16,16 @@ const ExcerptList = ( { list, ...props } ) => {
 ////** FUNCTIONS **////
   //Generate a list of excerpts of random posts 
   const generatedExcerpts = list.map( ( listItem ) => {
+//Posts with a main category of health will be linked to recipes while the health category has so few posts.
+    const mainCategoryLink = listItem.frontmatter.mainCategories[ 0 ] === "health" ? "recipes" : listItem.frontmatter.mainCategories[ 0 ]; 
+
     return (
       <div key={ uuidv4() }>
         <PostMedium
           post={ listItem }
           { ...props }
         />
-        <h3><Link to={ `/${ listItem.frontmatter.mainCategories[ 0 ] }` }>See more in { listItem.frontmatter.mainCategories }?</Link></h3>
+        <h3><Link to={ `/${ mainCategoryLink }` }>See more in { listItem.frontmatter.mainCategories }?</Link></h3>
       </div>
     );
   } );

@@ -23,10 +23,6 @@ const Navbar = (  ) => {
       name: "Recipes",
     },
     {
-      link: "/health",
-      name: "Health",
-    },
-    {
       link: "/english",
       name: "English",
     },

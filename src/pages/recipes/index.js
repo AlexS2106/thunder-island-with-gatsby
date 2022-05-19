@@ -24,6 +24,7 @@ import Spacer from "../../components/layout/Spacer";
 import TagCloud from "../../components/display/TagCloud";
 
 import useGetAllRecipes from "../../queries/useGetAllRecipes.query";
+import useGetAllHealthPosts from "../../queries/useGetAllHealthPosts.query";
 
 import { filterList, makeTitle } from "../../utilities/functions";
 import { byDietOptions, byIngredientOptions, byCourseOptions, recipeTags, favouriteRecipes } from "../../utilities/indices";
@@ -33,7 +34,8 @@ import { ingredientsImg, dietImg, courseImg } from "../../utilities/staticImgFun
 
 ////** COMPONENT **////
 const RecipesPage = ( { pageContext } ) => {
-  const data = useGetAllRecipes();
+  const recipesData = useGetAllRecipes();
+  const healthsData = useGetAllHealthPosts();
   ////** STATE **////
   const [ menuInRowsState, setMenuInRowsState ] = useState( [ ...byDietOptions, ...byIngredientOptions, ...byCourseOptions ] );
   const [ selectedCategory, setSelectedCategory] = useState( () => { 
@@ -41,17 +43,17 @@ const RecipesPage = ( { pageContext } ) => {
     return initialState;
   } );
   const [ shownRecipes, setShownRecipes ] = useState( () => { 
-    const initialState = [ ...data ];
+    const initialState = [ ...recipesData ];
     return initialState;
   } );
   const topOfShowingRecipesRef = useRef();
   const [ mainCount, setMainCount ] = useState( 0 );
   const [ selectedTag, setSelectedTag] = useState( () => { 
-    const initialState = "My Favourite Recipes";
+    const initialState = "My Favourite ";
     return initialState;
   } );
   const [ shownTagRecipes, setShownTagRecipes ] = useState( () => {
-    const nodes = filterList( favouriteRecipes, data );
+    const nodes = filterList( favouriteRecipes, recipesData );
     const initialState = [ ...nodes ];
     return initialState;
   } );
@@ -72,13 +74,14 @@ const RecipesPage = ( { pageContext } ) => {
   } = pageContext;
 
   ////** VARIABLES **////
-  //Data = at the top
+  //recipesData is at the top
+  //healthData is at the top
   //PageTitle
   const pageTitle = "Recipes";
   //Number of recipes to show at one time (via onclick function -> MediumPostList & via onclick function -> TagCloud -> SmallPostList)
   const mediumPostListNumDisplayedRecipes = 7;
-  const moveOnButtonText = "Nothing yet, let's keep looking..."; 
-  const moveBackButtonText = "On second thought, let's go back...";
+  const moveOnButtonText = "Nothing yet, show me more."; 
+  const moveBackButtonText = "On second thought, let's go back.";
   const smallPostListNumDisplayedRecipes = 6;
  //MediumPostList -> PostMedium
   const showDate = true;
@@ -89,9 +92,12 @@ const RecipesPage = ( { pageContext } ) => {
   const excerptLength = 150;
   //SmallPostList -> PostSmall
   const asidePostsInnerText = "Read More";
-  //Carousel -> PostSmall
-  const carouselPostsInnerText = "See More";
-  const carouselTitle = "Today's Suggestions";
+  //Carousel(todays recipes) -> PostSmall
+  const carouselTodayRecipesBtnText = "See More";
+  const carouselTodayRecipesTitle = "Today's Suggestions";
+  //Carousel(health posts) -> PostSmall
+  const carouselHealthPostsBtnText = "Read more";
+  const carouselHealthPostsTitle = "Read About Your Health";
   //Menuboxes (bg image, categories and their groupings)
   const menuBoxesMenuArray = [
     {
@@ -126,14 +132,14 @@ const RecipesPage = ( { pageContext } ) => {
   //MenuInRows + PageTitle - accepts a click which selects a recipe subcategory and changes all the recipes on the page to be only those of that category and alters the pageTitle heading.
   const handleMenuInRowsClick = ( e ) => {
     setMainCount( 0 );
-    const showTheseRecipes = data.filter( node => node.frontmatter.by_ingredient.includes( e.target.value ) || node.frontmatter.by_diet.includes( e.target.value ) || node.frontmatter.by_course.includes( e.target.value ) );
+    const showTheseRecipes = recipesData.filter( node => node.frontmatter.by_ingredient.includes( e.target.value ) || node.frontmatter.by_diet.includes( e.target.value ) || node.frontmatter.by_course.includes( e.target.value ) );
     setSelectedCategory( () => makeTitle( e.target.value ) );
     setShownRecipes( () => showTheseRecipes );
   };
     //TagCloud + SmallPostMenu - accepts a click which selects a recipe tag and changes all the recipes in the smallPostMenu to be only those of that tag.
   const handleTagCloudClick = ( e ) => {
     setAsideCount( 0 );
-    const showTheseRecipes = data.filter( node => node.frontmatter.tags && node.frontmatter.tags.length && node.frontmatter.tags.includes(e.target.value) );
+    const showTheseRecipes = recipesData.filter( node => node.frontmatter.tags && node.frontmatter.tags.length && node.frontmatter.tags.includes(e.target.value) );
     setSelectedTag( () => makeTitle( e.target.value ) );
     setShownTagRecipes( () => showTheseRecipes );
   };
@@ -240,9 +246,16 @@ const RecipesPage = ( { pageContext } ) => {
       </div>
       <Spacer size="large" />
       <Carousel
-        title={ carouselTitle }
-        carouselData={ data }
-        innerText={ carouselPostsInnerText }
+        title={ carouselTodayRecipesTitle }
+        carouselData={ recipesData }
+        innerText={ carouselTodayRecipesBtnText }
+      />
+      <Spacer size="large" />
+      <Carousel
+        title={ carouselHealthPostsTitle }
+        carouselData={ healthsData }
+        innerText={ carouselHealthPostsBtnText }
+        id="health"
       />
     </Layout>
   );

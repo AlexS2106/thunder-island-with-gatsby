@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { v4 as uuidv4 } from "uuid";
 
@@ -54,6 +54,7 @@ const Carousel = ( { carouselData, ...props } ) => {
 
   ////** MARK UP **////
 Carousel.propTypes = {
+  title: PropTypes.string.isRequired,
   carouselData: PropTypes.array.isRequired,
   innerText: PropTypes.string
 }

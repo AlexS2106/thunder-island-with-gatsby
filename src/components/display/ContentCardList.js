@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { v4 as uuidv4 } from "uuid";
 
 import {
@@ -27,11 +28,18 @@ const ContentCardList = ( { list, btnText } ) => {
       />
     );
   } );
+    ////** MARK UP  **////
   return (
     <div>
       { generateContentCards }
     </div>
   );
+}
+
+////** PROP TYPES **////
+ContentCard.propTypes = {
+  list: PropTypes.array.isRequired,
+  btnText: PropTypes.string.isRequired,
 }
 
 export default ContentCardList;

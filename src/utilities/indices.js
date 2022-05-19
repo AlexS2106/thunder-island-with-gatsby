@@ -1,5 +1,5 @@
 
-export const topLevelPages = [ "health", "recipes", "portfolios", "about", "english" ];
+export const topLevelPages = [ "recipes", "portfolios", "about", "english" ];
 
 export const mainCategories = [ "health", "recipes", "portfolios", "about", "english" ];
 

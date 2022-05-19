@@ -1,18 +1,24 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 import {
   btn
 } from "./Button.module.css";
 
-
+////** COMPONENT **////
 const Button = ( props ) => {
 
-  const innerText = props.innerText;
-
+////** MARK UP **////
   return (
-    <button className={ btn } onClick={ props.onClick } >{ innerText }</button>
+    <button className={ btn } onClick={ props.onClick } >{ props.innerText }</button>
   );
 
+}
+
+////** PROP TYPES **////
+Button.propTypes = {
+  innerText: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
 }
 
 export default Button;
