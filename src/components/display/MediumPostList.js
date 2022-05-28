@@ -24,7 +24,7 @@ const MediumPostList = ( { postData, ...props } ) =>
   ) );
 ////** MARK UP **////
   return (
-    <div className={ mediumPostList }>
+    <div className={ ` flexColumn bgLight ${ mediumPostList }` }>
       { generateMediumPostList }
     </div>
   );

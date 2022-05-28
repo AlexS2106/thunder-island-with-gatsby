@@ -1,13 +1,8 @@
-.associatedPostListWrapper {
-  background-color: var(--color-light);
+.associatedPostList {
   padding: 3rem;
   justify-self: center;
-  display: flex;
-  flex-direction: column;
-  flex: 1;
 }
-.associatedPostWrapper {
-  background-color: var(--color-mid);
+.associatedPostList div {
   padding: 3rem;
   margin-bottom: 3rem;
 }

@@ -41,7 +41,7 @@ export default function MDX ( body ) {
     const [ show, setShow ] = useState(false)
     return (
       <div className={ recipeBody } { ...props }>
-        <Button onClick={ () => show ? setShow( false ) : setShow( true ) } innerText="Read the full post?" style={ { margin: "auto" } } />
+        <Button onClick={ () => show ? setShow( false ) : setShow( true ) } innerText="See the full post?" style={ { margin: "auto" } } />
         <Spacer size="small" />
         { show ? children : null }
       </div>

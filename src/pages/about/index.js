@@ -3,15 +3,15 @@ import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 
 import {
-  grid,
-  asideWrapper,
+  about,
+  justify
 } from "./index.module.css";
 
 import Breadcrumbs from "../../components/navigation/Breadcrumbs";
 import Layout from "../../components/layout/Layout";
-import PageTitle from "../../components/header/PageTitle";
+import PageTitle from "../../components/typography/PageTitle";
 import Profile from "../../components/posts/Profile";
-import Signature from "../../components/address/Signature";
+import Signature from "../../components/typography/Signature";
 import SmallPostList from "../../components/display/SmallPostList";
 import Spacer from "../../components/layout/Spacer";
 
@@ -35,7 +35,7 @@ const AboutPage = ( { data, pageContext } ) => {
   //PageTitle
   const pageTitle = "About";
   //Aside -> SmallPostList -> Button innertext
-  const asidePostsButtonText = "Read More"
+  const asidePostsButtonText = "Read More";
 
   ////** FUNCTIONS **////
   //Make a node array of recommended posts from an imported list in indices
@@ -49,16 +49,16 @@ const AboutPage = ( { data, pageContext } ) => {
       <Spacer size="small" />
       <Breadcrumbs crumbs={ crumbs } />
       <Spacer size="medium" />
-      <div className={ grid }>
-        <main>
+      <div className={ about }>
+        <main className="bgLight">
           <Profile person={ mdx } />
-          <Signature rotate />
+          <Signature signedBy="alex" rotate />
         </main>
-        <div className={ asideWrapper }>
-          <aside>
-            <header>
-              <h3>Recommended Posts</h3>
-              <address rel="author">by Alex</address>
+        <div className={ `flexColumn ${justify}` }>
+          <aside className="flexColumn bgLight sideBorderDark">
+            <header className="pad1 bgLight textCenter">
+              <h3 className="shadowText">Recommended Posts</h3>
+              <address rel="author" className="shadowText" >by Alex</address>
             </header>
             <SmallPostList
               postData={ nodes }

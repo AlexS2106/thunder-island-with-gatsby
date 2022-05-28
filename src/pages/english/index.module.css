@@ -1,11 +1,11 @@
-.clusterGrid {
+.english {
   max-width: 90%;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
   margin: auto;
 }
-.clusterStyling {
+.clusterGrid {
   display: grid;
   grid-template-areas:  "image image"
                         "title title"
@@ -18,40 +18,40 @@
   border: 1px solid var(--color-accent-light);
   border-radius: 5px;
 }
-.clusterStyling > div {
+.clusterImageWrapper {
   grid-area: image;
 }
-.clusterStyling > h4 {
+.clusterTitle {
   grid-area: title;
   margin: auto;
 }
-.clusterStyling p {
+.clusterExcerpt {
   font-size: 1.5rem;
   text-align: center;
   text-justify: distribute;
   padding-bottom: 1rem;
   grid-area: excerpt;
 }
-.clusterStyling h5 {
+.clusterLevel {
   grid-area: level;
   margin-top: 3rem;
 }
-.clusterStyling ul {
+.clusterList {
   padding: .5rem;
 }
-.clusterStyling ul li a {
+.clusterListItemLink {
   text-decoration: underline;
   text-decoration-color: var(--color-accent-dark);
   padding: 0.25rem;
 }
-.clusterStyling ul li a:hover {
+.clusterListItemLink:hover {
   text-decoration: dotted underline;
   text-decoration-color: var(--color-accent-dark);
 }
-.clusterStyling ul:first-of-type {
+.clusterList:first-of-type {
   grid-area: lessons;
 }
-.clusterStyling ul:last-of-type {
+.clusterList:last-of-type {
   grid-area: exercises;
 }
 

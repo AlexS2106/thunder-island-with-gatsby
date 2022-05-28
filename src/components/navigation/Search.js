@@ -64,7 +64,7 @@ const Search = () => {
           />
       </form>
       <div style={ show ? { display: "flex", position: "fixed" } : { display: "none" } }>
-        <ul className={ searchDropdown }>
+        <ul className={ `flexColumn ${searchDropdown}` }>
             {
               dropdown.map( item =>
                 <Link key={ uuidv4() } to={ `/${ item }` } >

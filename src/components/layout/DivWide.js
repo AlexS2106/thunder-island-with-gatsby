@@ -2,28 +2,28 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import {
-  column
-} from "./ColumnStyles.module.css";
+  wide
+} from "./layoutStyles.module.css";
 
 
   ////** COMPONENT **////
-const MainColumn = ( { children } ) => {
+const DivColumn = ( { children } ) => {
 
   ////** MARK UP **////
   return (
-    <main className={ column }>
+    <div className={ `flexColumn ${wide}` }>
       { children }
-    </main>
+    </div>
   );
 }
 
 ////** PROP TYPES **////
-MainColumn.propTypes = {
+DivColumn.propTypes = {
   children: PropTypes.oneOfType( [
     PropTypes.node,
-    PropTypes.array,
+    PropTypes.object,
     PropTypes.element
-  ] ),
+  ] ).isRequired,
 }
 
-export default MainColumn;
+export default DivColumn;

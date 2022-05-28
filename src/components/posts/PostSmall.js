@@ -4,8 +4,7 @@ import { navigate } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 
 import {
-  postSmall,
-  imageWrapper
+  btnWrapper,
 } from "./PostSmall.module.css";
 
 import Button from "../buttons/Button";
@@ -25,14 +24,16 @@ const PostSmall = ( { post, ...props } ) => {
 
   ////** MARK UP **////
   return (
-    <div className={ `${postSmall} ${props.addedClasses}` }>
-      <h4>{ title }</h4>
-      <div className={ imageWrapper }>
+    <div className="flexColumn">
+      <h4 className="pad1 shadowText">{ title }</h4>
+      <div className={ "pad1" }>
         <GatsbyImage image={ getImage( landscapeImage ) } alt={ alt } ></GatsbyImage>
       </div>
-      <Button onClick={
-        () => { navigate( `/${ mainCategories }/${ slug }/` )}
-      } innerText={ innerText }></Button>
+      <div className={ `pad1 ${ btnWrapper }` }>
+        <Button onClick={
+          () => { navigate( `/${ mainCategories }/${ slug }/` ) }
+        } innerText={ innerText }></Button>
+      </div>
     </div>
   );
 }

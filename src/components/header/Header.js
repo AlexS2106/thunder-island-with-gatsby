@@ -16,7 +16,7 @@ const Header = () => {
 
   ////** MARK UP **////
   return (
-    <header className={ header }>
+    <header className={ `flexRow ${header}` }>
       { logo }
       <h1>Thunder Island</h1>
     </header>

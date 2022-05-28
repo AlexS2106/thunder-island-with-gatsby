@@ -25,7 +25,7 @@ const ExcerptList = ( { list, ...props } ) => {
           post={ listItem }
           { ...props }
         />
-        <h3><Link to={ `/${ mainCategoryLink }` }>See more in { listItem.frontmatter.mainCategories }?</Link></h3>
+        <h3 className="textCenter"><Link to={ `/${ mainCategoryLink }` }>See more in { listItem.frontmatter.mainCategories }?</Link></h3>
       </div>
     );
   } );

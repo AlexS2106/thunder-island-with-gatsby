@@ -34,6 +34,7 @@ p, li {
   line-height: 2.8rem;
  }
 img {
+  width: 100%;
   border-radius: 5px;
 }
 h1,
@@ -47,21 +48,6 @@ a,
 button {
   font-family: 'Alegreya', serif;
  }
-h2,
-h3,
-h4,
-h5,
-time,
-address {
-  text-shadow: 0px 1px 1px var(--color-accent-dark);
-  letter-spacing: .3rem;
-}
-h2,
-h6,
-time,
-address {
-  text-align: center;
-}
 cite {
   text-align: end;
 }
@@ -95,16 +81,11 @@ cite {
    border: none;
  }
  button {
+   text-align: center;
    background-color: inherit;
  }
  ol, ul {   
 	list-style: none;
-}
-article {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  margin: auto;
 }
 blockquote, q {
 	quotes: none;
@@ -134,13 +115,36 @@ table {
 .isCorrect {
   border: 1px dashed var(--color-correct);
 }
-.addBorderPadding {
-  padding-left: .5rem;
-}
-.withSideBorder {
+.sideBorderDark {
   border-left: 1px solid var(--color-accent-dark);
 }
-.withSideBorderLight {
+.sideBorderLight {
   border-left: 1px solid var(--color-accent-light);
+}
+.flexColumn {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.flexRow {
+  display: flex;
+  flex-direction: row;
+  flex: 1; 
+}
+.sideBorderPad {
+  padding-left: .5rem;
+}
+.pad1 {
+  padding: 1rem;
+}
+.bgLight {
+  background-color: var(--color-light);
+}
+.textCenter {
+  text-align: center;
+}
+.shadowText {
+  text-shadow: 0px 1px 1px var(--color-accent-dark);
+  letter-spacing: .3rem;
 }
  

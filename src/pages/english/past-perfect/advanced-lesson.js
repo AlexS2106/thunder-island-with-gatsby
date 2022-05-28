@@ -2,15 +2,14 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import { 
-  contentIndexGrid,
+  grid,
   indexItem
 } from "./index.module.css";
 
 import Breadcrumbs from "../../../components/navigation/Breadcrumbs";
 import Layout from "../../../components/layout/Layout";
-import MainColumn from "../../../components/layout/MainColumn";
-import PageTitle from "../../../components/header/PageTitle";
-import Section from "../../../components/layout/Section";
+import MainWide from "../../../components/layout/MainWide";
+import PageTitle from "../../../components/typography/PageTitle";
 import Spacer from "../../../components/layout/Spacer";
 
 ////** COMPONENT **////
@@ -35,10 +34,10 @@ const AdvancedLesson = ( { pageContext } ) => {
       <PageTitle title={ pageTitle } />
       <Spacer size="small" />
       <Breadcrumbs crumbs={ crumbs } />
-      <div className={ contentIndexGrid }>
-        <MainColumn>
+      <div className={ grid }>
+        <MainWide>
           <article>
-            <Section>
+            <section className="flexColumn">
               <h3>What is the past perfect?</h3>
               <p>
                 A primary <span className="tooltip"><mark>event</mark></span> that happened <em>before</em> a <span className="tooltip">secondary event</span>, both the first action/event and the second event were in the past.
@@ -51,9 +50,9 @@ const AdvancedLesson = ( { pageContext } ) => {
                   <dt>is not said at all.</dt>
                 </dl>
               </p>
-            </Section>
+            </section>
             <hr />
-            <Section>
+            <section className="flexColumn">
               <h3>What do I use the past perfect for?</h3>
               <dl>
                 <dt>The past perfect is a <span className="tooltip">narrative</span> tense.</dt>
@@ -65,9 +64,9 @@ const AdvancedLesson = ( { pageContext } ) => {
                 <dt>Use the past perfect express regret.</dt>
                 <dd>The past perfect is used for the third conditional.</dd>
               </dl>
-            </Section>
+            </section>
             <hr />
-            <Section>
+            <section className="flexColumn">
               <h3>How do I say the past perfect?</h3>
               <p>You use <span className="tooltip">Verb 3</span>.</p>
               <p><em>Subject + had + verb 3 + secondary event</em></p>
@@ -79,15 +78,15 @@ const AdvancedLesson = ( { pageContext } ) => {
               <p>By the time he arrived, I had walked home.</p>
               <p><em>Secondary event + subject + had + not + Verb 3</em></p>
               <p>By the time he arrived, I had not walked home.</p>
-            </Section>
-            <Section>
+            </section>
+            <section className="flexColumn">
               <h6>Something to remember!</h6>
               <p>When using contractions. I had becomes I'd but in the negative while I'd not is correct it is much more common to contract had and not into I hadn't instead.</p>
               <p>I had walked home by the time he arrived becomes I'd walked home by the time he arrived.</p>
               <p>I had not walked home by the itme he arrived becomes I hadn't walked home by the time he arrived.</p>
-            </Section>
+            </section>
             <hr />
-            <Section>
+            <section className="flexColumn">
               <h3>Can I see some examples?</h3>
               <h4>The past perfect being used to tell a story about the past. </h4>
               <ul>
@@ -131,8 +130,8 @@ const AdvancedLesson = ( { pageContext } ) => {
                 <li>If there hadn’t been so much traffic, we wouldn’t have missed our flight.</li>
                 <li>If he'd studied harder, he would have passed the exam.</li>
               </ul>
-            </Section>
-            <Section>
+            </section>
+            <section className="flexColumn">
               <h3>Adverbs and adverbials of time that are often used within a past perfect sentence to add meaning.</h3>
               <h4>Adverbs used with the past perfect event.</h4>
               <dl>
@@ -209,11 +208,11 @@ const AdvancedLesson = ( { pageContext } ) => {
                   <li>We'd just eaten when they told us to leave.</li>
                 </ul>
               </dl>
-            </Section>
+            </section>
           </article>
-        </MainColumn>
+        </MainWide>
         <aside>
-<h3>Exercises for the past perfect</h3>
+          <h3>Exercises for the past perfect</h3>
         </aside>
       </div>
     </Layout>

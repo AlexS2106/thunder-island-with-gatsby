@@ -6,10 +6,9 @@ import { v4 as uuidv4 } from 'uuid';
 
 import {
   postMedium,
-  row,
-  col,
   imageWrapper,
   textWrapper,
+  btnWrapper
 } from "./PostMedium.module.css";
 
 import Button from "../buttons/Button";
@@ -37,18 +36,18 @@ const PostMedium = ( { post, ...props } ) => {
   //Generates a list of h4 from the mainCategories (via props.post.frontmatter.mainCategories)
   const mainCats = mainCategories.map( ( category ) => {
     return (
-      <h4 key={ uuidv4() } >{ category.name }</h4>
+      <h4 key={ uuidv4() } className="textCenter shadowText" >{ category.name }</h4>
     );
   } );
   //Checks for a list on subcategories and generates a list of h4 from the mainCategories (via props.post.frontmatter.subcategories)
   const subCats = listSubcategories(frontmatter).map( ( category ) => {
     return (
-      <h4 key={ uuidv4() }>{ category.name }</h4>
+      <h4 key={ uuidv4() } className="textCenter shadowText">{ category.name }</h4>
     );
   } );
    //Checks for a portraitImage and makes an image and wrapper if one is found (via props.post.frontmatter.portraitImage) 
   const generatedImage = portraitImage ?
-    <div className={ imageWrapper }>
+    <div className={ `flexColumn pad1 ${imageWrapper}` }>
       <GatsbyImage image={ getImage( portraitImage ) } alt={ alt } />
       { props.hasPhotographer && photographer !== "" ? <cite>photo by { photographer }</cite> : null }
     </div>
@@ -56,21 +55,21 @@ const PostMedium = ( { post, ...props } ) => {
   
     ////** MARK UP **////
   return (
-    <article className={ postMedium }>
+    <article className={ `pad1 bgLight ${postMedium}` }>
       <div>
-        { props.showDate && <time dateTime={ date }> { date } </time> }
-        <h3>{ title }</h3>
+        { props.showDnte && <time dateTime={ date } className="textCenter shadowText"> { date } </time> }
+        <h3 className="textCenter shadowText">{ title }</h3>
         { mainCats }
         { props.showSubcategories && subCats }
-        { props.showAuthor && <address rel="author">by { author }</address> }
+        { props.showAuthor && <address rel="author" className="textCenter shadowText" >by { author }</address> }
       </div>
-      <div className={ row }>
+      <div className="flexRow">
         { generatedImage }
-        <div className={ textWrapper }>
-          <p className="withSideborder">{ generatedExcerpt }</p>
+        <div className={ `flexColumn pad1 ${textWrapper}` }>
+          <p className="sideBorderDark sideBorderPad">{ generatedExcerpt }</p>
         </div>
       </div>
-      <div className={ col }>
+      <div className={ `flexColumn ${btnWrapper}` }>
         <Button
           innerText={ innerText }
           onClick={ () => {

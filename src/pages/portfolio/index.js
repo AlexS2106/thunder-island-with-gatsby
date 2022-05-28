@@ -1,23 +1,21 @@
-import React, { useRef } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
-import { v4 as uuidv4 } from 'uuid';
+import scrollTo from "gatsby-plugin-smoothscroll";
 
 import {
-  grid,
-  indexItem,
-  writing
 } from "./index.module.css";
 
 import Breadcrumbs from "../../components/navigation/Breadcrumbs";
-import ContentCardList from "../../components/display/ContentCardList";
+import IndexAndContentDisplay from "../../components/indexAndContentDisplay/IndexAndContentDisplay";
+import Intro from "../../components/typography/Intro";
 import Layout from "../../components/layout/Layout";
-import MainColumn from "../../components/layout/MainColumn";
-import PageTitle from "../../components/header/PageTitle";
+import MainWide from "../../components/layout/MainWide";
+import MenuInBoxes from "../../components/navigation/MenuInBoxes";
+import PageTitle from "../../components/typography/PageTitle";
 import Spacer from "../../components/layout/Spacer";
 
-import { makeTitle, makeSlug, sortingUlsFromNodes } from "../../utilities/functions";
-
+import { pathImg, writingImg } from "../../utilities/staticImgFunctions";
 
 ////** COMPONENT **////
 const PortfolioPage = ( { data, pageContext } ) => {
@@ -30,38 +28,59 @@ const PortfolioPage = ( { data, pageContext } ) => {
   ////** VARIABLES **////
   //Unpacking data
   const { nodes } = data.allMdx;
-  //PageTitle
+  //PageTitle 
   const pageTitle = "My Portfolios";
-  //ContentIndex (side menu of all writing content)
-  const contentIndexList = [
-      {
-        ulName: "my-poems",
-        liTitles: sortingUlsFromNodes( nodes, "poem" )
-      },
-      {
-        ulName: "my-reviews",
-        liTitles: sortingUlsFromNodes( nodes, "review" )
-      },
-      {
-        ulName: "my-stories",
-        liTitles: sortingUlsFromNodes( nodes, "story" )
-      },
+  //MenuBoxes (images, button text and hash links)
+  const topMenuBoxesMenuArray = [
+    {
+      link: "#content",
+      name: "Content Writing",
+      image: writingImg(),
+    },
+    {
+      link: "#dev",
+      name: "Javascript",
+      image: pathImg(),
+    },
+    {
+      link: "#photos",
+      name: "Photographs",
+      image: pathImg(),
+    },
   ];
-  //ContentCardList -> ContentCard -> Button
-  const contentCardButtonText = "Continue...";
-
-   ////** FUNCTIONS **////
-  //ContentIndex (make the post titles into a list)
-  const generateContentIndex = contentIndexList.map( item => {
-    const liTitlesList = item.liTitles.map( liTitle => <li key={ uuidv4() }><a href={ `#${makeSlug(liTitle)}` } className={ indexItem } activeClassName="isActive" >{ liTitle }</a></li> )
-        return (
-          <ul key={ uuidv4() } className="addBorderPadding">
-            <h6>{ makeTitle(item.ulName) }</h6>
-            { liTitlesList }
-          </ul>
-        );
-  } );
-
+  //MenuBoxes for dev display (images, button text and hash links)
+  const devMenuBoxesMenuArray = [
+    {
+      link: "https://github.com/AlexS2106/thunder-island-with-gatsby",
+      name: "Thunder Island",
+      image: writingImg(),
+    },
+    {
+      link: "https://github.com/AlexS2106/starwars-vacation-planner",
+      name: "Yoda Holidays",
+      image: pathImg(),
+    },
+    {
+      link: "https://github.com/AlexS2106/market-place",
+      name: "The Market Place",
+      image: pathImg(),
+    },
+  ];
+  //IndexAndContentDisplay
+  const indexAndContentDisplayData = nodes;
+  //Intro string
+  const intro = `Books read, movies watched, information informed, opinions opined, poems mused, stories woven, projects coded, walks walked, experiences exposed, photographs kept, life lived.`
+    ////** FUNCTIONS **////
+  //Manages menu selection clicks in the top menuboxes
+  const handleTopMenuBoxClick = ( e ) => { 
+    const clickedTemp = topMenuBoxesMenuArray.filter( item => item.name === e.target.innerText );
+    scrollTo( `${ clickedTemp[ 0 ].link }` );
+  }
+  //Manages menu selection clicks in menuboxes
+  const handleDevMenuBoxClick = ( e ) => { 
+    const clickedTemp = devMenuBoxesMenuArray.filter( item => item.name === e.target.innerText );
+    window.open(`${ clickedTemp[ 0 ].link }`, `_blank`);
+  }
   ////** MARK UP **////
   return (
     <Layout>
@@ -70,21 +89,34 @@ const PortfolioPage = ( { data, pageContext } ) => {
       <Spacer size="small" />
       <Breadcrumbs crumbs={ crumbs } />
       <Spacer size="small" />
-        <p className="withSideBorder addBorderPadding" style={ {maxInlineSize: "fit-content", margin: "auto" } }>Books read, movies watched, opinions opined, poems mused, stories woven, walks walked, photographs kept, life lived.</p>
+      <Intro>{ intro }</Intro>
       <Spacer size="small" />
-      <MainColumn>
-        <div className={ grid } >
-          <div>
-            { generateContentIndex }
-          </div>
-          <div className={ writing }>
-            <ContentCardList
-              list={ nodes }
-              btnText={ contentCardButtonText }
-            />
-          </div>
-        </div>
-      </MainColumn>
+      <h2 className="textCenter shadowText">What would you like to see?</h2>
+      <MenuInBoxes
+        menu={ topMenuBoxesMenuArray }
+        onClick={ handleTopMenuBoxClick }
+      />
+      <Spacer size="small" />
+      <MainWide>
+        <h2 id="content" className="textCenter shadowText">Content Writing</h2>
+        <Spacer size="small" />
+        <IndexAndContentDisplay list={ indexAndContentDisplayData } />
+        <Spacer size="medium" />
+        <section className="flexColumn">
+          <h2 id="dev" className="textCenter shadowText">Javascript Projects</h2>
+          <Spacer size="small" />
+          <MenuInBoxes
+            menu={ devMenuBoxesMenuArray }
+            onClick={ handleDevMenuBoxClick }
+          />
+          <Spacer size="small" />
+        </section>
+        <section className="flexColumn">
+          <h2 id="photos" className="textCenter shadowText">Photograph Albums</h2>
+          <Spacer size="small" />
+          <p className="textCenter" style={ {fontSize: "3rem"} }>Working on it.</p>
+        </section>
+      </MainWide>
     </Layout>
   );
 }
@@ -101,7 +133,7 @@ export default PortfolioPage;
 export const data = graphql`
 query portfolios {
   allMdx(
-    filter: {frontmatter: {mainCategories: {eq: "portfolio"}}}
+    filter: {frontmatter: {mainCategories: {in: ["portfolio", "health"]}}}
     sort: {order: DESC, fields: frontmatter___posted}
   ) {
     nodes {
@@ -114,12 +146,12 @@ query portfolios {
             gatsbyImageData
           }
         }
+        mainCategories
         alt
       }
       body
     }
   }
 }
-
 `;
 

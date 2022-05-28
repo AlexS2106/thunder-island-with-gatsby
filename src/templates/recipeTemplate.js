@@ -6,20 +6,20 @@ import { v4 as uuidv4 } from 'uuid';
 
 import {
   grid,
-  row,
-  itemsEnd,
+  itemEnd,
+  adaptSignature1,
   card,
   cardHeading,
-  cardBody,
   cardFooter
 } from "./templates.module.css";
 
 import Breadcrumbs from "../components/navigation/Breadcrumbs";
 import Button from "../components/buttons/Button";
+import Intro from "../components/typography/Intro";
 import Layout from "../components/layout/Layout";
-import MainColumn from "../components/layout/MainColumn";
-import PageTitle from "../components/header/PageTitle";
-import Signature from "../components/address/Signature";
+import MainWide from "../components/layout/MainWide";
+import PageTitle from "../components/typography/PageTitle";
+import Signature from "../components/typography/Signature";
 import SmallPostList from "../components/display/SmallPostList";
 import Spacer from "../components/layout/Spacer";
 
@@ -52,7 +52,7 @@ const RecipeTemplate = ( { data, pageContext } ) => {
   ////** FUNCTIONS **////
   //Checks for subcategories and generates a list of subcategories from the frontmatter in the article (via props.data.recipePost through the page query)
   const subcats = listSubcategories( frontmatter );
-  const generateSubcats = subcats.map( ( tag, index ) => index === 0 ? <span key={ uuidv4() } >| { makeTitle( tag ) } | </span> : index === subcats.length - 1 ? <span key={ uuidv4() }>{ makeTitle( tag ) } |</span> : <span key={ uuidv4() } >{ makeTitle( tag ) } |</span> );
+  const generateSubcats = subcats.map( ( tag, index ) => index === 0 ? <h6 key={ uuidv4() } >| { makeTitle( tag ) } | </h6> : index === subcats.length - 1 ? <h6 key={ uuidv4() }>{ makeTitle( tag ) } |</h6> : <h6 key={ uuidv4() } >{ makeTitle( tag ) } |</h6> );
   //MDX article content (via props.data.recipePost.body through the page query)
   const contentBody = MDX( body );
 
@@ -65,26 +65,24 @@ const RecipeTemplate = ( { data, pageContext } ) => {
       <Breadcrumbs crumbs={ crumbs } />
       <Spacer size="medium" />
       <div className={ grid }>
-        <MainColumn>
+        <MainWide>
           <article>
-            <time dateTime={ posted }> Written on { posted } </time>
-            { posted === updated ? <time dateTime={ updated }> Updated on { updated } </time> : null }
+            <time dateTime={ posted } className="textCenter"> Written on { posted } </time>
+            { posted === updated ? <time dateTime={ updated } className="textCEnter"> Updated on { updated } </time> : null }
             <Spacer size="small" />
             <GatsbyImage image={ getImage( landscapeImage ) } alt={ alt } ></GatsbyImage>
             <cite>photo by { photographer }</cite>
             <Spacer size="small" />
-            <p className="addBorderPadding withSideBorder" style={ { maxInlineSize: "fit-content", margin: "auto" } }>{ excerpt }</p>
+            <Intro>{ excerpt }</Intro>
             <Spacer size="small" />
-            <div className={ card }>
-              <header className={ cardHeading }>
+            <div className={ `flexColumn pad1 ${card}` }>
+              <header className={ `flexColumn ${cardHeading}` }>
                 <GatsbyImage image={ getImage( landscapeImage ) } alt={ alt } ></GatsbyImage>
-                <h2>{ title }</h2>
-                <h6> { generateSubcats } </h6>
+                <h2 className="textCenter">{ title }</h2>
+                 { generateSubcats } 
               </header>
-              <div className={ cardBody } >
                 { contentBody }
-              </div>
-              <div style={ { alignSelf: "end", padding: "1rem 6rem 3rem 3rem" } }>
+              <div className={ adaptSignature1 }>
                 <Signature rotate signedBy={ author } />
               </div>
               <div className={ cardFooter }>
@@ -92,11 +90,11 @@ const RecipeTemplate = ( { data, pageContext } ) => {
               </div>
             </div>
           </article>
-        </MainColumn>
-        <aside>
-          <div className="withSideBorder">
+        </MainWide>
+        <aside className="flexColumn">
+          <div className="sideBorderDark sideBorderPad">
             <header>
-              <h3>{ asidePostsHeaderText }</h3>
+              <h3 className="bgLight">{ asidePostsHeaderText }</h3>
             </header>
             <SmallPostList
               postData={ associatedRecipes }
@@ -104,7 +102,7 @@ const RecipeTemplate = ( { data, pageContext } ) => {
             />
           </div>
         </aside>
-        <div className={ `${ row } ${ itemsEnd }` }>
+        <div className={ `flexRow ${ itemEnd }` }>
           <Button onClick={ () => {
             navigate( -1 );
           }

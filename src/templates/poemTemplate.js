@@ -5,15 +5,15 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { v4 as uuidv4 } from 'uuid';
 
 import {
-  row,
-  itemsEnd
+  itemEnd,
 } from "./templates.module.css";
 
 import Breadcrumbs from "../components/navigation/Breadcrumbs";
 import Button from "../components/buttons/Button";
+import Intro from "../components/typography/Intro";
 import Layout from "../components/layout/Layout";
-import MainColumn from "../components/layout/MainColumn";
-import PageTitle from "../components/header/PageTitle";
+import MainWide from "../components/layout/MainWide";
+import PageTitle from "../components/typography/PageTitle";
 import Spacer from "../components/layout/Spacer";
 
 import MDX from "../providers/MDX";
@@ -54,7 +54,7 @@ const PoemTemplate = ( { data, pageContext } ) => {
       <Spacer size="small" />
       <Breadcrumbs crumbs={ crumbs } />
       <Spacer size="small" />
-      <MainColumn>
+      <MainWide>
         <article>
           <header>
           <address rel="author">By { author }</address>
@@ -63,18 +63,18 @@ const PoemTemplate = ( { data, pageContext } ) => {
           <GatsbyImage image={ getImage( landscapeImage ) } alt={ alt }></GatsbyImage>
           <cite>photo by { photographer }</cite>
           { generateTags }
-            <p className="withSideBorder addBorderPadding" style={ {maxInlineSize: "fit-content", margin: "auto" } }>{ excerpt }</p>
+            <Intro>{ excerpt }</Intro>
           </header>
           { contentBody }
           <p>{ associated }</p>
-          <div className={ `${ row } ${ itemsEnd }` }>
+          <div className={ `flexRow ${ itemEnd }` }>
             <Button onClick={ () => {
               navigate( -1 );
             }
             } innerText={ innerText }></Button>
           </div>
         </article>
-      </MainColumn>
+      </MainWide>
     </Layout>
   );
 }

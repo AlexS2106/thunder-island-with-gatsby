@@ -2,8 +2,7 @@ import React from "react";
 import { Link } from "gatsby";
 
 import {
-  navbar,
-  linksWrapper
+  navbar
 } from "./Navbar.module.css";
 
 import Search from "./Search";
@@ -46,7 +45,7 @@ const Navbar = (  ) => {
   ////** MARK UP **////
   return (
     <nav className={ navbar }>
-      <ul className={ linksWrapper }>
+      <ul className="flexRow">
         { generateNavLinks }
         <Search />
       </ul>

@@ -2,10 +2,9 @@ import React from "react";
 import { v4 as uuidv4 } from "uuid";
 
 import {
-  tagCloudStyling
+  tagCloud
 } from "./TagCloud.module.css"
 
-import Section from "../layout/Section";
 
 import { makeTitle } from "../../utilities/functions";
 
@@ -29,14 +28,14 @@ const TagCloud = ( { tags, ...props } ) => {
 
   ////** MARK UP **////
   return (
-    <Section>
-      <header>
-        <h3>Tag Cloud</h3>
+    <section className={ `flexColumn ${tagCloud}` }>
+      <header className="pad1">
+        <h3 className="textCenter shadowText">Tag Cloud</h3>
       </header>
-      <ul className={ tagCloudStyling }>
+      <ul>
         { generateTagCloud }
       </ul>
-    </Section>
+    </section>
   );
 }
 

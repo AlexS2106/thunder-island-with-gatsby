@@ -35,7 +35,7 @@ export function filterList (listOfChoicesArray, nodeArrayToFilter) {
 }
 ///takes a node array and separates it into lists by type
 export function sortingUlsFromNodes ( nodes, ulType ) {
-  return nodes.filter( node => node.frontmatter.type.includes( ulType ) ).map(node => node.frontmatter.title);
+  return nodes.filter( node => node.frontmatter.type.includes( ulType ) ).map(node => node);
 }
 //Takes the date and returns the correct day.
  export function today () {
@@ -50,4 +50,5 @@ export function sortingUlsFromNodes ( nodes, ulType ) {
       case 6: return "Saturday";
       default: return "Today";
     }
-  }
+  };
+

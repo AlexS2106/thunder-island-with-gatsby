@@ -17,25 +17,24 @@ const Footer = () => {
 
   return (
     <footer className={ footer }>
-      <div className={ imageWrapper }>
+      <div className="flexColumn">
         { logo }
       </div>
-       
-      <div className={ credits }>
+      <div className={ `textCenter ${credits}` }>
         <p>@Copyright { title } { new Date().getFullYear() }</p>
-        <div className={ subcredits }>
-        <div>
-          <p>A { stack } Website</p>
-          <p>{ stackTech.map( ( tech, index ) => index === stackTech.length - 1 ? `with ${ tech }` : `${ tech }, ` ) }</p>
-        </div>
-        <div>
-          <p>Logo Design</p>
-          <p>by Claire Murray</p>
-          <address>@ClairesWebsite</address>
-        </div>
-        <div>
+        <div className="flexRow">
+          <div className="flexColumn textCenter">
+            <p>A { stack } Website</p>
+            <p>{ stackTech.map( ( tech, index ) => index === stackTech.length - 1 ? `with ${ tech }` : `${ tech }, ` ) }</p>
+          </div>
+          <div className="flexColumn textCenter">
+            <p>Logo Design</p>
+            <p>by Claire Murray</p>
+            <address>@ClairesWebsite</address>
+          </div>
+          <div className="flexColumn textCenter">
             <p>All the design, coding and content of Thunder Island is the result of the interests, hobbies and dabblings of { author }.</p>
-        </div>
+          </div>
         </div>
       </div>
     </footer>

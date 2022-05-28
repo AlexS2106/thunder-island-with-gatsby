@@ -14,13 +14,10 @@ const SmallPostList = ( { postData, ...props } ) => {
 
     ////** MARK UP **////
   return (
-    <div className={ smallPostList }>
+    <div className={ ` flexColumn bgLight ${smallPostList}` }>
       { postData.map( ( item, index ) => (
         <div key={ index }>
-          <PostSmall
-            post={ item } classes="withBackground"
-            { ...props }
-          />
+          <PostSmall post={ item } { ...props }/>
           <Spacer key={ uuidv4() } size="small" />
         </div>
       ) ) }

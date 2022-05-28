@@ -18,7 +18,7 @@ const MenuInBoxes = ( { menu, ...props } ) => {
   //Generates a grid of boxes with a clickable button centre and a picture background (via props.menu) The onclick func and button innertext reside in the parent
   const generateMenuBoxes = menu.map( ( menuItem ) => {
     return (
-      <div key={ uuidv4() }>
+      <div key={ uuidv4() } className="flexColumn">
         { menuItem.image }
         <Button
           innerText={ makeTitle( menuItem.name ) }

@@ -4,24 +4,23 @@ import { graphql, navigate } from "gatsby";
 
 import {
   grid,
-  intro,
   authorImage,
   greeting,
-  welcome,
-  rotated
+  welcomeWrapper,
+  rotated,
+  marginLeftBig
 } from "./templates.module.css";
 
 import Breadcrumbs from "../components/navigation/Breadcrumbs";
 import Carousel from "../components/carousel/Carousel";
-import DivColumn from "../components/layout/DivColumn";
+import DivWide from "../components/layout/DivWide";
 import ExcerptList from "../components/display/ExcerptList";
 import Layout from "../components/layout/Layout";
-import MainColumn from "../components/layout/MainColumn";
+import MainWide from "../components/layout/MainWide";
 import MediumPostList from "../components/display/MediumPostList";
 import MenuInBoxes from "../components/navigation/MenuInBoxes";
 import Pagination from "../components/navigation/Pagination";
-import Section from "../components/layout/Section";
-import Signature from "../components/address/Signature";
+import Signature from "../components/typography/Signature";
 import Spacer from "../components/layout/Spacer";
 
 import useGetPostSelection from "../queries/useGetPostSelection.query";
@@ -106,8 +105,7 @@ const HomeTemplate = ( { data, pageContext } ) => {
     const clickedTemp = menuBoxesMenuArray.filter( item => item.name === e.target.innerText );
     navigate( `${ clickedTemp[ 0 ].link }` );
   }
-  //Displays todays day for the carousel title. Written as function for hoisting as it is also used in the variables above.
-
+  
   //Filters a list for carousel content
   const carouselContent = filterList( recipesOfToday, recipes );
 
@@ -115,7 +113,7 @@ const HomeTemplate = ( { data, pageContext } ) => {
   return (
     <Layout>
       <Spacer size="small" />
-      <DivColumn>
+      <DivWide>
         <MenuInBoxes
           menu={ menuBoxesMenuArray }
           onClick={ handleMenuBoxClick }
@@ -124,22 +122,22 @@ const HomeTemplate = ( { data, pageContext } ) => {
         {
           pageContext.currentPage === 1 ?
             <>
-              <Section>
-                <h3>All My Latest Posts</h3>
+              <section className="flexColumn">
+                <h3 className={ `shadowText ${ marginLeftBig }` }>All My Latest Posts</h3>
                 <Spacer size="small" />
                 <ExcerptList
                   list={ excerptListPosts }
                   innerText={ excerptListInnerText }
                   excerptLength={ excerptLength }
                 />
-              </Section>
+              </section>
               <Spacer size="large" />
             </>
             : null
         }
         <div className={ grid }>
-          <MainColumn>
-            <h3>Latest posts</h3>
+          <MainWide>
+            <h3 className="shadowText">Latest posts</h3>
             <Spacer size="small" />
             { pageContext.currentPage !== 1 ?
               <>
@@ -155,15 +153,15 @@ const HomeTemplate = ( { data, pageContext } ) => {
               showSubCategories={ showSubcategories }
               innerText={ mainPostsInnerText }
             />
-          </MainColumn>
+          </MainWide>
           <aside>
-            <div className="withSideBorder">
-              <div className={ intro } >
+            <div className="sideBorderDark sideBorderPad">
+              <div className="flexColumn" >
                 <div className={ rotated }>
-                  <h3 className={ greeting }>Hello <br /> And Welcome!</h3>
+                  <h3 className={ `textCenter pad1 ${greeting}`}>Hello <br /> And Welcome!</h3>
                 </div>
-                <div className={ authorImage } >{ image }</div>
-                <div className={ welcome }>
+                <div className={ `pad1 ${authorImage}` } >{ image }</div>
+                <div className={ welcomeWrapper }>
                   <p>I'm Alex and Thunder Island is my creative corner.</p>
                   <p>This space is a passionate mix of everything great and nothing important.</p>
                   <p>Looking for recipe ideas for your diet? Paleo, keto, atkins or low cal? Carnivore or vegetarian?</p>
@@ -182,14 +180,14 @@ const HomeTemplate = ( { data, pageContext } ) => {
           pageInfo={ pageInfo }
         />
         <Spacer size="medium" />
-      </DivColumn>
-      <Section>
+      </DivWide>
+      <section className="flexColumn">
         <Carousel
           title={ carouselTitle }
           carouselData={ carouselContent }
           innerText={ carouselPostsInnerText }
         />
-      </Section >
+      </section >
     </Layout>
   );
 }

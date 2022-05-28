@@ -16,6 +16,7 @@ module.exports = {
         useAutoGen: true
       },
     },
+    "gatsby-plugin-smoothscroll",
     "gatsby-plugin-image",
     "gatsby-transformer-sharp",
     "gatsby-plugin-sharp",

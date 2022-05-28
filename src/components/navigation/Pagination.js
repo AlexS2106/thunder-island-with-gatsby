@@ -5,8 +5,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 import {
   pagination,
-  paginationLi,
-  paginationArrow
+  arrow
 } from "./Pagination.module.css";
 
 import { doubleArrowRight, doubleArrowLeft } from "../../utilities/iconFunctions";
@@ -22,18 +21,18 @@ const Pagination = ( { pageInfo } ) => {
   //Creates li list with numbers for the pages, each one is a clickable link to the page of that number. (via props.pageinfo.pageCount)
   const paginationArray = Array.from( { length: pageCount }, ( _, index ) => {
     return (
-      <li key={ uuidv4() } className={ paginationLi } >
+      <li key={ uuidv4() } >
         <Link to={ index === 0 ? `/` : `/${ index + 1 }` } > { index + 1 } </Link>
       </li>
     );
   } );
   //Takes the entire page list (via paginationArray in FUNCTIONS) and chops it into smaller parts, it will show the current page plus one on either side and clickable arrows
   const paginationList = paginationArray.map( ( listItem, index ) => {
-    const num = index + 1;
+    let num = index + 1;
     return (
       num < currentPage + 2 && num > currentPage - 2 ? listItem
-        : num === currentPage + 3 ? <li key={ uuidv4() } className={ paginationArrow }><Link to={ `/${ index + 1 }` } > { doubleArrowRight() }</Link></li>
-          : num === currentPage - 3 ? <li key={ uuidv4() } className={ paginationArrow }><Link to={ `/${ index + 1 }` } >{ doubleArrowLeft() }</Link></li>
+        : num === currentPage + 2 ? <li key={ uuidv4() } ><Link to={ `/${ index + 1 }` } className={ arrow } > { doubleArrowRight() }</Link></li>
+          : num === currentPage - 2 ? <li key={ uuidv4() } ><Link to={ `/${ index + 1 }` } className={ arrow } >{ doubleArrowLeft() }</Link></li>
                 : null
     );
   } );
@@ -41,7 +40,7 @@ const Pagination = ( { pageInfo } ) => {
   ////** MARK UP **////
   return (
     <nav className={ pagination }>
-      <ul>
+      <ul className="flexRow">
         { paginationList }
       </ul>
     </nav>

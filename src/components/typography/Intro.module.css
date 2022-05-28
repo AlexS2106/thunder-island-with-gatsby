@@ -1,0 +1,5 @@
+.sized {
+   max-inline-size: fit-content; 
+   max-width: 75%;
+   margin: auto;
+}

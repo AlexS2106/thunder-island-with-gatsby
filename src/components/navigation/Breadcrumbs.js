@@ -4,7 +4,7 @@ import { navigate } from "gatsby";
 import { v4 as uuidv4 } from 'uuid';
 
 import {
-  breadcrumbsStyling,
+  breadcrumbs,
 } from "./Breadcrumbs.module.css";
 
 import { makeTitle } from "../../utilities/functions";
@@ -44,7 +44,7 @@ const Breadcrumbs = ( { crumbs } ) => {
 
   ////** MARK UP **//// 
   return (
-    <nav className={ breadcrumbsStyling }>
+    <nav className={ `flexRow ${breadcrumbs}` }>
       <div>
         { generateBreadcrumbs }
       </div>

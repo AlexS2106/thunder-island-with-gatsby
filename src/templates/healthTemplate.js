@@ -5,15 +5,16 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { v4 as uuidv4 } from 'uuid';
 
 import {
-  row,
-  itemsEnd
+  itemEnd
 } from "./templates.module.css";
 
 import Breadcrumbs from "../components/navigation/Breadcrumbs";
 import Button from "../components/buttons/Button";
+import Intro from "../components/typography/Intro";
 import Layout from "../components/layout/Layout";
-import MainColumn from "../components/layout/MainColumn";
-import PageTitle from "../components/header/PageTitle";
+import MainWide from "../components/layout/MainWide";
+import PageTitle from "../components/typography/PageTitle";
+import Signature from "../components/typography/Signature";
 import Spacer from "../components/layout/Spacer";
 
 import MDX from "../providers/MDX";
@@ -39,7 +40,7 @@ const HealthTemplate = ( { data, pageContext } ) => {
   //Tags
   const generateTags = tags > 0 ? tags.map( ( tag ) => {
     return (
-      <h4 key={ uuidv4() } >{ tag.name }</h4>
+      <h6 key={ uuidv4() } >{ tag.name }</h6>
     );
   } ) : null;
 
@@ -54,29 +55,30 @@ const HealthTemplate = ( { data, pageContext } ) => {
       <Spacer size="small" />
       <Breadcrumbs crumbs={ crumbs } />
       <Spacer size="small" />
-      <MainColumn>
+      <MainWide>
         <article>
-          <header>
-          <address rel="author">By { author }</address>
-          <time dateTime={ updated }> { updated } </time>
-          <time dateTime={ posted }> Originally written on { posted } </time>
+          <time dateTime={ updated } className="textCenter"> { updated } </time>
+          <time dateTime={ posted } className="textCenter"> Originally written on { posted } </time>
+          <Spacer size="small" />
           <GatsbyImage image={ getImage( landscapeImage ) } alt={ alt }></GatsbyImage>
           <cite>photo by { photographer }</cite>
           { generateTags }
-          <div className="withSideBorder addBorderPadding">
-            <p>{ excerpt }</p>
+          <Intro>
+            { excerpt }
+          </Intro>
+            { contentBody }
+          <div style={ { alignSelf: "end", padding: "1rem 6rem 3rem 3rem" } }>
+            <Signature rotate signedBy={ author } />
           </div>
-          </header>
-          { contentBody }
           <p>{ associated }</p>
-          <div className={ `${ row } ${ itemsEnd }` }>
+          <div className={ `flexRow ${ itemEnd }` }>
             <Button onClick={ () => {
               navigate( -1 );
             }
             } innerText={ innerText }></Button>
           </div>
         </article>
-      </MainColumn>
+      </MainWide>
     </Layout>
   );
 }

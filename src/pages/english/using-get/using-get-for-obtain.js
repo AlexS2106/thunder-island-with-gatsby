@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Link } from "gatsby";
 
 import { 
-  contentIndexGrid,
+  grid,
   exercise,
   indexItem
 } from "./index.module.css";
@@ -11,9 +11,8 @@ import {
 import Breadcrumbs from "../../../components/navigation/Breadcrumbs";
 import Button from "../../../components/buttons/Button";
 import Layout from "../../../components/layout/Layout";
-import MainColumn from "../../../components/layout/MainColumn";
-import PageTitle from "../../../components/header/PageTitle";
-import Section from "../../../components/layout/Section";
+import MainWide from "../../../components/layout/MainWide";
+import PageTitle from "../../../components/typography/PageTitle";
 import Spacer from "../../../components/layout/Spacer";
 
 
@@ -188,8 +187,8 @@ const UsingGetForObtain = ( { pageContext } ) => {
       <PageTitle title={ pageTitle } />
       <Spacer size="small" />
       <Breadcrumbs crumbs={ crumbs } />
-      <div className={ contentIndexGrid }>
-        <MainColumn>
+      <div className={ grid }>
+        <MainWide>
           <div className={ exercise }>
             <p>Often <em>get</em> is used instead of alternative words which all mean obtain.</p>
             <Spacer size="small" />
@@ -206,7 +205,7 @@ const UsingGetForObtain = ( { pageContext } ) => {
               <li>To take</li>
             </ol>
             <Spacer size="small" />
-            <Section>
+            <section className="flexColumn">
               <h3>Speech</h3>
               <p>When my son { answerInput( 0 ) } his degree, I was so happy because I knew he had worked so hard for these last three years to { answerInput( 1 ) } it.</p>
               <p>I had saved up all the money I could and { answerInput( 2 ) } him a brand new car as a graduation present. All he had to do was go and { answerInput( 3 ) } it from the car shop. You should’ve seen his face when he { answerInput( 4 ) } it. He was so happy! </p>
@@ -214,14 +213,14 @@ const UsingGetForObtain = ( { pageContext } ) => {
               <p>He drove South to the seaport and { answerInput( 6 ) } the boat across to France. He spent the next two months travelling around the continent. Every week, I { answerInput( 7 ) } a postcard from him from a different place. He was having such a great time! </p>
               <p>Eventually, I got a phone call. It was him! He told me he was in Italy. He said he’d { answerInput( 8 ) } himself an Italian girlfriend and been offered a job at some firm in Italy. He's signed the contract already, and that company’s { answerInput( 9 ) } him now for a whole year. I was so happy but sad as well! I miss him, you see? Well, in the end, he asked me if I'd { answerInput( 10 ) } a parcel from him yet. Well, I hadn’t. Obviously! So I said no. </p>
               <p>  ‘Well, Mum, { answerInput( 11 ) } yourself to the post office and go { answerInput( 12 ) } it.’ He said. And that’s why I’m here! Can I { answerInput( 13 ) } my parcel?</p>
-            </Section>
+            </section>
             <Spacer size="small" />
             <Button onClick={ handleSubmit } innerText="Submit" />
             { success && <Button onClick={ handleReset } innerText="Reset" /> }
             { submitted && success && <p style={ { fontSize: "2rem", textAlign: "center", padding: "1rem" } }>Congratulations! Points are coming!</p> }
           </div>
-        </MainColumn>
-        <aside className="withSideBorderLight addBorderPadding">
+        </MainWide>
+        <aside className="sideBorderLight sideBorderPad">
           <h3>Lessons on Using Get</h3>
           <Link to={ `/english/using-get/complete-lesson` } className={ indexItem } activeClassName="isActive" >A complete Lesson On Using Get</Link>
           <Spacer size="small" />

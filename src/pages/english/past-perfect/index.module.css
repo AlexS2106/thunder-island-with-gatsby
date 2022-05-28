@@ -1,8 +1,8 @@
-.contentIndexGrid {
+.grid {
   display: grid;
   grid-template-columns: 75% 25%;
 }
-.contentIndexGrid div {
+.grid div {
   margin: 0% 2.5%;
 }
 .indexItem {

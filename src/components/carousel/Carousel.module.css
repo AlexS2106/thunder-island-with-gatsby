@@ -1,23 +1,18 @@
-.carouselStyling {
+.carousel {
   max-width: 100%;
   overflow: hidden;
 }
-.carouselTitle {
-  display: flex;
-  flex-direction: row;
-  flex: 1;
+.allCenter {
   justify-content: center;
   align-items: center;
 }
-.carouselMove {
+.spaced {
+  justify-content: space-evenly;
+  align-items: center;
+}
+.colorPad {
   color: var(--color-accent-dark);
   padding-left: .5rem;
   padding-right: 1rem;
 }
-.carousel {
-  display: flex;
-  flex-direction: row;
-  flex: 1;
-  justify-content: space-evenly;
-  align-items: center;
-}
+

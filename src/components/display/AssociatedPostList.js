@@ -2,8 +2,7 @@ import React from "react";
 import { v4 as uuidv4 } from 'uuid';
 
 import {
-  associatedPostListWrapper,
-  associatedPostWrapper
+  associatedPostList
 } from "./AssociatedPostList.module.css";
 
 import Spacer from "../layout/Spacer";
@@ -14,10 +13,10 @@ const AssociatedPostList = ( { postData } ) => {
 
 ////** MARK UP **////
   return (
-    <div className={ associatedPostListWrapper }>
+    <div className={ `flexColumn bgLight ${associatedPostList}` }>
       { postData.map( ( item ) => {
         return (
-          <div key={ uuidv4() } className={ associatedPostWrapper }>
+          <div key={ uuidv4() } className="bgLight">
             <PostMedium
               showDate
               showAuthor

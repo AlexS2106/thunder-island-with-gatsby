@@ -1,0 +1,44 @@
+.indexAndContentDisplay {
+  background: linear-gradient(to right bottom, var(--color-light), var(--color-mid));
+  padding: 3rem;
+  display: grid;
+  grid-template-columns: 30% 70%;
+  gap: 3rem;
+  border-radius: 5px;
+}
+.marginLeft1 {
+  margin-left: 5%;
+}
+.marginLeft2 {
+  margin-left: 10%;
+}
+.indexItem {
+  text-decoration: underline;
+  text-decoration-color: var(--color-accent-dark);
+  padding: 0.25rem;
+}
+.indexItem:hover {
+  text-decoration: dotted underline;
+  text-decoration-color: var(--color-accent-dark);
+}
+.contentHeight35 {
+  max-height: 35rem;
+  overflow: hidden;
+}
+.contentNone {
+  max-height: none;
+}
+.extraPadding {
+  padding-right: 3rem;
+}
+.blurHr {
+  height: 2px;
+  background-color: var(--color-accent-light);
+  border: none;
+}
+.lastHr {
+  width: 75%;
+  border-top: 1px dotted var(--color-accent-light);
+  margin: 2rem auto;
+}
+

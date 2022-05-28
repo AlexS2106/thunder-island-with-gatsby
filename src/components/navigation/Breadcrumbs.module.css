@@ -1,15 +1,14 @@
-.breadcrumbsStyling {
-  display: flex;
+.breadcrumbs {
   justify-content: space-around;
   margin: auto;
 }
-.breadcrumbsStyling div svg {
+.breadcrumbs div svg {
   color: var(--color-accent-dark);
 }
-.breadcrumbsStyling div button span {
+.breadcrumbs div button span {
   padding-left: .5rem;
   padding-right: 1rem;
 }
-.breadcrumbsStyling div button span:hover {
+.breadcrumbs div button span:hover {
   border-bottom: 1px dotted var(--color-accent-dark);
 }

@@ -5,7 +5,8 @@ import { v4 as uuidv4 } from 'uuid';
 
 import {
   grid,
-  asideWrapper,
+  justify,
+  accent,
   indexItem
 } from "./index.module.css";
 
@@ -13,12 +14,11 @@ import Breadcrumbs from "../../components/navigation/Breadcrumbs";
 import Button from "../../components/buttons/Button";
 import Carousel from "../../components/carousel/Carousel";
 import Layout from "../../components/layout/Layout";
-import MainColumn from "../../components/layout/MainColumn";
+import MainWide from "../../components/layout/MainWide";
 import MediumPostList from "../../components/display/MediumPostList";
 import MenuInBoxes from "../../components/navigation/MenuInBoxes";
 import MenuInRows from "../../components/navigation/MenuInRows";
-import PageTitle from "../../components/header/PageTitle";
-import Section from "../../components/layout/Section";
+import PageTitle from "../../components/typography/PageTitle";
 import SmallPostList from "../../components/display/SmallPostList";
 import Spacer from "../../components/layout/Spacer";
 import TagCloud from "../../components/display/TagCloud";
@@ -162,11 +162,11 @@ const RecipesPage = ( { pageContext } ) => {
       />
       <Spacer size="medium" />
       <div className={ grid }>
-        <MainColumn>
+        <MainWide>
           <PageTitle title={ `${ selectedCategory } Recipes` } />
           { mainCount > 0 ?
             <>
-              <ul className="addBorderPadding" >
+              <ul className="sideBorderPad" >
                 { shownRecipes.slice( 0, mainCount ).map( item => <li key={ uuidv4() }><Link to={ `recipes/${ item.frontmatter.slug }` } className={ indexItem } activeClassName="isActive" >{ item.frontmatter.title }</Link></li> ) }
               </ul>
               <Button
@@ -192,25 +192,25 @@ const RecipesPage = ( { pageContext } ) => {
               <>
                 <Button innerText={ moveOnButtonText } onClick={ () => setMainCount( mainCount + mediumPostListNumDisplayedRecipes ) } />
                 <Spacer size="small" />
-                <ul className="addBorderPadding">
+                <ul>
                   { shownRecipes.slice( mainCount + mediumPostListNumDisplayedRecipes ).map( item => <li key={ uuidv4() }><Link to={ `/recipes/${ item.frontmatter.slug }` } className={ indexItem } activeClassName="isActive" >{ item.frontmatter.title }</Link></li> ) }
                 </ul>
               </> : null
           }
-        </MainColumn>
-        <div className={ asideWrapper }>
-          <aside>
+        </MainWide>
+        <div className={`flexColumn ${justify}`}>
+          <aside className={`sideBorderDark ${accent}`}>
             <TagCloud
               tags={ recipeTags }
               onClick={ handleTagCloudClick }
             />
             <Spacer size="small" />
-            <Section>
-              <h3>{ `${ selectedTag } Recipes `}</h3>
+            <section className="sideBorderPad flexColumn bgLight">
+              <h3 className="textCenter pad1 shadowText">{ `${ selectedTag } Recipes `}</h3>
               <Spacer size="small" />
               { asideCount > 0 ?
                 <>
-                  <ul className="addBorderPadding">
+                  <ul className="pad1">
                     { shownTagRecipes.slice( 0, asideCount ).map( item => <li key={ uuidv4() }><Link to={ `/recipes/${ item.frontmatter.slug }` } className={ indexItem } activeClassName="isActive" >{ item.frontmatter.title }</Link></li> ) }
                   </ul>
                   <Spacer size="small" />
@@ -234,12 +234,12 @@ const RecipesPage = ( { pageContext } ) => {
                   <>
                     <Button innerText={ moveOnButtonText } onClick={ () => setAsideCount( asideCount + smallPostListNumDisplayedRecipes ) } />
                     <Spacer size="small" />
-                    <ul className="addBorderPadding">
+                    <ul>
                       { shownTagRecipes.slice( asideCount + smallPostListNumDisplayedRecipes ).map( item => <li key={ uuidv4() }><Link to={ `/recipes/${ item.frontmatter.slug }` } className={ indexItem } activeClassName="isActive" >{ item.frontmatter.title }</Link></li> ) }
                     </ul>
                   </> : null
               }
-            </Section>
+            </section>
             <Spacer size="small" />
           </aside>
         </div>

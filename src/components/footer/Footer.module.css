@@ -2,39 +2,28 @@
   font-family: "Alegreya", serif;
   width: 100%;
 }
-.footer .imageWrapper {
+.footer > div {
   padding: 4rem;
-  display: flex;
-  flex: 1;
   justify-content: center;
-  max-width: 100%;
-  max-height: 70px;
-  margin-top: 5rem; 
 }
-.imageWrapper img {
+.footer > div > div {
   margin: auto;
 }
 .credits {
-  text-align: center;
   background-color: var(--color-mid);
-  width: 100%;
 }
 .credits > p {
-  padding: 1rem;
+  padding: 2rem;
 }
-.subcredits {
-  display: flex;
-  flex-direction: row;
+.credits > div {
   justify-content: space-around;
   align-items: center;
 }
-.subcredits div {
+.credits > div div {
   text-align: center;
-  display: flex;
-  flex-direction: column;
   align-items: center;
   max-width: 25%;
 }
-.footer .credits p {
+.credits p {
   font-size: 1.4rem;
 }

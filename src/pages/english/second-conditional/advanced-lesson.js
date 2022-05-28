@@ -2,15 +2,14 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import { 
-  contentIndexGrid,
+  grid,
   indexItem
 } from "./index.module.css";
 
 import Breadcrumbs from "../../../components/navigation/Breadcrumbs";
 import Layout from "../../../components/layout/Layout";
-import MainColumn from "../../../components/layout/MainColumn";
-import PageTitle from "../../../components/header/PageTitle";
-import Section from "../../../components/layout/Section";
+import MainWide from "../../../components/layout/MainWide";
+import PageTitle from "../../../components/typography/PageTitle";
 import Spacer from "../../../components/layout/Spacer";
 
 
@@ -38,15 +37,15 @@ const AdvancedLesson = ( { pageContext } ) => {
       <PageTitle title={ pageTitle } />
       <Spacer size="small" />
       <Breadcrumbs crumbs={ crumbs } />
-      <div className={ contentIndexGrid }>
-        <MainColumn>
+      <div className={ grid }>
+        <MainWide>
           <article>
-            <Section>
+            <section className="flexColumn">
               <h3>What is the second conditional?</h3>
               <p>An <span className={ tooltip } title="Not true">unreal</span> <span className={ tooltip } title="A situation or action.">condition</span> and its result in the present or in the future.</p>
-            </Section>
+            </section>
             <hr />
-            <Section>
+            <section className="flexColumn">
               <h3>What do I use the second conditional for?</h3>
               <p>Use the second conditional to imagine, dream and wish!</p>
               <dl>
@@ -67,9 +66,9 @@ const AdvancedLesson = ( { pageContext } ) => {
                 <dd></dd>
                 <dt>To make polite requests.</dt>
               </dl>
-            </Section>
+            </section>
             <hr />
-            <Section>
+            <section className="flexColumn">
               <h3>How do I make the second conditional?</h3>
               <p>You make a sentence with the second conditional by using two parts.</p>
               <dl>
@@ -89,9 +88,9 @@ const AdvancedLesson = ( { pageContext } ) => {
                 <dt>Result + if condition.</dt>
                 <dd></dd>
               </dl>
-            </Section>
+            </section>
             <hr />
-            <Section>
+            <section className="flexColumn">
               <h6>Do I have to use would?</h6>
               <p>Above, you used <em>would</em>. Would is the word most often used for the second conditional but there are two other words you can use. It all depends on what you want to say!</p>
               <dl>
@@ -102,9 +101,9 @@ const AdvancedLesson = ( { pageContext } ) => {
                 <dt>Use <em>might</em> when the result is a lot less sure.</dt>
                 <dd>If we had the money, I <em>might</em> buy a car.</dd>
               </dl>
-            </Section>
+            </section>
             <hr />
-            <Section>
+            <section className="flexColumn">
               <h6>Something that is a little different!</h6>
               <p>When using the verb <em>to be</em>, the sentence looks like this:
                 <ul>
@@ -113,9 +112,9 @@ const AdvancedLesson = ( { pageContext } ) => {
                 </ul>
                 <p><em>'If I were'</em> is correct but <em>'if I was'</em> is also used be some English speaking people.</p>
               </p>
-            </Section>
+            </section>
             <hr />
-            <Section>
+            <section className="flexColumn">
               <h6>When talking about imaginary abilities, things are different.</h6>
               <p>Replace the <a href="/">past simple</a> with could + <span className={ tooltip } title="The present participle."><a href="/">verb 1</a></span> like this:</p>
               <ul>
@@ -129,17 +128,17 @@ const AdvancedLesson = ( { pageContext } ) => {
                 <span><em>not</em></span>
                 <li>I’d be home by now if I ran faster.</li>
               </ul>
-            </Section>
+            </section>
             <hr />
-            <Section>
+            <section className="flexColumn">
               <h6>Something to remember!</h6>
               <p><span className={ tooltip } title="The present participle."><a href="/">Verb 1</a></span>1 after would/could is not always necessary if the context is clear.</p>
               <ul>
                 <li>If I could help you, I would.</li>
               </ul>
-            </Section>
+            </section>
             <hr />
-            <Section>
+            <section className="flexColumn">
               <h3>Can I see some examples?</h3>
               <dl>
                 <dt>Here we are talking about an impossible/unlikely future condition and result.</dt>
@@ -175,9 +174,9 @@ const AdvancedLesson = ( { pageContext } ) => {
                 <dd><span clasName={ tooltip } title="This uses a contraction. I would becomes I'd.">I'd</span> be really happy if you visited me.</dd>
                 <dd>She might find it easier if you helped her.</dd>
               </dl>
-            </Section>
+            </section>
           </article>
-        </MainColumn>
+        </MainWide>
         <aside>
           <h3>Exercises</h3>
         </aside>

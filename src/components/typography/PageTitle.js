@@ -1,17 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import { 
-  pageTitleStyling
-} from "./PageTitle.module.css";
-
 
 ////** COMPONENT **////
 const PageTitle = ( { title } ) => { 
 
   ////** MARK UP **////
   return (
-      <h2 className={ pageTitleStyling }>
+      <h2 className="shadowText textCenter">
         { title }
       </h2>
   );

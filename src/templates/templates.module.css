@@ -7,31 +7,19 @@
 }
 .grid aside {
   justify-self: center;
-  display: flex;
-  flex-direction: column;
-  flex: 1;
 }
-.grid aside h3{
-  text-align: center;
-  padding: 1rem;
-  background-color: var(--color-accent-light);
-}
-.intro {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-}
-.intro .greeting {
+.greeting {
+  color: var(--color-accent-dark);
   font-family: var(--font-handwritten);
+  letter-spacing: .3rem;
   font-size: 4.5rem;
   background-color: transparent;
 }
 .authorImage {
   align-self: center;
   border-radius: 100%;
-  margin-bottom: 1rem;
 }
-.intro .welcome p {
+.welcomeWrapper p {
   font-family: var(--font-handwritten);
   font-size: 3.5rem;
   font-weight: bolder;
@@ -42,34 +30,27 @@
 .rotated {
   transform: rotate(-15deg);
 }
-.itemsEnd {
+.itemEnd {
  justify-content: flex-end;
  margin-right: 2rem;
 }
-.row {
-  display: flex;
-  flex-direction: row;
-  flex: 1;
+.marginLeftBig {
+  margin-left: 4rem;
+}
+.adaptSignature1 {
+  padding: 1rem 6rem 3rem 3rem;
+  align-self: end;
 }
 .card {
-  padding: 1rem;
   justify-content: space-evenly;
   border: 1px solid var(--color-accent-light);
-  display: flex;
-  flex-direction: column;
-  flex: 1;
   box-shadow: 0px 1px 10px 1px var(--color-mid);
   margin: 5rem 0rem;
 }
 .cardHeading {
   max-width: 50%;
-  display: flex;
-  flex-direction: column;
   transform: translateY(-50px); 
   margin: auto;
-}
-.cardBody {
-  line-height: 3.5rem;
 }
 .cardFooter {
   font-size: 1.6rem;

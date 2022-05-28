@@ -1,8 +1,6 @@
 .header {
   padding: 4rem;
   box-shadow: 1px 2px 5px var(--color-mid);
-  display: flex;
-  flex: 1;
   justify-content: center;
   max-height: 300px;
   margin-top: 5rem; 

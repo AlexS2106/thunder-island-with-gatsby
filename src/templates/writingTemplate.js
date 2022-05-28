@@ -5,16 +5,16 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { v4 as uuidv4 } from 'uuid';
 
 import {
-  row,
-  itemsEnd
+  itemEnd,
 } from "./templates.module.css";
 
 import Breadcrumbs from "../components/navigation/Breadcrumbs";
 import Button from "../components/buttons/Button";
+import Intro from "../components/typography/Intro";
 import Layout from "../components/layout/Layout";
-import MainColumn from "../components/layout/MainColumn";
-import PageTitle from "../components/header/PageTitle";
-import Signature from "../components/address/Signature";
+import MainWide from "../components/layout/MainWide";
+import PageTitle from "../components/typography/PageTitle";
+import Signature from "../components/typography/Signature";
 import Spacer from "../components/layout/Spacer";
 
 import MDX from "../providers/MDX";
@@ -55,27 +55,25 @@ const WritingTemplate = ( { data, pageContext } ) => {
       <Spacer size="small" />
       <Breadcrumbs crumbs={ crumbs } />
       <Spacer size="small" />
-      <MainColumn>
+      <MainWide>
         <article>
-          <time dateTime={ posted }> Originally written on { posted } </time>
-          <time dateTime={ updated }> Updated on { updated } </time>
+          <time dateTime={ posted } className="textCenter"> Originally written on { posted } </time>
+          <time dateTime={ updated } className="textCenter"> Updated on { updated } </time>
           <GatsbyImage image={ getImage( landscapeImage ) } alt={ alt }></GatsbyImage>
           <cite>photo by { photographer }</cite>
           { generateTags }
-          <p className="withSideBorder addBorderPadding" style={ { maxInlineContent: "fit-content", margin: "auto" } } >{ excerpt }</p>
-          <div>
+          <Intro>{ excerpt }</Intro>
           { contentBody }
-          </div>
           <Signature rotate signedBy={ author }/>
           <p>{ associated }</p>
-          <div className={ `${ row } ${ itemsEnd }` }>
+          <div className={ `flexRow ${ itemEnd }` }>
             <Button onClick={ () => {
               navigate( -1 );
             }
             } innerText={ innerText }></Button>
           </div>
         </article>
-      </MainColumn>
+      </MainWide>
     </Layout>
   );
 }

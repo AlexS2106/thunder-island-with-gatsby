@@ -3,15 +3,14 @@ import PropTypes from "prop-types";
 import { Link } from "gatsby";
 
 import { 
-  contentIndexGrid,
+  grid,
   indexItem
 } from "./index.module.css";
 
 import Breadcrumbs from "../../../components/navigation/Breadcrumbs";
 import Layout from "../../../components/layout/Layout";
-import MainColumn from "../../../components/layout/MainColumn";
-import PageTitle from "../../../components/header/PageTitle";
-import Section from "../../../components/layout/Section";
+import MainWide from "../../../components/layout/MainWide";
+import PageTitle from "../../../components/typography/PageTitle";
 import Spacer from "../../../components/layout/Spacer";
 
 
@@ -39,10 +38,10 @@ const AdvancedLesson = ( { pageContext} ) => {
       <PageTitle title={ pageTitle } />
       <Spacer size="small" />
       <Breadcrumbs crumbs={ crumbs } />
-      <div className={ contentIndexGrid }>
-        <MainColumn>
+      <div className={ grid }>
+        <MainWide>
           <article>
-            <Section>
+            <section display="flexColumn">
               <h3>What is a tag question?</h3>
               <p>Tag questions are another way to ask a question.</p>
               <p>Usually, we ask questions in English like this: <br />
@@ -67,13 +66,13 @@ const AdvancedLesson = ( { pageContext} ) => {
                 <span>or</span>
                 <dd>She made it, didn't she?</dd>
               </dl>
-            </Section>
-            <Section>
+            </section>
+            <section className="flexColumn">
               <h6>Something to remember!</h6>
               <p>While tag questions are mostly used when speaking and not writing, if you are writing a sentence with a tag question place a <span className={ tooltip } title=",">comma</span> between the statement and the tag question.</p>
-            </Section>
+            </section>
             <hr role="none" />
-            <Section>
+            <section className="flexColumn">
               <h3>What do I use tag questions for?</h3>
               <dl>
                 <dt>Use tag questions to check you have understood.</dt>
@@ -87,16 +86,16 @@ const AdvancedLesson = ( { pageContext} ) => {
                 <dt>Use tag questions as a <span className={ tooltip } title="A question you ask of yourself and requires no answer.">rhetorical</span> question.</dt>
                 <dd>I didn't do that very well, did I?</dd>
               </dl>
-            </Section>
-            <Section>
+            </section>
+            <section className="flexColumn">
               <h6>Something to remember!</h6>
               <dl>
                 <dd>Tag questions are mostly used in informal conversations and used a lot.</dd>
                 <dd>Tag questions are rarely written down and when they are the message is often meant harshly.</dd>
               </dl>
-            </Section>
+            </section>
             <hr role="none" />
-            <Section>
+            <section className="flexColumn">
               <h3>How do I make a tag question?</h3>
               <p>To make tag questions you use a positive and a negative.</p>
               <p>If the statement is positive, the tag question must be negative.</p>
@@ -134,9 +133,9 @@ const AdvancedLesson = ( { pageContext} ) => {
                 <dd>I am working right now, aren’t I?</dd>
                 <dd>I'm here, aren’t I?</dd>
               </dl>
-            </Section>
+            </section>
             <hr role="none" />
-            <Section>
+            <section className="flexColumn">
               <h6>Something to remember!</h6>
               <dl>
               <dt>Usually, we use these verbs for tag questions:</dt>
@@ -146,9 +145,9 @@ const AdvancedLesson = ( { pageContext} ) => {
                   <dd>could</dd>
                   <dd>should</dd>
               </dl>
-            </Section>
+            </section>
             <hr role="none" />
-            <Section>
+            <section className="flexColumn">
               <h3>Can I see some examples?</h3>
               <dl>
                 <dd>There's nobody here, is there?</dd>
@@ -157,10 +156,10 @@ const AdvancedLesson = ( { pageContext} ) => {
                 <dd>This boat is safe, isn't it?</dd>
                 <dd>I'm learning quickly, aren't I?</dd>
               </dl>
-            </Section>
+            </section>
           </article>
-        </MainColumn>
-        <aside className="withSideBorder addBorderPadding">
+        </MainWide>
+        <aside className="sideBorderDark sideBorderPad">
           <h3>Exercises Tag Questions</h3>
           <Link to={ `/english/tag-questions/exercise` } className={ indexItem } activeClassName="isActive" >Tag Questions Exercise 1</Link>
         </aside>

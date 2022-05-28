@@ -1,12 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+import MDX from "../../providers/MDX";
+
 import {
   profile
 } from "./Profile.module.css";
-
-import MDX from "../../providers/MDX";
-
 
 ////** COMPONENT **////
 const Profile = ( { person } ) => {
@@ -21,8 +20,8 @@ const Profile = ( { person } ) => {
 
   ////** MARK UP **////
   return (
-    <article className={ profile }>
-      <h3>{ title }</h3>
+    <article className={ `bgLight flexColumn ${profile}` }>
+      <h3 className="textCenter shadowText">{ title }</h3>
       { contentBody }
     </article>
   );
