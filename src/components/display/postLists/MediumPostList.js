@@ -6,8 +6,8 @@ import {
   mediumPostList
 } from "./MediumPostList.module.css";
 
-import Spacer from "../layout/Spacer";
-import PostMedium from "../posts/PostMedium";
+import Spacer from "../../layout/spacing/Spacer";
+import PostMedium from "../../posts/PostMedium";
 
 ////** COMPONENT **////
 const MediumPostList = ( { postData, ...props } ) =>

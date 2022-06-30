@@ -2,15 +2,15 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import { 
-  grid,
-  indexItem
+
 } from "./index.module.css";
 
 import Breadcrumbs from "../../../components/navigation/Breadcrumbs";
-import Layout from "../../../components/layout/Layout";
-import MainWide from "../../../components/layout/MainWide";
+import IndexRight from "../../../components/layout/indexesWithContent/IndexRight";
+import Layout from "../../../components/layout/containers/Layout";
+import MainWide from "../../../components/layout/containers/MainWide";
 import PageTitle from "../../../components/typography/PageTitle";
-import Spacer from "../../../components/layout/Spacer";
+import Spacer from "../../../components/layout/spacing/Spacer";
 
 ////** COMPONENT **////
 const AdvancedLesson = ( { pageContext } ) => {
@@ -34,7 +34,7 @@ const AdvancedLesson = ( { pageContext } ) => {
       <PageTitle title={ pageTitle } />
       <Spacer size="small" />
       <Breadcrumbs crumbs={ crumbs } />
-      <div className={ grid }>
+      <IndexRight>
         <MainWide>
           <article>
             <section className="flexColumn">
@@ -214,7 +214,7 @@ const AdvancedLesson = ( { pageContext } ) => {
         <aside>
           <h3>Exercises for the past perfect</h3>
         </aside>
-      </div>
+      </IndexRight>
     </Layout>
   );
 }

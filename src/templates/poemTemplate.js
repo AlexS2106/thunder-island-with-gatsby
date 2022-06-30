@@ -11,10 +11,10 @@ import {
 import Breadcrumbs from "../components/navigation/Breadcrumbs";
 import Button from "../components/buttons/Button";
 import Intro from "../components/typography/Intro";
-import Layout from "../components/layout/Layout";
-import MainWide from "../components/layout/MainWide";
+import Layout from "../components/layout/containers/Layout";
+import MainWide from "../components/layout/containers/MainWide";
 import PageTitle from "../components/typography/PageTitle";
-import Spacer from "../components/layout/Spacer";
+import Spacer from "../components/layout/spacing/Spacer";
 
 import MDX from "../providers/MDX";
 

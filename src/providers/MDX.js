@@ -5,6 +5,7 @@ import { MDXRenderer } from "gatsby-plugin-mdx";
 
 import { 
   p,
+  shadowText,
   ingredients,
   instructions,
   recipeBody,
@@ -16,7 +17,7 @@ import {
 } from "./MDX.module.css"
 
 import Button from "../components/buttons/Button";
-import Spacer from "../components/layout/Spacer";
+import Spacer from "../components/layout/spacing/Spacer";
 
 
 export default function MDX ( body ) {
@@ -24,7 +25,9 @@ export default function MDX ( body ) {
   const paragraphs = props => (
     <p className={ p } { ...props } />
   );
-  
+  const heading3 = ( {children, ...props} ) => (
+    <h3 className={ shadowText } { ...props } >{ children }</h3>
+  );
   const Ingredients = ( { children, ...props } ) => (
     <div className={ ingredients } { ...props }>
       { children }
@@ -91,6 +94,7 @@ export default function MDX ( body ) {
 
   const components = {
     p: paragraphs,
+    h3: heading3,
     Ingredients,
     Instructions,
     RecipeBody,

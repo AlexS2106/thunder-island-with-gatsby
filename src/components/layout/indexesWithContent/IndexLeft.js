@@ -6,25 +6,23 @@ import scrollTo from 'gatsby-plugin-smoothscroll';
 import { v4 as uuidv4 } from "uuid";
 
 import {
-  indexAndContentDisplay,
+  container,
   extraPadding,
-  marginLeft1,
   marginLeft2,
-  indexItem,
   contentHeight35,
   contentNone,
   blurHr,
   lastHr
-} from "./IndexAndContentDisplay.module.css";
+} from "./IndexLeft.module.css";
 
-import Button from "../buttons/Button";
+import Button from "../../buttons/Button";
 
-import MDX from "../../providers/MDX";
-import { makeTitle, makeSlug, sortingUlsFromNodes } from "../../utilities/functions";
+import MDX from "../../../providers/MDX";
+import { makeTitle, makeSlug, sortingUlsFromNodes } from "../../../utilities/functions";
 
 
 ////** COMPONENT **////
-const IndexAndContentDisplay = ( { list } ) => { 
+const IndexLeft = ( { list } ) => { 
     ////** STATE **////
   const [ clickedTitle, setClickedTitle ] = useState( "" );
 
@@ -66,7 +64,7 @@ const contentIndexList = [
 
   const liTitlesList = item.nodesList.map( node =>
     <li key={ uuidv4() }>
-      <button className={ indexItem } onClick={
+      <button className="indexItem" onClick={
         () => { navigate(`/${node.frontmatter.mainCategories[0]}/${node.frontmatter.slug}`) } }>{ node.frontmatter.title }</button>
     </li> );
   
@@ -107,13 +105,13 @@ const contentIndexList = [
 
     ////** MARK UP  **////
   return (
-    <div className={ indexAndContentDisplay } >
+    <div className={ container } >
       <div>
-        <h3 className={ ` pad1 ${ marginLeft1 } ` }>Select An Article</h3>
+        <h3 className={ `pad1` }>Select An Article</h3>
         { generateIndex }
       </div>
       <div className={ extraPadding }>
-        <h3 className="pad1 textCenter">Quick Read</h3>
+        <h3 className="pad1">Quick Read</h3>
         { generateContent }
       </div>
     </div>
@@ -121,8 +119,8 @@ const contentIndexList = [
 }
 
 ////** PROP TYPES **////
-IndexAndContentDisplay.propTypes = {
+IndexLeft.propTypes = {
 list: PropTypes.array.isRequired,
 }
 
-export default IndexAndContentDisplay;
+export default IndexLeft;

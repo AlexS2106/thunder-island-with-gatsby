@@ -5,9 +5,10 @@ import { v4 as uuidv4 } from 'uuid';
 
 import {
   excerptList,
+  underline
 } from "./ExcerptList.module.css";
 
-import PostMedium from "../posts/PostMedium";
+import PostMedium from "../../posts/PostMedium";
 
 
 ////** COMPONENT **////
@@ -25,7 +26,7 @@ const ExcerptList = ( { list, ...props } ) => {
           post={ listItem }
           { ...props }
         />
-        <h3 className="textCenter"><Link to={ `/${ mainCategoryLink }` }>See more in { listItem.frontmatter.mainCategories }?</Link></h3>
+        <h3 className="textCenter"><Link to={ `/${ mainCategoryLink }` }>See more in <span className={ underline }>{ listItem.frontmatter.mainCategories }</span>?</Link></h3>
       </div>
     );
   } );

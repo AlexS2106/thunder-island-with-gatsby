@@ -21,6 +21,9 @@
 .clusterImageWrapper {
   grid-area: image;
 }
+.clusterImageWrapper div {
+  width: 100%;
+}
 .clusterTitle {
   grid-area: title;
   margin: auto;
@@ -34,19 +37,10 @@
 }
 .clusterLevel {
   grid-area: level;
-  margin-top: 3rem;
+  padding: 2rem 0 0 1rem;
 }
 .clusterList {
   padding: .5rem;
-}
-.clusterListItemLink {
-  text-decoration: underline;
-  text-decoration-color: var(--color-accent-dark);
-  padding: 0.25rem;
-}
-.clusterListItemLink:hover {
-  text-decoration: dotted underline;
-  text-decoration-color: var(--color-accent-dark);
 }
 .clusterList:first-of-type {
   grid-area: lessons;

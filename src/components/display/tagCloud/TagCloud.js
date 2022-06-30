@@ -6,7 +6,7 @@ import {
 } from "./TagCloud.module.css"
 
 
-import { makeTitle } from "../../utilities/functions";
+import { makeTitle } from "../../../utilities/functions";
 
 
 ////** COMPONENTS **////

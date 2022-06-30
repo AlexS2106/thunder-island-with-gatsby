@@ -8,12 +8,12 @@ import {
 } from "./index.module.css";
 
 import Breadcrumbs from "../../components/navigation/Breadcrumbs";
-import Layout from "../../components/layout/Layout";
+import Layout from "../../components/layout/containers/Layout";
 import PageTitle from "../../components/typography/PageTitle";
 import Profile from "../../components/posts/Profile";
 import Signature from "../../components/typography/Signature";
-import SmallPostList from "../../components/display/SmallPostList";
-import Spacer from "../../components/layout/Spacer";
+import SmallPostList from "../../components/display/postLists/SmallPostList";
+import Spacer from "../../components/layout/spacing/Spacer";
 
 import useGetAllPosts from "../../queries/useGetAllPosts.query";
 

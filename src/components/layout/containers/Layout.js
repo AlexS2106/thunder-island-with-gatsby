@@ -1,12 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import "../../utilities/globalStyles.css";
+import "../../../utilities/globalStyles.css";
 
-import Footer from "../footer/Footer";
-import Header from "../header/Header";
-import Navbar from "../navigation/Navbar";
-import Spacer from "../layout/Spacer";
+import Footer from "../../footer/Footer";
+import Header from "../../header/Header";
+import Navbar from "../../navigation/Navbar";
+import Spacer from "../spacing/Spacer";
 
 ////** COMPONENT **////
 const Layout = ( { ...props } ) => {

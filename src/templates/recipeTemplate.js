@@ -6,6 +6,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 import {
   grid,
+  mediumWidth,
   itemEnd,
   adaptSignature1,
   card,
@@ -16,12 +17,12 @@ import {
 import Breadcrumbs from "../components/navigation/Breadcrumbs";
 import Button from "../components/buttons/Button";
 import Intro from "../components/typography/Intro";
-import Layout from "../components/layout/Layout";
-import MainWide from "../components/layout/MainWide";
+import Layout from "../components/layout/containers/Layout";
+import MainWide from "../components/layout/containers/MainWide";
 import PageTitle from "../components/typography/PageTitle";
 import Signature from "../components/typography/Signature";
-import SmallPostList from "../components/display/SmallPostList";
-import Spacer from "../components/layout/Spacer";
+import SmallPostList from "../components/display/postLists/SmallPostList";
+import Spacer from "../components/layout/spacing/Spacer";
 
 import MDX from "../providers/MDX";
 import { listSubcategories, makeTitle } from "../utilities/functions";
@@ -31,7 +32,7 @@ import { listSubcategories, makeTitle } from "../utilities/functions";
 const RecipeTemplate = ( { data, pageContext } ) => {
   
   ////** CONTEXT **////
-   const {
+  const {
     breadcrumb: { crumbs }
   } = pageContext;
   
@@ -52,7 +53,15 @@ const RecipeTemplate = ( { data, pageContext } ) => {
   ////** FUNCTIONS **////
   //Checks for subcategories and generates a list of subcategories from the frontmatter in the article (via props.data.recipePost through the page query)
   const subcats = listSubcategories( frontmatter );
-  const generateSubcats = subcats.map( ( tag, index ) => index === 0 ? <h6 key={ uuidv4() } >| { makeTitle( tag ) } | </h6> : index === subcats.length - 1 ? <h6 key={ uuidv4() }>{ makeTitle( tag ) } |</h6> : <h6 key={ uuidv4() } >{ makeTitle( tag ) } |</h6> );
+  const generateSubcats = <h6>{ subcats.map( ( tag, index ) => {
+    if ( index === 0 ) {
+      return <span key={ uuidv4() } > | { makeTitle( tag ) } | </span>
+    } else if ( index === subcats.length - 1 ) {
+      return <span key={ uuidv4() }>{ makeTitle( tag ) } | </span>
+    } else {
+      return <span key={ uuidv4() } >{ makeTitle( tag ) } | </span>
+    }
+  } ) } </h6>;
   //MDX article content (via props.data.recipePost.body through the page query)
   const contentBody = MDX( body );
 
@@ -67,18 +76,20 @@ const RecipeTemplate = ( { data, pageContext } ) => {
       <div className={ grid }>
         <MainWide>
           <article>
-            <time dateTime={ posted } className="textCenter"> Written on { posted } </time>
-            { posted === updated ? <time dateTime={ updated } className="textCEnter"> Updated on { updated } </time> : null }
+            <div className={`flexColumn textCenter ${mediumWidth}`}>
+            <time dateTime={ posted } > Written on { posted } </time>
+            { posted === updated ? <time dateTime={ updated } > Updated on { updated } </time> : null }
             <Spacer size="small" />
             <GatsbyImage image={ getImage( landscapeImage ) } alt={ alt } ></GatsbyImage>
             <cite>photo by { photographer }</cite>
             <Spacer size="small" />
             <Intro>{ excerpt }</Intro>
-            <Spacer size="small" />
+            </div>
+            <Spacer size="large" />
             <div className={ `flexColumn pad1 ${card}` }>
               <header className={ `flexColumn ${cardHeading}` }>
                 <GatsbyImage image={ getImage( landscapeImage ) } alt={ alt } ></GatsbyImage>
-                <h2 className="textCenter">{ title }</h2>
+                <h2 className="textCenter shadowText">{ title }</h2>
                  { generateSubcats } 
               </header>
                 { contentBody }
@@ -92,15 +103,15 @@ const RecipeTemplate = ( { data, pageContext } ) => {
           </article>
         </MainWide>
         <aside className="flexColumn">
-          <div className="sideBorderDark sideBorderPad">
+          <section className="sideBorderDark flexColumn bgLight">
             <header>
-              <h3 className="bgLight">{ asidePostsHeaderText }</h3>
+              <h3 className="textCenter pad1 shadowText">{ asidePostsHeaderText }</h3>
             </header>
             <SmallPostList
               postData={ associatedRecipes }
               innerText={ asidePostsInnerText }
             />
-          </div>
+          </section>
         </aside>
         <div className={ `flexRow ${ itemEnd }` }>
           <Button onClick={ () => {

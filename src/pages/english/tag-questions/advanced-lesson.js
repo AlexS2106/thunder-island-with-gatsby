@@ -3,15 +3,14 @@ import PropTypes from "prop-types";
 import { Link } from "gatsby";
 
 import { 
-  grid,
-  indexItem
 } from "./index.module.css";
 
 import Breadcrumbs from "../../../components/navigation/Breadcrumbs";
-import Layout from "../../../components/layout/Layout";
-import MainWide from "../../../components/layout/MainWide";
+import IndexRight from "../../../components/layout/indexesWithContent/IndexRight";
+import Layout from "../../../components/layout/containers/Layout";
+import MainWide from "../../../components/layout/containers/MainWide";
 import PageTitle from "../../../components/typography/PageTitle";
-import Spacer from "../../../components/layout/Spacer";
+import Spacer from "../../../components/layout/spacing/Spacer";
 
 
   ////** COMPONENT **////
@@ -38,7 +37,7 @@ const AdvancedLesson = ( { pageContext} ) => {
       <PageTitle title={ pageTitle } />
       <Spacer size="small" />
       <Breadcrumbs crumbs={ crumbs } />
-      <div className={ grid }>
+      <IndexRight>
         <MainWide>
           <article>
             <section display="flexColumn">
@@ -161,9 +160,9 @@ const AdvancedLesson = ( { pageContext} ) => {
         </MainWide>
         <aside className="sideBorderDark sideBorderPad">
           <h3>Exercises Tag Questions</h3>
-          <Link to={ `/english/tag-questions/exercise` } className={ indexItem } activeClassName="isActive" >Tag Questions Exercise 1</Link>
+          <Link to={ `/english/tag-questions/exercise` } className="accentText" activeClassName="isActive" >Tag Questions Exercise 1</Link>
         </aside>
-      </div>
+      </IndexRight>
       <Link href="/">Return to Home</Link>
     </Layout>
   );

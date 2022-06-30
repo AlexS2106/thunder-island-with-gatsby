@@ -10,15 +10,14 @@ import {
   clusterTitle,
   clusterExcerpt,
   clusterLevel,
-  clusterList,
-  clusterListItemLink
+  clusterList
 } from "./index.module.css";
 
 import Breadcrumbs from "../../components/navigation/Breadcrumbs";
-import Layout from "../../components/layout/Layout";
-import MainWide from "../../components/layout/MainWide";
+import Layout from "../../components/layout/containers/Layout";
+import MainWide from "../../components/layout/containers/MainWide";
 import PageTitle from "../../components/typography/PageTitle";
-import Spacer from "../../components/layout/Spacer";
+import Spacer from "../../components/layout/spacing/Spacer";
 
 import { makeTitle } from "../../utilities/functions";
 import { usingGetImg, pastImg, questionMarksImg, secondImg } from "../../utilities/staticImgFunctions";
@@ -44,7 +43,7 @@ const EnglishPage = ( { pageContext } ) => {
       level: "CEFR B1",
       link: "using-get/",
       lessons: [ "complete-lesson" ],
-      exercises: ["using-get-for-obtain"],
+      exercises: ["exercise-get-for-obtain-1"],
       previousClusters: [],
       nextClusters: [],
     },
@@ -92,10 +91,10 @@ const EnglishPage = ( { pageContext } ) => {
         <p className={ clusterExcerpt }>{ cluster.excerpt }</p>
         <h5 className={ clusterLevel }>{ cluster.level }</h5>
         <ul className={ clusterList }>
-          { cluster.lessons.map( lesson => <li key={ uuidv4() } ><Link to={ `${ cluster.link }${ lesson }` } className={ clusterListItemLink } activeClassName="isActive" >{ makeTitle( lesson ) }</Link></li> ) }
+          { cluster.lessons.map( lesson => <li key={ uuidv4() } ><Link to={ `${ cluster.link }${ lesson }` } className="accentText" activeClassName="isActive" >{ makeTitle( lesson ) }</Link></li> ) }
         </ul>
         <ul className={ clusterList }>
-          { cluster.exercises.map( exercise => <li key={ uuidv4() } ><Link to={ `${ cluster.link }${ exercise }` } className={ clusterListItemLink } activeClassName="isActive">{ makeTitle( exercise ) }</Link></li> ) }
+          { cluster.exercises.map( exercise => <li key={ uuidv4() } ><Link to={ `${ cluster.link }${ exercise }` } className=" accentText" activeClassName="isActive">{ makeTitle( exercise ) }</Link></li> ) }
         </ul>
       </div>
     );

@@ -3,21 +3,20 @@ import PropTypes from "prop-types";
 import { Link } from "gatsby";
 
 import { 
-  grid,
-  exercise,
-  indexItem
+  exercise
 } from "./index.module.css";
 
 import Breadcrumbs from "../../../components/navigation/Breadcrumbs";
 import Button from "../../../components/buttons/Button";
-import Layout from "../../../components/layout/Layout";
-import MainWide from "../../../components/layout/MainWide";
+import IndexRight from "../../../components/layout/indexesWithContent/IndexRight";
+import Layout from "../../../components/layout/containers/Layout";
+import MainWide from "../../../components/layout/containers/MainWide";
 import PageTitle from "../../../components/typography/PageTitle";
-import Spacer from "../../../components/layout/Spacer";
+import Spacer from "../../../components/layout/spacing/Spacer";
 
 
   ////** COMPONENT **////
-const UsingGetForObtain = ( { pageContext } ) => {
+const ExerciseGetForObtain1 = ( { pageContext } ) => {
   
   ////** STATE **////
   //Initial state for answers
@@ -187,7 +186,7 @@ const UsingGetForObtain = ( { pageContext } ) => {
       <PageTitle title={ pageTitle } />
       <Spacer size="small" />
       <Breadcrumbs crumbs={ crumbs } />
-      <div className={ grid }>
+      <IndexRight>
         <MainWide>
           <div className={ exercise }>
             <p>Often <em>get</em> is used instead of alternative words which all mean obtain.</p>
@@ -222,19 +221,19 @@ const UsingGetForObtain = ( { pageContext } ) => {
         </MainWide>
         <aside className="sideBorderLight sideBorderPad">
           <h3>Lessons on Using Get</h3>
-          <Link to={ `/english/using-get/complete-lesson` } className={ indexItem } activeClassName="isActive" >A complete Lesson On Using Get</Link>
+          <Link to={ `/english/using-get/complete-lesson` } className="accentText" activeClassName="isActive" >A complete Lesson On Using Get</Link>
           <Spacer size="small" />
           <h4>Learn In Small Easy Lessons</h4>
-          <Link to={ `/english/using-get/mini-lesson-1` } className={ indexItem } activeClassName="isActive" >Mini Lesson On Using Get Part 1</Link>
+          <Link to={ `/english/using-get/mini-lesson-1` } className="accentText" activeClassName="isActive" >Mini Lesson On Using Get Part 1</Link>
         </aside>
-      </div>
+      </IndexRight>
     </Layout>
   );
 }
   
 ///////// *** PROP TYPES *** ///////////
-UsingGetForObtain.propTypes = {
+ExerciseGetForObtain1.propTypes = {
    pageContext: PropTypes.object.isRequired, 
 }
 
-export default UsingGetForObtain;
+export default ExerciseGetForObtain1;

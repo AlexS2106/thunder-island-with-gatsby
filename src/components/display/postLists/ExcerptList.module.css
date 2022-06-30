@@ -11,3 +11,6 @@
 .excerptList article {
   height: calc(100% - 6rem);
 }
+.underline {
+  border-bottom: 1px dotted var(--color-accent-dark);
+}

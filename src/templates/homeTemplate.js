@@ -13,15 +13,15 @@ import {
 
 import Breadcrumbs from "../components/navigation/Breadcrumbs";
 import Carousel from "../components/carousel/Carousel";
-import DivWide from "../components/layout/DivWide";
-import ExcerptList from "../components/display/ExcerptList";
-import Layout from "../components/layout/Layout";
-import MainWide from "../components/layout/MainWide";
-import MediumPostList from "../components/display/MediumPostList";
+import DivWide from "../components/layout/containers/DivWide";
+import ExcerptList from "../components/display/postLists/ExcerptList";
+import Layout from "../components/layout/containers/Layout";
+import MainWide from "../components/layout/containers/MainWide";
+import MediumPostList from "../components/display/postLists/MediumPostList";
 import MenuInBoxes from "../components/navigation/MenuInBoxes";
 import Pagination from "../components/navigation/Pagination";
 import Signature from "../components/typography/Signature";
-import Spacer from "../components/layout/Spacer";
+import Spacer from "../components/layout/spacing/Spacer";
 
 import useGetPostSelection from "../queries/useGetPostSelection.query";
 import useGetAllRecipes from "../queries/useGetAllRecipes.query";

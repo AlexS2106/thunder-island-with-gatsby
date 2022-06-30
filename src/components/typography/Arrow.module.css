@@ -1,0 +1,9 @@
+.dark svg {
+  color: var(--color-dark);
+}
+.accentDark svg {
+  color: var(--color-accent-dark);
+}
+.accentLight svg {
+  color: var(--color-accent-light);
+}

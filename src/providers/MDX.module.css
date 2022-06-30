@@ -1,6 +1,10 @@
 .p {
   padding: 1rem;
 }
+.shadowText {
+  text-shadow: 0px 1px 1px var(--color-accent-dark);
+  letter-spacing: .3rem;
+}
 .ingredients, 
 .instructions,
 .recipeBody {

@@ -8,6 +8,10 @@
 .grid aside {
   justify-self: center;
 }
+.mediumWidth {
+  width: 75%;
+  margin: auto;
+}
 .greeting {
   color: var(--color-accent-dark);
   font-family: var(--font-handwritten);

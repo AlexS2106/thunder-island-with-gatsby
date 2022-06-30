@@ -7,13 +7,13 @@ import {
 } from "./index.module.css";
 
 import Breadcrumbs from "../../components/navigation/Breadcrumbs";
-import IndexAndContentDisplay from "../../components/indexAndContentDisplay/IndexAndContentDisplay";
+import IndexLeft from "../../components/layout/indexesWithContent/IndexLeft";
 import Intro from "../../components/typography/Intro";
-import Layout from "../../components/layout/Layout";
-import MainWide from "../../components/layout/MainWide";
+import Layout from "../../components/layout/containers/Layout";
+import MainWide from "../../components/layout/containers/MainWide";
 import MenuInBoxes from "../../components/navigation/MenuInBoxes";
 import PageTitle from "../../components/typography/PageTitle";
-import Spacer from "../../components/layout/Spacer";
+import Spacer from "../../components/layout/spacing/Spacer";
 
 import { pathImg, writingImg } from "../../utilities/staticImgFunctions";
 
@@ -39,7 +39,7 @@ const PortfolioPage = ( { data, pageContext } ) => {
     },
     {
       link: "#dev",
-      name: "Javascript",
+      name: "Coding",
       image: pathImg(),
     },
     {
@@ -100,10 +100,10 @@ const PortfolioPage = ( { data, pageContext } ) => {
       <MainWide>
         <h2 id="content" className="textCenter shadowText">Content Writing</h2>
         <Spacer size="small" />
-        <IndexAndContentDisplay list={ indexAndContentDisplayData } />
+        <IndexLeft list={ indexAndContentDisplayData } />
         <Spacer size="medium" />
         <section className="flexColumn">
-          <h2 id="dev" className="textCenter shadowText">Javascript Projects</h2>
+          <h2 id="dev" className="textCenter shadowText">Coding Projects</h2>
           <Spacer size="small" />
           <MenuInBoxes
             menu={ devMenuBoxesMenuArray }
@@ -114,7 +114,7 @@ const PortfolioPage = ( { data, pageContext } ) => {
         <section className="flexColumn">
           <h2 id="photos" className="textCenter shadowText">Photograph Albums</h2>
           <Spacer size="small" />
-          <p className="textCenter" style={ {fontSize: "3rem"} }>Working on it.</p>
+          <p className="textCenter" style={ {fontSize: "3rem"} }>Working on it...</p>
         </section>
       </MainWide>
     </Layout>

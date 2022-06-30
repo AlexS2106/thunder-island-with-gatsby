@@ -6,22 +6,21 @@ import { v4 as uuidv4 } from 'uuid';
 import {
   grid,
   justify,
-  accent,
-  indexItem
+  accent
 } from "./index.module.css";
 
 import Breadcrumbs from "../../components/navigation/Breadcrumbs";
 import Button from "../../components/buttons/Button";
 import Carousel from "../../components/carousel/Carousel";
-import Layout from "../../components/layout/Layout";
-import MainWide from "../../components/layout/MainWide";
-import MediumPostList from "../../components/display/MediumPostList";
+import Layout from "../../components/layout/containers/Layout";
+import MainWide from "../../components/layout/containers/MainWide";
+import MediumPostList from "../../components/display/postLists/MediumPostList";
 import MenuInBoxes from "../../components/navigation/MenuInBoxes";
 import MenuInRows from "../../components/navigation/MenuInRows";
 import PageTitle from "../../components/typography/PageTitle";
-import SmallPostList from "../../components/display/SmallPostList";
-import Spacer from "../../components/layout/Spacer";
-import TagCloud from "../../components/display/TagCloud";
+import SmallPostList from "../../components/display/postLists/SmallPostList";
+import Spacer from "../../components/layout/spacing/Spacer";
+import TagCloud from "../../components/display/tagCloud/TagCloud";
 
 import useGetAllRecipes from "../../queries/useGetAllRecipes.query";
 import useGetAllHealthPosts from "../../queries/useGetAllHealthPosts.query";
@@ -167,7 +166,7 @@ const RecipesPage = ( { pageContext } ) => {
           { mainCount > 0 ?
             <>
               <ul className="sideBorderPad" >
-                { shownRecipes.slice( 0, mainCount ).map( item => <li key={ uuidv4() }><Link to={ `recipes/${ item.frontmatter.slug }` } className={ indexItem } activeClassName="isActive" >{ item.frontmatter.title }</Link></li> ) }
+                { shownRecipes.slice( 0, mainCount ).map( item => <li key={ uuidv4() }><Link to={ `recipes/${ item.frontmatter.slug }` } className="accentText" activeClassName="isActive" >{ item.frontmatter.title }</Link></li> ) }
               </ul>
               <Button
                 innerText={ moveBackButtonText }
@@ -193,7 +192,7 @@ const RecipesPage = ( { pageContext } ) => {
                 <Button innerText={ moveOnButtonText } onClick={ () => setMainCount( mainCount + mediumPostListNumDisplayedRecipes ) } />
                 <Spacer size="small" />
                 <ul>
-                  { shownRecipes.slice( mainCount + mediumPostListNumDisplayedRecipes ).map( item => <li key={ uuidv4() }><Link to={ `/recipes/${ item.frontmatter.slug }` } className={ indexItem } activeClassName="isActive" >{ item.frontmatter.title }</Link></li> ) }
+                  { shownRecipes.slice( mainCount + mediumPostListNumDisplayedRecipes ).map( item => <li key={ uuidv4() }><Link to={ `/recipes/${ item.frontmatter.slug }` } className="accentText" activeClassName="isActive" >{ item.frontmatter.title }</Link></li> ) }
                 </ul>
               </> : null
           }
@@ -211,7 +210,7 @@ const RecipesPage = ( { pageContext } ) => {
               { asideCount > 0 ?
                 <>
                   <ul className="pad1">
-                    { shownTagRecipes.slice( 0, asideCount ).map( item => <li key={ uuidv4() }><Link to={ `/recipes/${ item.frontmatter.slug }` } className={ indexItem } activeClassName="isActive" >{ item.frontmatter.title }</Link></li> ) }
+                    { shownTagRecipes.slice( 0, asideCount ).map( item => <li key={ uuidv4() }><Link to={ `/recipes/${ item.frontmatter.slug }` } className="accentText" activeClassName="isActive" >{ item.frontmatter.title }</Link></li> ) }
                   </ul>
                   <Spacer size="small" />
                   <Button
@@ -235,7 +234,7 @@ const RecipesPage = ( { pageContext } ) => {
                     <Button innerText={ moveOnButtonText } onClick={ () => setAsideCount( asideCount + smallPostListNumDisplayedRecipes ) } />
                     <Spacer size="small" />
                     <ul>
-                      { shownTagRecipes.slice( asideCount + smallPostListNumDisplayedRecipes ).map( item => <li key={ uuidv4() }><Link to={ `/recipes/${ item.frontmatter.slug }` } className={ indexItem } activeClassName="isActive" >{ item.frontmatter.title }</Link></li> ) }
+                      { shownTagRecipes.slice( asideCount + smallPostListNumDisplayedRecipes ).map( item => <li key={ uuidv4() }><Link to={ `/recipes/${ item.frontmatter.slug }` } className="accentText" activeClassName="isActive" >{ item.frontmatter.title }</Link></li> ) }
                     </ul>
                   </> : null
               }
