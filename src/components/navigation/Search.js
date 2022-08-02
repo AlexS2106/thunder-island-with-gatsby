@@ -17,6 +17,7 @@ const Search = () => {
   ////** STATE **////
   //Initial state for the index.
   const nodes = useGetAllSlugs();
+  console.log( nodes );
   const slugs = nodes.map(node => node.frontmatter.mainCategories[0].concat("/", node.slug));
   //State for the index and user query
   const [ index, setIndex ] = useState( () => {
